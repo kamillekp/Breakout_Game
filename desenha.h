@@ -10,21 +10,28 @@
 #include <math.h>
 #include <ctype.h>
 
-void limpaTela(){
-    ClearBackground(BLACK);
-}
 
 void desenhaMenu(){
+    Rectangle rec1 = { 240, 150, 325, 50};
+    Rectangle rec2 = { 240, 225, 325, 50};
+    Rectangle rec3 = { 240, 300, 325, 50};
 
     ClearBackground(BLACK);
     DrawText("BreakoutINF", 240, 60, 50, WHITE); // TITULO DO JOGO
 
-    DrawRectangleGradientV(240, 150, 325, 50, ORANGE, GOLD); // BOTAO JOGAR
-        DrawText("JOGAR", 335, 156, 40, BLACK);
-    DrawRectangleGradientV(240, 225, 325, 50, ORANGE, GOLD); // BOTAO PONTUAÇÃO
-        DrawText("PONTUACAO", 275, 231, 40, BLACK);
-    DrawRectangleGradientV(240, 300, 325, 50, ORANGE, GOLD); // BOTAO SAIR
-        DrawText("SAIR", 355, 306, 40, BLACK);
+    DrawRectangleRounded(rec1, 0.3, 0, ORANGE);      //BOTÃO JOGAR
+    DrawRectangleRoundedLines(rec1, 0.3, 0, 2, Fade(DARKPURPLE, 1));
+    DrawText("JOGAR", 335, 156, 40, BLACK);
+
+    DrawRectangleRounded(rec2, 0.3, 0, ORANGE);      // BOTAO PONTUAÇÃO
+    DrawRectangleRoundedLines(rec2, 0.3, 0, 2, Fade(DARKPURPLE, 1));
+    DrawText("PONTUACAO", 275, 231, 40, BLACK);
+
+    DrawRectangleRounded(rec3, 0.3, 0, ORANGE);      //BOTÃO SAIR
+    DrawRectangleRoundedLines(rec3, 0.3, 0, 2, Fade(DARKPURPLE, 1));
+    DrawText("SAIR", 355, 306, 40, BLACK);
+
+
 
     DrawText("Beatriz e Kamille, 2022/01", 240, 380, 26, WHITE); //CREDITOS
 }
@@ -50,7 +57,7 @@ void desenhaMenuOp (opcao){ // RECEBE OPCAO POR PONTEIRO??
 
 void desenhaPtos(){ // aqui tem que usar o coisa de high score que o sor deu, modificar os valores de acordo com aquilo
 
-    limpaTela();
+    ClearBackground(BLACK);
     DrawText("TOP SCORES", 240, 60, 50, WHITE); // TITULO DO JOGO
 
     //POS 1

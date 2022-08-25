@@ -29,7 +29,6 @@ int main(){
             DrawText("JOGAR", 335, 156, 40, BLACK);
         }
         else if (menu == 1){
-
             desenhaPtos();
         }
         EndDrawing();

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1661381928 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08\main.c
+1661388786 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08\main.c
 	"raylib.h"
 	"tudo.h"
 	"menu.h"
@@ -13,7 +13,7 @@
 1661380002 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08\tudo.h
 	<raylib.h>
 
-1661382070 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08\menu.h
+1661389016 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08\menu.h
 	"raylib.h"
 	<stdio.h>
 	<stdlib.h>
@@ -21,7 +21,7 @@
 	<math.h>
 	<ctype.h>
 
-1661381846 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08\desenha.h
+1661388561 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08\desenha.h
 	"raylib.h"
 	<stdio.h>
 	<stdlib.h>

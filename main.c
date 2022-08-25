@@ -23,18 +23,15 @@ int main(){
         BeginDrawing();
 
         desenhaMenu();
-        //desenhaPtos();
-        decideMenu(); // fazer essa funcao mexer em um ponteiro quem sabe
+        menu = decideMenu(); // essa merda n funciona direito;
 
-        /*if (ponteiro){
-            //funcoes do jogo
+        if (menu == 0){
+            DrawText("JOGAR", 335, 156, 40, BLACK);
         }
-        else if (ponteiro){
-            //funcoes do highscore
+        else if (menu == 1){
+
             desenhaPtos();
         }
-        else //sair
-        */
         EndDrawing();
     }
 

@@ -10,6 +10,10 @@
 #include <math.h>
 #include <ctype.h>
 
+void limpaTela(){
+    ClearBackground(BLACK);
+}
+
 void desenhaMenu(){
 
     ClearBackground(BLACK);
@@ -22,13 +26,13 @@ void desenhaMenu(){
     DrawRectangleGradientV(240, 300, 325, 50, ORANGE, GOLD); // BOTAO SAIR
         DrawText("SAIR", 355, 306, 40, BLACK);
 
-    DrawText("Beatriz e Kamille, 2022/01", 240, 380, 26, WHITE);
+    DrawText("Beatriz e Kamille, 2022/01", 240, 380, 26, WHITE); //CREDITOS
 }
 
 void desenhaMenuOp (opcao){ // RECEBE OPCAO POR PONTEIRO??
 
     if (opcao == 0){
-        DrawRectangleGradientV(240, 150, 325, 50, PURPLE, DARKPURPLE);
+        DrawRectangleGradientV(240, 150, 325, 50, PURPLE, DARKPURPLE); // BOTAO JOGAR
             DrawText("JOGAR", 335, 156, 40, WHITE);
         //DrawRectangleLines(240, 150, 325, 50, WHITE); // LINHA PRO BOTAO JOGAR
     }
@@ -46,7 +50,7 @@ void desenhaMenuOp (opcao){ // RECEBE OPCAO POR PONTEIRO??
 
 void desenhaPtos(){ // aqui tem que usar o coisa de high score que o sor deu, modificar os valores de acordo com aquilo
 
-    ClearBackground(BLACK);
+    limpaTela();
     DrawText("TOP SCORES", 240, 60, 50, WHITE); // TITULO DO JOGO
 
     //POS 1
@@ -79,11 +83,6 @@ void desenhaPtos(){ // aqui tem que usar o coisa de high score que o sor deu, mo
         DrawText("JOGADOR5", 200, 375, 40, WHITE); //NOME
         DrawText("9999", 600, 375, 40, WHITE); //PONTOS
 
-    /*DrawRectangle(int posX, int posY, int width, int height, Color color); // QUADRADO
-    DrawText(const char *text, int posX, int posY, int fontSize, Color color); //  POSIÇÃO
-    DrawText(const char *text, int posX, int posY, int fontSize, Color color); // NOME DO JOGADOR
-    DrawText(const char *text, int posX, int posY, int fontSize, Color color); // PONTOS
-    */
 }
 
 

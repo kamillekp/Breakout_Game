@@ -14,49 +14,52 @@
 
 //VER COMO VAI FUNCIONAR OPCAO COMO PONTEIRO
 int opcao=0;
+int menu=0;
+int *ponteiro = &opcao;
 
 void CimaOuBaixo(opcao){
 //Essa função muda as opcoes do menu
 
-    if(IsKeyDown(KEY_DOWN)){
+    if(IsKeyPressed(KEY_DOWN)){
         switch (opcao){
-        case 0: opcao = 1;
+        case 0: *ponteiro = 1; //
                 break;
-        case 1: opcao = 2;
+        case 1: *ponteiro = 2;
                 break;
-        case 2: opcao = 0;
+        case 2: *ponteiro = 0;
                 break;
         }
     }
     else if(IsKeyPressed(KEY_UP)){
         switch (opcao){
-        case 0: opcao = 2;
+        case 0: *ponteiro = 2;
                 break;
-        case 1: opcao = 0;
+        case 1: *ponteiro = 0;
                 break;
-        case 2: opcao = 1;
+        case 2: *ponteiro = 1;
                 break;
         }
     }
     desenhaMenuOp(opcao);
 }
 
-void decideMenu(void){
+int decideMenu(void){
 
     if (IsKeyUp(KEY_ENTER)){
     CimaOuBaixo(opcao);
     }
 
-    else if (IsKeyPressed(KEY_ENTER)){
+    if (IsKeyPressed(KEY_ENTER)){
         switch (opcao){
-        case 0: DrawText("JOGO", TELA_LARGURA/2, TELA_ALTURA/5, 100, BLACK); // mudar pra que chama o jogo dps
+        case 0: menu = 0; // JOGO
                 break;
-        case 1: DrawText("PTOS", TELA_LARGURA/2, TELA_ALTURA/5, 100, BLACK); // mudar pra que chama o highscores dps
+        case 1: menu = 1; // PONTUAÇÃO
                 break;
-        case 2: WindowShouldClose; // NÃO SE ISSO FUNCIONA mas é pra sair
+        case 2: CloseWindow(); // SAIR
                 break;
         }
     }
+    return menu;
 }
 
 #endif

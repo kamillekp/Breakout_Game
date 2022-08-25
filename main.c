@@ -30,6 +30,7 @@ int main(){
         }
         else if (menu == 1){
             desenhaPtos();
+            voltaMenu();
         }
         EndDrawing();
     }

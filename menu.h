@@ -62,6 +62,12 @@ int decideMenu(void){
     return menu;
 }
 
+void voltaMenu(){
+    if (IsKeyPressed(KEY_V)){
+        menu = 100;
+    }
+}
+
 #endif
 
 

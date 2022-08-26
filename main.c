@@ -23,7 +23,7 @@ int main(){
         BeginDrawing();
 
         desenhaMenu();
-        menu = decideMenu(); // essa merda n funciona direito;
+        menu = decideMenu();
 
         if (menu == 0){
             limpaTela();

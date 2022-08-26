@@ -29,11 +29,12 @@
 	<math.h>
 	<ctype.h>
 
-1661476238 source:c:\users\admin\documents\breakout_game\main.c
+1661484433 source:c:\users\admin\documents\breakout_game\main.c
 	"raylib.h"
 	"tudo.h"
 	"menu.h"
 	"desenha.h"
+	"highscore.h"
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -51,10 +52,19 @@
 	<math.h>
 	<ctype.h>
 
-1661478656 c:\users\admin\documents\breakout_game\desenha.h
+1661483622 c:\users\admin\documents\breakout_game\desenha.h
 	"raylib.h"
 	<stdio.h>
 	<stdlib.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+
+1661543493 c:\users\admin\documents\breakout_game\highscore.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 	<time.h>
 	<math.h>
 	<ctype.h>

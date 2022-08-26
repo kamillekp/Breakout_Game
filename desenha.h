@@ -56,12 +56,10 @@ void desenhaMenuOp (opcao){ // QUANDO O BOTÃO ESTÁ "ESCOLHIDO"
 
 void desenhaPtos(){
 
-    limpaTela();
-
     FILE *ptArq;
     char str[10][100];
 
-    //abrindo o arquivo_frase em modo "somente leitura"
+    //abrindo o arquivo_frase somente para leitura
     ptArq = fopen("highscore.bin", "r");
 
     limpaTela();

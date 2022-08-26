@@ -3,6 +3,7 @@
 #include "tudo.h"
 #include "menu.h"
 #include "desenha.h"
+#include "highscore.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,6 +22,8 @@ int main(){
     while(!WindowShouldClose()){
 
         BeginDrawing();
+       /* ClearBackground(BLACK);
+        pegaArquivo();*/
 
         desenhaMenu();
         menu = decideMenu();

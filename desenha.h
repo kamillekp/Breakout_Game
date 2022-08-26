@@ -19,17 +19,17 @@ void desenhaMenu(){
     ClearBackground(BLACK);
     DrawText("BreakoutINF", 240, 60, 50, WHITE); // TITULO DO JOGO
 
-    DrawRectangleGradientV(240, 150, 325, 50, ORANGE, GOLD); // BOTAO JOGAR
+    DrawRectangleRounded(rec1, 0.5, 0, Fade(ORANGE, 1));
+    DrawRectangleRoundedLines(rec1, 0.55, 0, 2, Fade(ORANGE, 1)); // BOTAO JOGAR
         DrawText("JOGAR", 335, 156, 40, BLACK);
-        DrawRectangleLinesEx(botao1, 3, ORANGE);
 
-    DrawRectangleGradientV(240, 225, 325, 50, ORANGE, GOLD); // BOTAO PONTUAÇÃO
+    DrawRectangleRounded(rec2, 0.5, 0, Fade(ORANGE, 1));
+    DrawRectangleRoundedLines(rec2, 0.55, 0, 2, Fade(ORANGE, 1)); // BOTAO PONTUAÇÃO
         DrawText("PONTUACAO", 275, 231, 40, BLACK);
-        DrawRectangleLinesEx(botao2, 3, ORANGE);
 
-    DrawRectangleGradientV(240, 300, 325, 50, ORANGE, GOLD); // BOTAO SAIR
+    DrawRectangleRounded(rec3, 0.5, 0, Fade(ORANGE, 1));
+    DrawRectangleRoundedLines(rec3, 0.55, 0, 2, Fade(ORANGE, 1)); // BOTAO SAIR
         DrawText("SAIR", 355, 306, 40, BLACK);
-        DrawRectangleLinesEx(botao3, 3, ORANGE);
 
 
     DrawText("Beatriz e Kamille, 2022/01", 240, 380, 26, WHITE); //CREDITOS
@@ -38,19 +38,19 @@ void desenhaMenu(){
 void desenhaMenuOp (opcao){ // RECEBE OPCAO POR PONTEIRO??
 
     if (opcao == 0){
-        DrawRectangleGradientV(240, 150, 325, 50, PURPLE, DARKPURPLE); // BOTAO JOGAR
-            DrawText("JOGAR", 335, 156, 40, WHITE);
-            DrawRectangleLinesEx(botao1, 3, DARKPURPLE);
+        DrawRectangleRounded(rec1, 0.5, 0, Fade(DARKPURPLE, 1));
+        DrawRectangleRoundedLines(rec1, 0.55, 0, 2, Fade(DARKPURPLE, 1)); // BOTAO JOGAR
+            DrawText("JOGAR", 335, 156, 40, BLACK);
     }
     if (opcao == 1){
-        DrawRectangleGradientV(240, 225, 325, 50, PURPLE, DARKPURPLE); // BOTAO PONTUAÇÃO
+        DrawRectangleRounded(rec2, 0.5, 0, Fade(DARKPURPLE, 1));
+        DrawRectangleRoundedLines(rec2, 0.55, 0, 2, Fade(DARKPURPLE, 1)); // BOTAO JOGAR
             DrawText("PONTUACAO", 275, 231, 40, WHITE);
-            DrawRectangleLinesEx(botao2, 3, DARKPURPLE);
     }
     if (opcao == 2){
-        DrawRectangleGradientV(240, 300, 325, 50, PURPLE, DARKPURPLE); // BOTAO SAIR
+        DrawRectangleRounded(rec3, 0.5, 0, Fade(DARKPURPLE, 1));
+        DrawRectangleRoundedLines(rec3, 0.55, 0, 2, Fade(DARKPURPLE, 1)); // BOTAO JOGAR
             DrawText("SAIR", 355, 306, 40, WHITE);
-            DrawRectangleLinesEx(botao3, 3, DARKPURPLE);
     }
 }
 

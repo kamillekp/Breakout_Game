@@ -14,7 +14,7 @@
 
 //VER COMO VAI FUNCIONAR OPCAO COMO PONTEIRO
 int opcao=0;
-int menu=0;
+int menu=5;
 int *ponteiro = &opcao;
 
 void CimaOuBaixo(opcao){
@@ -22,7 +22,7 @@ void CimaOuBaixo(opcao){
 
     if(IsKeyPressed(KEY_DOWN)){
         switch (opcao){
-        case 0: *ponteiro = 1; //
+        case 0: *ponteiro = 1;
                 break;
         case 1: *ponteiro = 2;
                 break;
@@ -32,6 +32,7 @@ void CimaOuBaixo(opcao){
     }
     else if(IsKeyPressed(KEY_UP)){
         switch (opcao){
+            printf("AQUII: %d", opcao);
         case 0: *ponteiro = 2;
                 break;
         case 1: *ponteiro = 0;
@@ -46,7 +47,7 @@ void CimaOuBaixo(opcao){
 int decideMenu(void){
 
     if (IsKeyUp(KEY_ENTER)){
-    CimaOuBaixo(opcao);
+        CimaOuBaixo(opcao);
     }
 
     if (IsKeyPressed(KEY_ENTER)){

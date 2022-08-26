@@ -26,7 +26,8 @@ int main(){
         menu = decideMenu(); // essa merda n funciona direito;
 
         if (menu == 0){
-            DrawText("JOGAR", 335, 156, 40, BLACK);
+            limpaTela();
+            DrawText("JOGAR", 335, 156, 40, WHITE);
         }
         else if (menu == 1){
             desenhaPtos();

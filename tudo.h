@@ -65,9 +65,9 @@ typedef struct Raquete{
 //SHAPES
 
 //MENU
-Rectangle botao1 = {240, 150, 325, 50};
-Rectangle botao2 = {240, 225, 325, 50};
-Rectangle botao3 = {240, 300, 325, 50};
+Rectangle rec1 = { 240, 150, 325, 50 };
+Rectangle rec2 = { 240, 225, 325, 50 };
+Rectangle rec3 = { 240, 300, 325, 50 };
 
 //PONTUACAO
 Rectangle pos1 = {100, 130, 45, 45};

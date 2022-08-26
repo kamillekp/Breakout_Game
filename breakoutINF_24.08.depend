@@ -29,7 +29,7 @@
 	<math.h>
 	<ctype.h>
 
-1661391557 source:c:\users\admin\documents\breakout_game\main.c
+1661475045 source:c:\users\admin\documents\breakout_game\main.c
 	"raylib.h"
 	"tudo.h"
 	"menu.h"
@@ -40,10 +40,10 @@
 	<math.h>
 	<ctype.h>
 
-1661391170 c:\users\admin\documents\breakout_game\tudo.h
+1661475840 c:\users\admin\documents\breakout_game\tudo.h
 	<raylib.h>
 
-1661391170 c:\users\admin\documents\breakout_game\menu.h
+1661474789 c:\users\admin\documents\breakout_game\menu.h
 	"raylib.h"
 	<stdio.h>
 	<stdlib.h>
@@ -51,7 +51,7 @@
 	<math.h>
 	<ctype.h>
 
-1661393387 c:\users\admin\documents\breakout_game\desenha.h
+1661475879 c:\users\admin\documents\breakout_game\desenha.h
 	"raylib.h"
 	<stdio.h>
 	<stdlib.h>

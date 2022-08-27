@@ -33,10 +33,14 @@
 		</Compiler>
 		<Unit filename="alagard.ttf" />
 		<Unit filename="desenha.h" />
+		<Unit filename="highscore.bin" />
+		<Unit filename="highscore.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu.h" />
+		<Unit filename="nivel1.txt" />
+		<Unit filename="play.h" />
 		<Unit filename="tudo.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

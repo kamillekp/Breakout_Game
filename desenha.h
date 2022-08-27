@@ -130,4 +130,7 @@ void desenhaPtos(){
         fclose(ptArq);
 }
 
+void desenhaJogo(){
+
+}
 

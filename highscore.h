@@ -12,7 +12,7 @@
 #include <math.h>
 #include <ctype.h>
 
-int pontos = 35; // PONTOS JOGADOR VAI TER QUE SER UM PONTEIRO
+int pontos = 35;
 char nomeJogador[50] = "Manuel";
 
 // PEGA ARQUIVO E PASSA PONTOS PARA INTEIRO
@@ -131,7 +131,7 @@ void gravaArquivo(int lugar){
 }
 
 
-// PONTOS VEM DA VARIÁVEL GLOBAL, TEMOS QUE VER COMO TRAZER O NOME E OS PONTOS DO JOGADOR PRA CÁ
+// PONTOS VÊM DA VARIÁVEL GLOBAL, TEMOS QUE VER COMO TRAZER O NOME E OS PONTOS DO JOGADOR PRA CÁ
 void defineMaior (int vet[], int tam) {
     if(pontos > vet[0]){
         gravaArquivo(0);

@@ -4,6 +4,7 @@
 #include "menu.h"
 #include "desenha.h"
 #include "highscore.h"
+#include "play.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,11 +23,13 @@ int main(){
     while(!WindowShouldClose()){
 
         BeginDrawing();
-       /* ClearBackground(BLACK);
-        pegaArquivo();*/
+        ClearBackground(BLACK);
+        //pegaArquivo(); TESTE PARA HIGHSCORE.H
 
-        desenhaMenu();
-        menu = decideMenu();
+        //pegaMatriz(1); TESTE PARA PLAY.H
+
+        /*desenhaMenu();
+        menu = decideMenu();*/
 
         if (menu == 0){
             limpaTela();

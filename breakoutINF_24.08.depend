@@ -79,3 +79,56 @@
 	<math.h>
 	<ctype.h>
 
+1661729145 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\main.c
+	"raylib.h"
+	"tudo.h"
+	"menu.h"
+	"desenha.h"
+	"highscore.h"
+	"play.h"
+	"jogo.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+
+1661726576 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\tudo.h
+	<raylib.h>
+
+1661724244 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\menu.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+
+1661729287 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\desenha.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+
+1661723192 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\highscore.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+
+1661723322 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\play.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+
+1661729287 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\jogo.h
+

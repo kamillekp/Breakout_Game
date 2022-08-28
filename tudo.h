@@ -17,50 +17,28 @@ tudo.h é uma biblioteca criada para armazenar todas as structs, funções e variáv
 
 //MATRIZ : arquivo txts --- pegar o .txt aqui, e referenciar depois lá no jogo, e não deixar pra pegar ele lá (pelo menos 2)
 
-// TELAS?
-typedef enum{
+typedef struct Player{
 
-    INIT_Tela, // 0
-    MENU_Tela, // 2
-    JOGO_Tela, // 3
-    PTOS_Tela, // 4
-    SAIR_Tela, // 5
-
-} Telas;
-
-typedef struct{
-
-    char Nome[255];
-    int Altura;
-    int Largura;
-
-}InitTelaInfo;
-
-typedef struct Jogador{
-
+    Vector2 Posicao;
+    Vector2 Tamanho;
     char *Nome;
     int Pontos;
     int Vidas;
-    bool Estado; // se tá vivo ou morto
 
-}Jogador;
+}Player;
 
-typedef struct Bola{
+Player Jogador;
 
-    int PosX;
-    int PosY;
+typedef struct Ball{
+
+    Vector2 Posicao;
+    Vector2 Velocidade;
     int Raio;
+    bool Ativa;
 
-}Bola;
+}Ball;
 
-typedef struct Raquete{
-
-    int Altura;
-    int Largura;
-    int PosX;
-    int PosY;
-
-}Raquete;
+Ball Bola;
 
 //SHAPES
 
@@ -77,5 +55,4 @@ Rectangle pos4 = {100, 310, 45, 45};
 Rectangle pos5 = {100, 370, 45, 45};
 
 Rectangle volta1 = {15, 15, 45, 45};
-
 

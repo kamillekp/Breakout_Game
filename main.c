@@ -5,6 +5,7 @@
 #include "desenha.h"
 #include "highscore.h"
 #include "play.h"
+#include "jogo.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,17 +24,18 @@ int main(){
     while(!WindowShouldClose()){
 
         BeginDrawing();
-        ClearBackground(BLACK);
         //pegaArquivo(); TESTE PARA HIGHSCORE.H
 
         //pegaMatriz(1); TESTE PARA PLAY.H
 
-        /*desenhaMenu();
-        menu = decideMenu();*/
+        desenhaMenu();
+        menu = decideMenu();
 
         if (menu == 0){
             limpaTela();
-            DrawText("JOGAR", 335, 156, 40, WHITE);
+            initJogo();
+            UpdateFrameJogo(); // ESSA MERDAAAAAAAAAAAAAAAAAAAAAAAAAA NAO FUNCIONAAAAAAAAAAAAAAAAAAAAA
+
         }
         else if (menu == 1){
             desenhaPtos();

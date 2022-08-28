@@ -19,16 +19,16 @@ void desenhaMenu(){
     ClearBackground(BLACK);
     DrawText("BreakoutINF", 240, 60, 50, WHITE); // TITULO DO JOGO
 
-    DrawRectangleRounded(rec1, 0.5, 0, Fade(ORANGE, 1));
-    DrawRectangleRoundedLines(rec1, 0.55, 0, 2, Fade(ORANGE, 1)); // BOTÃO JOGAR
+    DrawRectangleGradientV(240, 150, 325, 50, ORANGE, GOLD);
+    DrawRectangleLinesEx(rec1, 3, ORANGE);
         DrawText("JOGAR", 335, 156, 40, BLACK);
 
-    DrawRectangleRounded(rec2, 0.5, 0, Fade(ORANGE, 1));
-    DrawRectangleRoundedLines(rec2, 0.55, 0, 2, Fade(ORANGE, 1)); // BOTÃO PONTUAÇÃO
+    DrawRectangleGradientV(240, 225, 325, 50, ORANGE, GOLD);
+    DrawRectangleLinesEx(rec2, 3, ORANGE);
         DrawText("PONTUACAO", 275, 231, 40, BLACK);
 
-    DrawRectangleRounded(rec3, 0.5, 0, Fade(ORANGE, 1));
-    DrawRectangleRoundedLines(rec3, 0.55, 0, 2, Fade(ORANGE, 1)); // BOTÃO SAIR
+    DrawRectangleGradientV(240, 300, 325, 50, ORANGE, GOLD);
+    DrawRectangleLinesEx(rec3, 3, ORANGE);
         DrawText("SAIR", 355, 306, 40, BLACK);
 
 
@@ -38,18 +38,18 @@ void desenhaMenu(){
 void desenhaMenuOp (opcao){ // QUANDO O BOTÃO ESTÁ "ESCOLHIDO"
 
     if (opcao == 0){
-        DrawRectangleRounded(rec1, 0.5, 0, Fade(DARKPURPLE, 1));
-        DrawRectangleRoundedLines(rec1, 0.55, 0, 2, Fade(DARKPURPLE, 1)); // BOTÃO JOGAR
-            DrawText("JOGAR", 335, 156, 40, BLACK);
+        DrawRectangleGradientV(240, 150, 325, 50, DARKPURPLE, PURPLE);
+        DrawRectangleLinesEx(rec1, 3, DARKPURPLE);
+            DrawText("JOGAR", 335, 156, 40, WHITE);
     }
     if (opcao == 1){
-        DrawRectangleRounded(rec2, 0.5, 0, Fade(DARKPURPLE, 1));
-        DrawRectangleRoundedLines(rec2, 0.55, 0, 2, Fade(DARKPURPLE, 1)); // BOTÃO JOGAR
+        DrawRectangleGradientV(240, 225, 325, 50, DARKPURPLE, PURPLE);
+        DrawRectangleLinesEx(rec2, 3, DARKPURPLE);
             DrawText("PONTUACAO", 275, 231, 40, WHITE);
     }
     if (opcao == 2){
-        DrawRectangleRounded(rec3, 0.5, 0, Fade(DARKPURPLE, 1));
-        DrawRectangleRoundedLines(rec3, 0.55, 0, 2, Fade(DARKPURPLE, 1)); // BOTÃO JOGAR
+        DrawRectangleGradientV(240, 300, 325, 50, DARKPURPLE, PURPLE);
+        DrawRectangleLinesEx(rec3, 3, DARKPURPLE);
             DrawText("SAIR", 355, 306, 40, WHITE);
     }
 }
@@ -130,7 +130,9 @@ void desenhaPtos(){
         fclose(ptArq);
 }
 
-void desenhaJogo(){
+void desenhaJogador(){
 
+    limpaTela();
+    DrawRectangleV(Jogador.Posicao, Jogador.Tamanho, WHITE);
 }
 

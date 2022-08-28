@@ -12,7 +12,7 @@
 #include <math.h>
 #include <ctype.h>
 
-void pegaMatriz(int nivel){
+/*void pegaMatriz(int nivel){
     char *ptArq;
     char str[5][10];
     int i, j;
@@ -26,7 +26,7 @@ void pegaMatriz(int nivel){
                 fscanf(ptArq, "%s", str[i][j]);
                 printf("%s", str[i][j]);
             }
-        }*/
+        }
     }
     if(nivel == 2){
 
@@ -34,8 +34,6 @@ void pegaMatriz(int nivel){
 }
 
 
-
-
-
+*/
 
 #endif

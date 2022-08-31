@@ -1,20 +1,19 @@
-void initJogador(void){
+void initJogo(void){ // INIICALIZA JOGADOR E BOLA
 
+    //INICIALIZA JOGADOR
     Jogador.Posicao = (Vector2){TELA_LARGURA/2, TELA_ALTURA*7/8};
     Jogador.Tamanho = (Vector2){TELA_LARGURA/10, 20};
     Jogador.Vidas = MAX_VIDAS;
 
-}
-
-void initBola(void){
-
+    //INICIALIZA BOLA
     Bola.Posicao = (Vector2){TELA_LARGURA/2, TELA_ALTURA*2/3};
     Bola.Velocidade = (Vector2){0, 0};
     Bola.Raio = 7;
     Bola.Ativa = false;
+
 }
 
-void mexeRaquete(void){
+void mexeRaquete(void){ // LÓGICA PRA MEXER A RAQUETE
 
     if (IsKeyDown(KEY_LEFT)){
         Jogador.Posicao.x -= 5; // diminui pos_x em 5 VAI PRA ESQUERDA
@@ -30,20 +29,14 @@ void mexeRaquete(void){
     }
 }
 
-void initJogo(void){
-
-    initJogador();
-    initBola();
-}
-
-void UpdateJogo(){
+void updateJogo(){ // ATUALIZA A LÓGICA DO JOGO
 
     mexeRaquete();
 
 }
 
-void UpdateFrameJogo(){
+void updateJogoDesenho(){ // ATUALIZA A LÓGICA E DESENHA COM A LOGICA ATUALIZADA
 
-    UpdateJogo();
-    desenhaJogador();
+    updateJogo();
+    desenhaJogo();
 }

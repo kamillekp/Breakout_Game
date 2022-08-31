@@ -79,7 +79,7 @@
 	<math.h>
 	<ctype.h>
 
-1661729145 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\main.c
+1661909689 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\main.c
 	"raylib.h"
 	"tudo.h"
 	"menu.h"
@@ -92,19 +92,14 @@
 	<time.h>
 	<math.h>
 	<ctype.h>
+	<stdbool.h>
 
-1661726576 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\tudo.h
+1661909205 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\tudo.h
 	<raylib.h>
 
-1661724244 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\menu.h
-	"raylib.h"
-	<stdio.h>
-	<stdlib.h>
-	<time.h>
-	<math.h>
-	<ctype.h>
+1661909703 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\menu.h
 
-1661729287 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\desenha.h
+1661909521 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\desenha.h
 	"raylib.h"
 	<stdio.h>
 	<stdlib.h>
@@ -121,14 +116,7 @@
 	<math.h>
 	<ctype.h>
 
-1661723322 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\play.h
-	"raylib.h"
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<time.h>
-	<math.h>
-	<ctype.h>
+1661907185 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\play.h
 
-1661729287 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\jogo.h
+1661909556 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\jogo.h
 

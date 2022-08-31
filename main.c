@@ -12,7 +12,7 @@
 #include <time.h>
 #include <math.h>
 #include <ctype.h>
-
+#include <stdbool.h>
 
 int main(){
 
@@ -28,19 +28,8 @@ int main(){
 
         //pegaMatriz(1); TESTE PARA PLAY.H
 
-        desenhaMenu();
-        menu = decideMenu();
+        completoMenu();
 
-        if (menu == 0){
-            limpaTela();
-            initJogo();
-            UpdateFrameJogo(); // ESSA MERDAAAAAAAAAAAAAAAAAAAAAAAAAA NAO FUNCIONAAAAAAAAAAAAAAAAAAAAA
-
-        }
-        else if (menu == 1){
-            desenhaPtos();
-            voltaMenu();
-        }
         EndDrawing();
     }
 

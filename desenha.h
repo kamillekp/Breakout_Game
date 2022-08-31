@@ -10,24 +10,24 @@
 #include <math.h>
 #include <ctype.h>
 
-void limpaTela(){
+void limpaTela(){ // LIMPA A TELA
     DrawRectangle(100, 50, 1000, 2000, BLACK);
 }
 
-void desenhaMenu(){
+void desenhaMenu(){ // DESENHA MENU PRINCIPAL
 
     ClearBackground(BLACK);
     DrawText("BreakoutINF", 240, 60, 50, WHITE); // TITULO DO JOGO
 
-    DrawRectangleGradientV(240, 150, 325, 50, ORANGE, GOLD);
+    DrawRectangleGradientV(240, 150, 325, 50, ORANGE, GOLD); // BOTAO JOGAR
     DrawRectangleLinesEx(rec1, 3, ORANGE);
         DrawText("JOGAR", 335, 156, 40, BLACK);
 
-    DrawRectangleGradientV(240, 225, 325, 50, ORANGE, GOLD);
+    DrawRectangleGradientV(240, 225, 325, 50, ORANGE, GOLD); // BOTAO PONTUAÇÃO
     DrawRectangleLinesEx(rec2, 3, ORANGE);
         DrawText("PONTUACAO", 275, 231, 40, BLACK);
 
-    DrawRectangleGradientV(240, 300, 325, 50, ORANGE, GOLD);
+    DrawRectangleGradientV(240, 300, 325, 50, ORANGE, GOLD); // BOTAO SAIR
     DrawRectangleLinesEx(rec3, 3, ORANGE);
         DrawText("SAIR", 355, 306, 40, BLACK);
 
@@ -35,26 +35,26 @@ void desenhaMenu(){
     DrawText("Beatriz e Kamille, 2022/01", 240, 380, 26, WHITE); //CRÉDITOS
 }
 
-void desenhaMenuOp (opcao){ // QUANDO O BOTÃO ESTÁ "ESCOLHIDO"
+void desenhaMenuOp (int opcao){ // QUANDO O BOTÃO ESTÁ "ESCOLHIDO"
 
     if (opcao == 0){
-        DrawRectangleGradientV(240, 150, 325, 50, DARKPURPLE, PURPLE);
+        DrawRectangleGradientV(240, 150, 325, 50, DARKPURPLE, PURPLE); // BOTAO JOGAR
         DrawRectangleLinesEx(rec1, 3, DARKPURPLE);
             DrawText("JOGAR", 335, 156, 40, WHITE);
     }
     if (opcao == 1){
-        DrawRectangleGradientV(240, 225, 325, 50, DARKPURPLE, PURPLE);
+        DrawRectangleGradientV(240, 225, 325, 50, DARKPURPLE, PURPLE); // BOTAO PONTUACAO
         DrawRectangleLinesEx(rec2, 3, DARKPURPLE);
             DrawText("PONTUACAO", 275, 231, 40, WHITE);
     }
     if (opcao == 2){
-        DrawRectangleGradientV(240, 300, 325, 50, DARKPURPLE, PURPLE);
+        DrawRectangleGradientV(240, 300, 325, 50, DARKPURPLE, PURPLE); // BOTAO SAIR
         DrawRectangleLinesEx(rec3, 3, DARKPURPLE);
             DrawText("SAIR", 355, 306, 40, WHITE);
     }
 }
 
-void desenhaPtos(){
+void desenhaPtos(){ // DESENHA MENU PONTUAÇÃO
 
     FILE *ptArq;
     char str[10][100];
@@ -130,9 +130,13 @@ void desenhaPtos(){
         fclose(ptArq);
 }
 
-void desenhaJogador(){
+void desenhaJogador(){ // DESENHA JOGADOR
 
-    limpaTela();
-    DrawRectangleV(Jogador.Posicao, Jogador.Tamanho, WHITE);
+    DrawRectangleV(Jogador.Posicao, Jogador.Tamanho, WHITE); // RAQUETE
 }
 
+void desenhaJogo(){ // DESENHA JOGO (junção de todas as funções)
+
+    desenhaJogador(); // RAQUETE
+
+}

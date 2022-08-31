@@ -1,17 +1,3 @@
-#ifndef PLAY_H
-#define PLAY_H
-
-//BIBLIOTECAS:
-
-#include "raylib.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <math.h>
-#include <ctype.h>
-
 /*void pegaMatriz(int nivel){
     char *ptArq;
     char str[5][10];
@@ -36,4 +22,3 @@
 
 */
 
-#endif

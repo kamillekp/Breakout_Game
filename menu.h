@@ -1,23 +1,9 @@
-#ifndef MENU_H
-#define MENU_H
-
-//BIBLIOTECAS:
-
-#include "raylib.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <math.h>
-#include <ctype.h>
-
-
 int opcao=0;
 int menu=5;
 int *ponteiro = &opcao;
 
 // MUDA AS OPÇÕES DOS BOTÕES
-void CimaOuBaixo(opcao){
+void updownMenu(int opcao){
 
     if(IsKeyPressed(KEY_DOWN)){
         switch (opcao){
@@ -46,7 +32,7 @@ void CimaOuBaixo(opcao){
 int decideMenu(void){
 
     if (IsKeyUp(KEY_ENTER)){
-        CimaOuBaixo(opcao);
+        updownMenu(opcao);
     }
 
     if (IsKeyPressed(KEY_ENTER)){
@@ -69,6 +55,21 @@ void voltaMenu(){
     }
 }
 
-#endif
+void completoMenu(){
 
+        desenhaMenu();
+        menu = decideMenu();
+
+        if (menu == 0){ // COMEÇA O JOGO
+            initJogo(); // TEM QUE TER UMA FUNÇÃO PROPRIA PRA COLOCAR AQUI QUE SEJA O JOGO TODO
+            limpaTela();
+            updateJogoDesenho();
+            }
+
+        else if (menu == 1){ // DESENHA O MENU PONTUAÇÃO
+            desenhaPtos();
+            voltaMenu();
+        }
+
+}
 

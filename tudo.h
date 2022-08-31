@@ -7,15 +7,21 @@ tudo.h é uma biblioteca criada para armazenar todas as structs, funções e variáv
 #include <raylib.h>
 
 // TELA INICIAL:
-#define TELA_NOME "BreakoutINF - Beatriz e Kamille"
 
+#define TELA_NOME "BreakoutINF - Beatriz e Kamille"
 #define TELA_ALTURA 450
 #define TELA_LARGURA 800
 
 // JOGO?
 #define MAX_VIDAS 3
 
+//NAO SEI QUE NOME COLOCAR
+//static bool gameOver = false;
+//static bool pause = false;
+
 //MATRIZ : arquivo txts --- pegar o .txt aqui, e referenciar depois lá no jogo, e não deixar pra pegar ele lá (pelo menos 2)
+
+//STRUCTS
 
 typedef struct Player{
 
@@ -43,9 +49,9 @@ Ball Bola;
 //SHAPES
 
 //MENU
-Rectangle rec1 = { 240, 150, 325, 50 };
-Rectangle rec2 = { 240, 225, 325, 50 };
-Rectangle rec3 = { 240, 300, 325, 50 };
+Rectangle rec1 = {240, 150, 325, 50};
+Rectangle rec2 = {240, 225, 325, 50};
+Rectangle rec3 = {240, 300, 325, 50};
 
 //PONTUACAO
 Rectangle pos1 = {100, 130, 45, 45};

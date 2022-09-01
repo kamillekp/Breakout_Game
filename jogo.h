@@ -1,8 +1,10 @@
 void initJogo(void){ // INIICALIZA JOGADOR E BOLA
 
     //INICIALIZA JOGADOR
-    Jogador.Posicao = (Vector2){TELA_LARGURA/2, TELA_ALTURA*7/8};
-    Jogador.Tamanho = (Vector2){TELA_LARGURA/10, 20};
+    Jogador.posX = TELA_LARGURA/2;
+    Jogador.posY = TELA_ALTURA*7/8;
+    Jogador.tamX = TELA_LARGURA/10;
+    Jogador.tamY = 20;
     Jogador.Vidas = MAX_VIDAS;
 
     //INICIALIZA BOLA
@@ -16,16 +18,16 @@ void initJogo(void){ // INIICALIZA JOGADOR E BOLA
 void mexeRaquete(void){ // LÓGICA PRA MEXER A RAQUETE
 
     if (IsKeyDown(KEY_LEFT)){
-        Jogador.Posicao.x -= 5; // diminui pos_x em 5 VAI PRA ESQUERDA
+        Jogador.posX -= 5; // diminui pos_x em 5 VAI PRA ESQUERDA
     }
-    if ((Jogador.Posicao.x - Jogador.Tamanho.x/2) <= 0){ //se chegou na borda da esquerda,
-        Jogador.Posicao.x = Jogador.Tamanho.x/2; // não deixa ir mais pra esquerda
+    if ((Jogador.posX - Jogador.tamX/2) <= 0){ //se chegou na borda da esquerda,
+        Jogador.posX = Jogador.tamX/2; // não deixa ir mais pra esquerda
     }
     if (IsKeyDown(KEY_RIGHT)){
-        Jogador.Posicao.x += 5; // aumenta pos_x em 5 VAI PRA DIREITA
+        Jogador.posX += 5; // aumenta pos_x em 5 VAI PRA DIREITA
     }
-    if ((Jogador.Posicao.x + Jogador.Tamanho.x/2) >= TELA_LARGURA){ //se chegou na borda da direita
-        Jogador.Posicao.x = TELA_LARGURA - Jogador.Tamanho.x/2; // nao deixa ir pra direita
+    if ((Jogador.posX + Jogador.tamX/2) >= TELA_LARGURA){ //se chegou na borda da direita
+        Jogador.posX = TELA_LARGURA - Jogador.tamX/2; // nao deixa ir pra direita
     }
 }
 

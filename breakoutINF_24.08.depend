@@ -94,12 +94,12 @@
 	<ctype.h>
 	<stdbool.h>
 
-1661909205 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\tudo.h
+1661982133 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\tudo.h
 	<raylib.h>
 
-1661909703 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\menu.h
+1661993611 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\menu.h
 
-1661909521 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\desenha.h
+1661982133 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\desenha.h
 	"raylib.h"
 	<stdio.h>
 	<stdlib.h>
@@ -118,5 +118,5 @@
 
 1661907185 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\play.h
 
-1661909556 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\jogo.h
+1661982133 c:\users\pessoal\desktop\trabalho breakout\breakoutinf_24.08 t2\jogo.h
 

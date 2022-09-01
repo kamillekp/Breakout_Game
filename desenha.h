@@ -132,7 +132,8 @@ void desenhaPtos(){ // DESENHA MENU PONTUAÇÃO
 
 void desenhaJogador(){ // DESENHA JOGADOR
 
-    DrawRectangleV(Jogador.Posicao, Jogador.Tamanho, WHITE); // RAQUETE
+    //DrawRectangleV(Jogador.Posicao, Jogador.Tamanho, WHITE); // RAQUETE
+    DrawRectangle(Jogador.posX, Jogador.posY, Jogador.tamX, Jogador.tamY, WHITE);
 }
 
 void desenhaJogo(){ // DESENHA JOGO (junção de todas as funções)

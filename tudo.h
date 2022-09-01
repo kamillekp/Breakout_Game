@@ -25,8 +25,8 @@ tudo.h é uma biblioteca criada para armazenar todas as structs, funções e variáv
 
 typedef struct Player{
 
-    Vector2 Posicao;
-    Vector2 Tamanho;
+    int posX, posY;
+    int tamX, tamY;
     char *Nome;
     int Pontos;
     int Vidas;

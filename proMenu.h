@@ -16,7 +16,7 @@ int tela = 0;
 
 // Funções para o Menu principal:
 
-void upDownMenu (int op){
+void upDownMenu (int op){ // Muda a opção de acordo com as teclas pressionadas
 
     if (IsKeyPressed(KEY_UP)){
         switch (op){
@@ -44,7 +44,7 @@ void upDownMenu (int op){
     desenhaMenuOp(op);
 }
 
-int decideTela(void){
+int decideTela(void){ // Decide a tela que vai ser mostrada
 
     if (IsKeyUp(KEY_ENTER)){
         upDownMenu(op);

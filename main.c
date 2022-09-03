@@ -30,7 +30,7 @@ int main(){
         }
 
         if (telaAtual == 2){ // Jogo
-            DrawCircle(50, 50, 10, YELLOW);
+            DrawCircle(50, 50, 10, YELLOW); //Substituir isso
         }
 
         EndDrawing();

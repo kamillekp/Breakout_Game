@@ -73,7 +73,7 @@ void desenhaMenuOp (int opcao){ // Desenha o botão em outra cor quando ele é sel
 
 // Funções para a Pontuação:
 
-void desenhaPtos(){ // DESENHA MENU PONTUAÇÃO
+int desenhaPtos(){ // DESENHA MENU PONTUAÇÃO
 
     FILE *ptArq;
     char str[10][100];

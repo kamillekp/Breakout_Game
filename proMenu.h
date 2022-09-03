@@ -12,7 +12,6 @@ as funções predefinidas da biblioteca Raylib */
 // Variáveis utilizadas:
 int op = 0;
 int *ptr_op = &op;
-int tela = 0;
 
 // Funções para o Menu principal:
 
@@ -44,7 +43,7 @@ void upDownMenu (int op){ // Muda a opção de acordo com as teclas pressionadas
     desenhaMenuOp(op);
 }
 
-int decideTela(void){ // Decide a tela que vai ser mostrada
+int decideTela(int *telaAtual){ // Decide a tela que vai ser mostrada
 
     if (IsKeyUp(KEY_ENTER)){
         upDownMenu(op);
@@ -52,16 +51,15 @@ int decideTela(void){ // Decide a tela que vai ser mostrada
 
     if (IsKeyPressed(KEY_ENTER)){
         switch (op){
-            case 0: tela = 2; // Jogo
+            case 0: *telaAtual = 2; // Jogo
                     break;
-            case 1: tela = 1; // Pontuação
+            case 1: *telaAtual = 1; // Pontuação
                     break;
             case 2: CloseWindow(); // Sair
                     break;
         }
     }
 
-    return tela;
 }
 
 

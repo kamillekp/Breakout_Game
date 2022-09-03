@@ -22,14 +22,19 @@ int main(){
 
         ClearBackground(BLACK);
 
+        printf("%d", telaAtual);
+
         if (telaAtual==0){ // Menu principal
             desenhaMenu();
-            telaAtual = decideTela();
+            decideTela(&telaAtual);
         }
 
         if (telaAtual == 1){ // Pontuação
+             desenhaPtos();
 
-            desenhaPtos();
+             if(IsKeyPressed(KEY_V)){
+                telaAtual = 0;
+             }
             //Volta menu aqui
         }
 

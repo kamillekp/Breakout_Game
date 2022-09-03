@@ -148,3 +148,16 @@ void desenhaPtos(){ // DESENHA MENU PONTUAÇÃO
 
         fclose(ptArq);
 }
+
+// Funções para o jogo:
+void desenhaJogo(){
+    limpaTela();
+
+    atualizaBolinha();
+    atualizaRaquete();
+    atualizaBlocos();
+    atualizaVidas();
+}
+
+void desenhaPausa(){
+}

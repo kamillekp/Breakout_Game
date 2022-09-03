@@ -10,3 +10,16 @@ as funções predefinidas da biblioteca Raylib */
 #include <stdio.h>
 
 #include "praDefinir.h"
+
+void atualizaBolinha(){
+    DrawCircle(390, 350, 25, ORANGE);
+}
+
+void atualizaBlocos(){
+}
+
+void atualizaRaquete(){
+}
+
+void atualizaVidas(){
+}

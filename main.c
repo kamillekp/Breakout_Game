@@ -6,8 +6,12 @@
 
 int main(){
 
+    //JOGADOR player;
+    bool returnJogo = false; // retorna se o jogo terminou ou não
     int telaAtual = 0;
     int op;
+
+    //player.pontos = 0;
 
     InitWindow(TELA_LARGURA, TELA_ALTURA, TELA_NOME);
     SetTargetFPS(60);
@@ -30,7 +34,15 @@ int main(){
         }
 
         if (telaAtual == 2){ // Jogo
-            DrawCircle(50, 50, 10, YELLOW); //Substituir isso
+            desenhaJogo();
+
+            // FUNCAOJOGO(&returnJogo, &player.pontos);
+                    // recebe returnJogo como ponteiro para poder retornar true quando o jogo acabar
+                    // recebe player.pontos como ponteiro para poder setar a pontuação dele no final do jogo
+
+            /*if(returnJogo == true){
+                pegaArquivo(&player);
+            }*/
         }
 
         EndDrawing();

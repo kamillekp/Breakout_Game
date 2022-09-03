@@ -43,3 +43,36 @@
 	<math.h>
 	<ctype.h>
 
+1662230706 source:c:\users\admin\documents\breakout_game\main.c
+	"proDesenho.h"
+	"proJogo.h"
+	"proMenu.h"
+	"praDefinir.h"
+	"proHighscore.h"
+
+1662230894 c:\users\admin\documents\breakout_game\prodesenho.h
+	"raylib.h"
+	<stdio.h>
+
+1662231551 c:\users\admin\documents\breakout_game\projogo.h
+	"raylib.h"
+	<stdio.h>
+	"praDefinir.h"
+
+1662229597 c:\users\admin\documents\breakout_game\pradefinir.h
+	"raylib.h"
+	<stdio.h>
+
+1662224931 c:\users\admin\documents\breakout_game\promenu.h
+	"raylib.h"
+	<stdio.h>
+
+1662229607 c:\users\admin\documents\breakout_game\prohighscore.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+

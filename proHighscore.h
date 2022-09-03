@@ -12,16 +12,14 @@
 #include <ctype.h>
 
 int pontos = 35;
-char nomeJogador[50] = "Manuel";
 
 // PEGA ARQUIVO E PASSA PONTOS PARA INTEIRO
-void pegaArquivo(){
+void pegaArquivo(/*JOGADOR *j*/){
     FILE *ptArq;
     char str[10][100];
     int pontuacaoInt [5];
-    int tam = 5;
 
-    //abrindo o arquivo_frase somente para gravação gravação
+    //abrindo o arquivo somente para leitura
     ptArq = fopen("highscore.bin", "r");
 
         // IGNORAR
@@ -37,17 +35,20 @@ void pegaArquivo(){
         fgets(str[3], 100, ptArq);
         pontuacaoInt[1] = atoi(str[3]);
 
+
         // IGNORAR
         fgets(str[4], 100, ptArq);
 
         fgets(str[5], 100, ptArq);
         pontuacaoInt[2] = atoi(str[5]);
 
+
         // IGNORAR
         fgets(str[6], 100, ptArq);
 
         fgets(str[7], 100, ptArq);
         pontuacaoInt[3] = atoi(str[7]);
+
 
         // IGNORAR
         fgets(str[8], 100, ptArq);
@@ -57,16 +58,43 @@ void pegaArquivo(){
 
     fclose(ptArq);
 
-    defineMaior(pontuacaoInt, tam);
+    defineMaior(pontuacaoInt/*, j*/);
 }
 
-void gravaArquivo(int lugar){
+
+// PONTEIRO J CERTO?     CHAMADA DE PONTOS CERTA (*J.PONTOS)?    ENVIO DE PONTEIRO J PARA GRAVAARQUIVO CERTO?
+void defineMaior (int vet[] /*, JOGADOR *j*/) {
+
+    if(/**j.*/pontos > vet[0]){
+        // Chamar função para setar nome do jogador
+        gravaArquivo(0/*, j*/);
+    }
+    else if(/**j.*/pontos > vet[1]){
+        // Chamar função para setar nome do jogador
+        gravaArquivo(1/*, j*/);
+    }
+    else if(/**j.*/pontos > vet[2]){
+        // Chamar função para setar nome do jogador
+        gravaArquivo(2/*, j*/);
+    }
+    else if(/**j.*/pontos > vet[3]){
+        // Chamar função para setar nome do jogador
+        gravaArquivo(3/*, j*/);
+    }
+    else if(/**j.*/pontos > vet[4]){
+        // Chamar função para setar nome do jogador
+        gravaArquivo(4/*, j*/);
+    }
+
+}
+
+
+void gravaArquivo(int lugar/*, JOGADOR *j*/){
 
     FILE *ptArq;
     char str[10][100];
     char strAuxiliar[10][100];
     char juncaoStr [300];
-    int i;
 
     // LENDO
     ptArq = fopen("highscore.bin", "r");
@@ -101,53 +129,29 @@ void gravaArquivo(int lugar){
 
     // ALTERANDO ORDEM
    /* switch(lugar){
-        case 0: strcpy(strAuxiliar[0], nomeJogador);
-                strcpy(strAuxiliar[1], pontos);
+        case 0: strcpy(strAuxiliar[0], *j.nome);
+                strcpy(strAuxiliar[1], *j.pontos);
             break;
-        case 1: strcpy(strAuxiliar[2], nomeJogador);
-                strcpy(strAuxiliar[3], pontos);
+        case 1: strcpy(strAuxiliar[2], *j.nome);
+                strcpy(strAuxiliar[3], *j.pontos);
             break;
-        case 2: strcpy(strAuxiliar[4], nomeJogador);
-                strcpy(strAuxiliar[5], pontos);
+        case 2: strcpy(strAuxiliar[4], *j.nome);
+                strcpy(strAuxiliar[5], *j.pontos);
             break;
-        case 3: strcpy(strAuxiliar[6], nomeJogador);
-                strcpy(strAuxiliar[7], pontos);
+        case 3: strcpy(strAuxiliar[6], *j.nome);
+                strcpy(strAuxiliar[7], *j.pontos);
             break;
-        case 4: strcpy(strAuxiliar[8], nomeJogador);
-                strcpy(strAuxiliar[9], pontos);
+        case 4: strcpy(strAuxiliar[8], *j.nome);
+                strcpy(strAuxiliar[9], *j.pontos);
             break;
         default: printf("NÃO ENTROU!");
     }*/
 
+
     // GRAVANDO
     ptArq = fopen("highscore.bin", "w");
-
-
     strcpy(juncaoStr, strcat(strAuxiliar[0], strcat(strAuxiliar[1], strcat(strAuxiliar[2], strcat(strAuxiliar[3], strcat(strAuxiliar[4], strcat(strAuxiliar[5], strcat(strAuxiliar[6], strcat(strAuxiliar[7], strcat(strAuxiliar[8], "teste"/*strAuxiliar[9]*/))))))))));
-
     fputs(juncaoStr, ptArq);
     fclose(ptArq);
 }
-
-
-// PONTOS VÊM DA VARIÁVEL GLOBAL, TEMOS QUE VER COMO TRAZER O NOME E OS PONTOS DO JOGADOR PRA CÁ
-void defineMaior (int vet[], int tam) {
-    if(pontos > vet[0]){
-        gravaArquivo(0);
-    }
-    else if(pontos > vet[1]){
-        gravaArquivo(1);
-    }
-    else if(pontos > vet[2]){
-        gravaArquivo(2);
-    }
-    else if(pontos > vet[3]){
-        gravaArquivo(3);
-    }
-    else if(pontos > vet[4]){
-        gravaArquivo(4);
-    }
-
-}
-
 

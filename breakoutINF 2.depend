@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1662222596 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\main.c
+	"proDesenho.h"
+	"proJogo.h"
+	"proMenu.h"
+	"praDefinir.h"
+	"proHighscore.h"
+
+1662216442 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\promain.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"proMenu.h"
+
+1662221897 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\prodesenho.h
+	"raylib.h"
+	<stdio.h>
+
+1662216459 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\projogo.h
+	"raylib.h"
+	<stdio.h>
+	"praDefinir.h"
+
+1662222656 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\promenu.h
+	"raylib.h"
+	<stdio.h>
+
+1662222596 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\pradefinir.h
+	"raylib.h"
+	<stdio.h>
+
+1662221897 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\prohighscore.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+

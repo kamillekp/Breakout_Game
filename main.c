@@ -4,6 +4,14 @@
 #include "praDefinir.h"
 #include "proHighscore.h"
 
+#include "raylib.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+#include <ctype.h>
+
 int main(){
 
     //JOGADOR player;
@@ -12,6 +20,8 @@ int main(){
     int op;
 
     //player.pontos = 0;
+
+    initJogo();
 
     InitWindow(TELA_LARGURA, TELA_ALTURA, TELA_NOME);
     SetTargetFPS(60);
@@ -22,7 +32,7 @@ int main(){
 
         ClearBackground(BLACK);
 
-        printf("%d", telaAtual);
+        //printf("%d", telaAtual);
 
         if (telaAtual==0){ // Menu principal
             desenhaMenu();
@@ -32,14 +42,19 @@ int main(){
         if (telaAtual == 1){ // Pontuação
              desenhaPtos();
 
-             if(IsKeyPressed(KEY_V)){
+             if(IsKeyPressed(KEY_V)){ // Volta pro Menu
                 telaAtual = 0;
              }
-            //Volta menu aqui
         }
 
         if (telaAtual == 2){ // Jogo
-            desenhaJogo();
+
+            atualizaJogoDesenho();
+
+
+
+            //KAMILLE:
+            //desenhaJogo();
 
             // FUNCAOJOGO(&returnJogo, &player.pontos);
                     // recebe returnJogo como ponteiro para poder retornar true quando o jogo acabar

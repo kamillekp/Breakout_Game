@@ -1,4 +1,6 @@
-#define HIGHSCORE_H
+
+#ifndef proHighscore_h
+#define proHighscore_h
 
 //BIBLIOTECAS:
 
@@ -10,6 +12,12 @@
 #include <time.h>
 #include <math.h>
 #include <ctype.h>
+
+#include "proDesenho.h"
+#include "proJogo.h"
+#include "proMenu.h"
+#include "praDefinir.h"
+#include "proPause.h"
 
 int pontos = 35;
 
@@ -155,3 +163,4 @@ void gravaArquivo(int lugar/*, JOGADOR *j*/){
     fclose(ptArq);
 }
 
+#endif

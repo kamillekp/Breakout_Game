@@ -1,10 +1,16 @@
 # depslib dependency file v1.0
-1662222596 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\main.c
+1662311793 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\main.c
 	"proDesenho.h"
 	"proJogo.h"
 	"proMenu.h"
 	"praDefinir.h"
 	"proHighscore.h"
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
 
 1662216442 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\promain.h
 	"raylib.h"
@@ -17,24 +23,44 @@
 	"proJogo.h"
 	"proMenu.h"
 
-1662221897 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\prodesenho.h
+1662320523 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\prodesenho.h
 	"raylib.h"
 	<stdio.h>
-
-1662216459 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\projogo.h
-	"raylib.h"
-	<stdio.h>
+	"proJogo.h"
+	"proMenu.h"
 	"praDefinir.h"
+	"proHighscore.h"
+	"proPause.h"
 
-1662222656 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\promenu.h
+1662320559 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\projogo.h
 	"raylib.h"
 	<stdio.h>
+	"proDesenho.h"
+	"proMenu.h"
+	"praDefinir.h"
+	"proHighscore.h"
+	"proPause.h"
 
-1662222596 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\pradefinir.h
+1662318218 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\promenu.h
 	"raylib.h"
 	<stdio.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"praDefinir.h"
+	"proHighscore.h"
+	"proPause.h"
+	"proPause.h"
 
-1662221897 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\prohighscore.h
+1662318140 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\pradefinir.h
+	"raylib.h"
+	<stdio.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"proMenu.h"
+	"proHighscore.h"
+	"proPause.h"
+
+1662316091 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\prohighscore.h
 	"raylib.h"
 	<stdio.h>
 	<stdlib.h>
@@ -42,6 +68,11 @@
 	<time.h>
 	<math.h>
 	<ctype.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"proMenu.h"
+	"praDefinir.h"
+	"proPause.h"
 
 1662230706 source:c:\users\admin\documents\breakout_game\main.c
 	"proDesenho.h"
@@ -75,4 +106,12 @@
 	<time.h>
 	<math.h>
 	<ctype.h>
+
+1662316091 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\propause.h
+	"raylib.h"
+	<stdio.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"praDefinir.h"
+	"proHighscore.h"
 

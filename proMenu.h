@@ -1,5 +1,6 @@
 // Definição:
 
+#ifndef proMenu_h
 #define proMenu_h
 
 /* Essa biblioteca vai ser usada para definir todas as funções necessárias para a criação da lógica do menu, utilizando
@@ -9,9 +10,12 @@ as funções predefinidas da biblioteca Raylib */
 #include "raylib.h"
 #include <stdio.h>
 
-// Variáveis utilizadas:
-int op = 0;
-int *ptr_op = &op;
+#include "proDesenho.h"
+#include "proJogo.h"
+#include "praDefinir.h"
+#include "proHighscore.h"
+#include "proPause.h"
+#include "proPause.h"
 
 // Funções para o Menu principal:
 
@@ -62,4 +66,4 @@ int decideTela(int *telaAtual){ // Decide a tela que vai ser mostrada
 
 }
 
-
+#endif

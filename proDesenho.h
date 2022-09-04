@@ -1,5 +1,6 @@
 // Definição:
 
+#ifndef proDesenho_h
 #define proDesenho_h
 
 /* Essa biblioteca vai ser usada para definir todas as funções necessárias para desenhar o programa, utilizando as funções
@@ -9,21 +10,11 @@ predefinidas da biblioteca Raylib */
 #include "raylib.h"
 #include <stdio.h>
 
-// Definição de shapes para a proDesenho.h
-
-// Botões para o Menu:
-Rectangle botao1 = {240, 150, 325, 50};
-Rectangle botao2 = {240, 225, 325, 50};
-Rectangle botao3 = {240, 300, 325, 50};
-
-// Quadrados para o menu Pontuação:
-Rectangle pos1 = {100, 130, 45, 45};
-Rectangle pos2 = {100, 190, 45, 45};
-Rectangle pos3 = {100, 250, 45, 45};
-Rectangle pos4 = {100, 310, 45, 45};
-Rectangle pos5 = {100, 370, 45, 45};
-
-Rectangle volta1 = {15, 15, 45, 45};
+#include "proJogo.h"
+#include "proMenu.h"
+#include "praDefinir.h"
+#include "proHighscore.h"
+#include "proPause.h"
 
 // Funções para o Menu:
 
@@ -73,7 +64,7 @@ void desenhaMenuOp (int opcao){ // Desenha o botão em outra cor quando ele é sel
 
 // Funções para a Pontuação:
 
-int desenhaPtos(){ // DESENHA MENU PONTUAÇÃO
+int desenhaPtos(){ // Desenha o menu Pontuação
 
     FILE *ptArq;
     char str[10][100];
@@ -149,8 +140,8 @@ int desenhaPtos(){ // DESENHA MENU PONTUAÇÃO
         fclose(ptArq);
 }
 
-// Funções para o jogo:
-void desenhaJogo(){
+// Funções para o jogo: KAMILLE
+/*void desenhaJogo(){
     limpaTela();
 
     atualizaBolinha();
@@ -160,4 +151,46 @@ void desenhaJogo(){
 }
 
 void desenhaPausa(){
+}*/
+
+
+// Funções para o jogo:
+
+void desenhaJogador(){ // Desenha a raquete do Jogador
+
+    DrawRectangle(jogador.posicao.x - jogador.tamanho.x/2, jogador.posicao.y - jogador.tamanho.y/2, jogador.tamanho.x, jogador.tamanho.y, WHITE);
 }
+
+void desenhaBola(){
+
+    DrawCircleV(bola.posicao, bola.raio, ORANGE);
+}
+
+void desenhaPontosJogo(){ // Desenha a quantidade de pontos do Jogador
+
+    DrawText(TextFormat("%i", jogador.pontos), 690, 390, 45, WHITE);
+
+}
+
+void desenhaVidas(){ // Desenha a quantidade de vidas do Jogador
+
+    for (int i = 0; i < jogador.vidas; i++) DrawRectangle(20 + 40*i, TELA_ALTURA - 30, 35, 10, WHITE);
+    // TA FUNCIONANDO MAS PODEMOS MUDAR PRA OUTRA COISA MELHOR
+
+}
+
+void desenhaJogo(){ // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
+    desenhaJogador(); // Raquete
+    desenhaBola(); // Bola
+    desenhaVidas(); // Vidas
+    desenhaPontosJogo(); // Pontuação
+}
+
+// Funções para o pause:
+
+void desenhaPause(){
+
+    ClearBackground(BLACK);
+}
+
+#endif

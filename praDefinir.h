@@ -64,6 +64,7 @@
         Vector2 velocidade;
         int raio;
         bool ativa;
+        Color cor;
     } Bola;
 
     Bola bola;

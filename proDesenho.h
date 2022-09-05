@@ -161,9 +161,9 @@ void desenhaJogador(){ // Desenha a raquete do Jogador
     DrawRectangle(jogador.posicao.x - jogador.tamanho.x/2, jogador.posicao.y - jogador.tamanho.y/2, jogador.tamanho.x, jogador.tamanho.y, WHITE);
 }
 
-void desenhaBola(){
+void desenhaBola(){ // Desenha a bola
 
-    DrawCircleV(bola.posicao, bola.raio, ORANGE);
+    DrawCircleV(bola.posicao, bola.raio, bola.cor);
 }
 
 void desenhaPontosJogo(){ // Desenha a quantidade de pontos do Jogador

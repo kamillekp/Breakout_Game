@@ -39,10 +39,11 @@ void initJogo(void){
     jogador.pontos = 0;
 
     // Inicializa bola
-    bola.posicao = (Vector2) {TELA_LARGURA/2, TELA_ALTURA*7/8 - 30};
+    bola.posicao = (Vector2) {TELA_LARGURA/2, TELA_ALTURA*2/3};
     bola.velocidade = (Vector2){0, 0};
     bola.raio = 7;
     bola.ativa = false;
+    bola.cor = ORANGE;
 
 }
 

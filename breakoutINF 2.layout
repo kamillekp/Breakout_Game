@@ -2,22 +2,52 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="praDefinir.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1586" topLine="58" />
+		</Cursor>
+	</File>
+	<File name="highscore.bin" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="727" topLine="36" />
+		</Cursor>
+	</File>
 	<File name="proHighscore.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="330" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="proJogo.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="proDesenho.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3962" topLine="46" />
+			<Cursor1 position="5071" topLine="44" />
+		</Cursor>
+		<Folding>
+			<Collapse line="20" />
+			<Collapse line="26" />
+			<Collapse line="45" />
+			<Collapse line="66" />
+			<Collapse line="158" />
+			<Collapse line="163" />
+			<Collapse line="168" />
+			<Collapse line="174" />
+		</Folding>
+	</File>
+	<File name="proJogo.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1024" topLine="17" />
 		</Cursor>
 		<Folding>
 			<Collapse line="18" />
-			<Collapse line="48" />
-			<Collapse line="64" />
-			<Collapse line="76" />
-			<Collapse line="89" />
-			<Collapse line="108" />
+			<Collapse line="49" />
+			<Collapse line="65" />
+			<Collapse line="77" />
+			<Collapse line="90" />
+			<Collapse line="109" />
 		</Folding>
 	</File>
 	<File name="proPause.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -32,35 +62,5 @@
 		<Folding>
 			<Collapse line="21" />
 		</Folding>
-	</File>
-	<File name="proDesenho.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5828" topLine="50" />
-		</Cursor>
-		<Folding>
-			<Collapse line="20" />
-			<Collapse line="26" />
-			<Collapse line="45" />
-			<Collapse line="66" />
-			<Collapse line="158" />
-			<Collapse line="163" />
-			<Collapse line="168" />
-			<Collapse line="174" />
-		</Folding>
-	</File>
-	<File name="praDefinir.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1680" topLine="56" />
-		</Cursor>
-	</File>
-	<File name="highscore.bin" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="727" topLine="36" />
-		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

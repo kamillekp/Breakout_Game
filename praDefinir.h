@@ -22,11 +22,6 @@
 #define TELA_LARGURA 800
 #define MAX_VIDAS 3
 
-// DEFINE STRUCT
-/*typedef struct jogador {
-    char nome[50];
-    int pontos;
-}JOGADOR;*/
 
 // Definição de variáveis para a proMenu.h
     int op = 0;
@@ -47,6 +42,7 @@
     Rectangle pos5 = {100, 370, 45, 45};
 
     Rectangle volta1 = {15, 15, 45, 45};
+
 
 // Definições de structs para a proJogo.h
 
@@ -72,6 +68,6 @@
 // Definição de variáveis para a proPause.h
 
     bool pause = false;
-    bool gameOver = false;
+    bool gameOver= false;
 
 #endif

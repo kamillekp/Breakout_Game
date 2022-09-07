@@ -20,12 +20,13 @@
 #include "proPause.h"
 
 int pontos = 35;
+int posPontos = -1;
 
 // PEGA ARQUIVO E PASSA PONTOS PARA INTEIRO
-void pegaArquivo(/*JOGADOR *j*/){
+int pegaArquivo(){
     FILE *ptArq;
-    char str[10][100];
     int pontuacaoInt [5];
+    char str[10][100];
 
     //abrindo o arquivo somente para leitura
     ptArq = fopen("highscore.bin", "r");
@@ -66,34 +67,30 @@ void pegaArquivo(/*JOGADOR *j*/){
 
     fclose(ptArq);
 
-    defineMaior(pontuacaoInt/*, j*/);
+    return defineMaior(pontuacaoInt);
 }
 
 
-// PONTEIRO J CERTO?     CHAMADA DE PONTOS CERTA (*J.PONTOS)?    ENVIO DE PONTEIRO J PARA GRAVAARQUIVO CERTO?
-void defineMaior (int vet[] /*, JOGADOR *j*/) {
+// PRECISA ACHAR UM JEITO DE PEGAR PONTOS DO JOGADOR
+int defineMaior (int vet[]) {
 
-    if(/**j.*/pontos > vet[0]){
-        // Chamar função para setar nome do jogador
-        gravaArquivo(0/*, j*/);
+    if(/*jogador.*/pontos > vet[0]){
+        posPontos = 0;
     }
-    else if(/**j.*/pontos > vet[1]){
-        // Chamar função para setar nome do jogador
-        gravaArquivo(1/*, j*/);
+    else if(/*jogador.*/pontos > vet[1]){
+        posPontos = 1;
     }
-    else if(/**j.*/pontos > vet[2]){
-        // Chamar função para setar nome do jogador
-        gravaArquivo(2/*, j*/);
+    else if(/*jogador.*/pontos > vet[2]){
+        posPontos = 2;
     }
-    else if(/**j.*/pontos > vet[3]){
-        // Chamar função para setar nome do jogador
-        gravaArquivo(3/*, j*/);
+    else if(/*jogador.*/pontos > vet[3]){
+        posPontos = 3;
     }
-    else if(/**j.*/pontos > vet[4]){
-        // Chamar função para setar nome do jogador
-        gravaArquivo(4/*, j*/);
+    else if(/*jogador.*/pontos > vet[4]){
+        posPontos = 4;
     }
 
+    return posPontos;
 }
 
 

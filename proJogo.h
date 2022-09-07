@@ -7,8 +7,11 @@
 as funções predefinidas da biblioteca Raylib */
 
 // Bibliotecas utilizadas:
+
 #include "raylib.h"
 #include <stdio.h>
+#include <limits.h>
+#include <stdlib.h>
 
 #include "proDesenho.h"
 #include "proMenu.h"
@@ -16,23 +19,9 @@ as funções predefinidas da biblioteca Raylib */
 #include "proHighscore.h"
 #include "proPause.h"
 
-/*void atualizaBolinha(){
-    DrawCircle(390, 350, 25, ORANGE);
-}
-
-void atualizaBlocos(){
-}
-
-void atualizaRaquete(){
-}
-
-void atualizaVidas(){
-}*/
-
-
 void initJogo(void){
 
-    // Inicializa jogador
+    // Inicializa rquete
     jogador.posicao = (Vector2){TELA_LARGURA/2, TELA_ALTURA*7/8};
     jogador.tamanho = (Vector2){TELA_LARGURA/10, 20};
     jogador.vidas = MAX_VIDAS;
@@ -47,37 +36,70 @@ void initJogo(void){
 
 }
 
-void mexeRaquete(void){ // Função da lógica do movimento da raquete
+void pegaMatrizBlocos (){
+    FILE *ptrBlocos;
+    char stringBlocos[150], blocos[5][10], linha[5][100];
+    int i = 0, j = 0;
+    char t;
+
+    ptrBlocos = fopen("nivel1.txt", "r");                           // abre o arquivo para leitura
+    while(fgets(stringBlocos, 150, ptrBlocos) != NULL && i < 5){    // enquanto houver o que ser lido, continua
+
+        strcpy(linha[i], stringBlocos);                             // copia cada linha que vem do arquivo para linha[i]
+        i++;
+    }
+
+    fclose(ptrBlocos);                                              // ATÉ AQUI TÁ INDO
+
+    // tentativa frustrada de separar cada linha que eu peguei da string para pôr na matriz
+    /*for(i=0; i<5; i++){
+        if(j == 0){
+            t = strtok(linha[i], " ");
+            blocos[i][j] = t;
+            j++;
+
+            while(linha[i] != NULL && j < 10){
+                t = strtok(NULL, " ");
+                                printf(" %c ", t);
+                blocos[i][j] = t;
+                j++;
+            }
+        }
+    }*/
+}
+
+void mexeRaquete(void){                                     // Função da lógica do movimento da raquete
 
     if (IsKeyDown(KEY_LEFT)){
-        jogador.posicao.x -= 5; // diminui pos_x em 5 VAI PRA ESQUERDA
+        jogador.posicao.x -= 5;                             // diminui pos_x em 5 VAI PRA ESQUERDA
     }
-    if ((jogador.posicao.x - jogador.tamanho.x/2) <= 0){ //se chegou na borda da esquerda,
-        jogador.posicao.x = jogador.tamanho.x/2; // não deixa ir mais pra esquerda
+    if ((jogador.posicao.x - jogador.tamanho.x/2) <= 0){    //se chegou na borda da esquerda,
+        jogador.posicao.x = jogador.tamanho.x/2;            // não deixa ir mais pra esquerda
     }
     if (IsKeyDown(KEY_RIGHT)){
-        jogador.posicao.x += 5; // aumenta pos_x em 5 VAI PRA DIREITA
+        jogador.posicao.x += 5;                             // aumenta pos_x em 5 VAI PRA DIREITA
     }
-    if ((jogador.posicao.x + jogador.tamanho.x/2) >= TELA_LARGURA){ //se chegou na borda da direita
-        jogador.posicao.x = TELA_LARGURA - jogador.tamanho.x/2; // nao deixa ir pra direita
+    if ((jogador.posicao.x + jogador.tamanho.x/2) >= TELA_LARGURA){     //se chegou na borda da direita
+        jogador.posicao.x = TELA_LARGURA - jogador.tamanho.x/2;         // nao deixa ir pra direita
     }
 }
 
-void lancaBola(void){ // Função para a lógica do lançamento da bola
+void lancaBola(void){                                       // Função para a lógica do lançamento da bola
+    int random = (- 2 + (rand() % (2 + 2 + 1)));
 
-    if (!bola.ativa){ // Se a bola não está ativa (começo do jogo)
+    if (!bola.ativa){                                       // Se a bola não está ativa (começo do jogo)
 
-        if (IsKeyPressed(KEY_SPACE)){ // Se apertar no espaço, a bola fica ativa
+        if (IsKeyPressed(KEY_SPACE)){                       // Se apertar no espaço, a bola fica ativa
 
             bola.ativa = true;
-            bola.velocidade = (Vector2){0, -5};
+            bola.velocidade = (Vector2){random, -7};
         }
      }
 }
 
-void mexeBola(void){ // Função para a lógica do movimento da bola
+void mexeBola(void){                                        // Função para a lógica do movimento da bola
 
-    if (bola.ativa){ // Se a bola está ativa, se mexe pras direções de acordo com a velocidade da bola
+    if (bola.ativa){                        // Se a bola está ativa, se mexe pras direções de acordo com a velocidade da bola
 
         bola.posicao.x += bola.velocidade.x;
         bola.posicao.y += bola.velocidade.y;
@@ -88,7 +110,7 @@ void mexeBola(void){ // Função para a lógica do movimento da bola
     }
 }
 
-void bateParede(void){ // Função para a lógica da bola rebater nas paredes
+void bateParede(void){                                      // Função para a lógica da bola rebater nas paredes
 
     if (((bola.posicao.x + bola.raio) >= TELA_LARGURA) || ((bola.posicao.x - bola.raio) <= 0)){
         bola.velocidade.x *= -1;
@@ -98,16 +120,20 @@ void bateParede(void){ // Função para a lógica da bola rebater nas paredes
         bola.velocidade.y *= -1;
     }
 
-    if ((bola.posicao.y + bola.raio) >= TELA_ALTURA){ // Se passar da parte de baixo da tela, desativa a bola
+    if ((bola.posicao.y + bola.raio) >= TELA_ALTURA){       // Se passar da parte de baixo da tela, desativa a bola
 
         bola.velocidade = (Vector2){0, 0};
         bola.ativa = false;
 
         jogador.vidas--;
+
+        if(jogador.vidas == 0 /*|| blocos == 0*/) {
+            gameOver = true;
+        }
     }
 }
 
-void bateJogador(){ // Função para a lógica da bola rebater na raquete
+void bateJogador(){                                         // Função para a lógica da bola rebater na raquete
 
     // CheckCollisionCircleRec --> função que checa se teve colisão entre um circulo e um retangulo
     if (CheckCollisionCircleRec (bola.posicao, bola.raio, (Rectangle){jogador.posicao.x - jogador.tamanho.x/2,
@@ -121,7 +147,7 @@ void bateJogador(){ // Função para a lógica da bola rebater na raquete
     }
 }
 
-void atualizaJogo(void){ // Atualiza a lógica do jogo
+void atualizaJogo(void){                                    // Atualiza a lógica do jogo
 
     if (IsKeyPressed('P')){
         pause = !pause;
@@ -138,10 +164,12 @@ void atualizaJogo(void){ // Atualiza a lógica do jogo
 
 }
 
-void atualizaJogoDesenho(void){ // Desenha o jogo com a lógica atualizada
+void atualizaJogoDesenho(void){                             // Desenha o jogo com a lógica atualizada
 
+    limpaTela();
     atualizaJogo();
     desenhaJogo();
+
 }
 
 #endif

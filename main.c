@@ -17,9 +17,8 @@ int main(){
     //JOGADOR player;
     bool returnJogo = false; // retorna se o jogo terminou ou não
     int telaAtual = 0;
+    int posPontos;
     int op;
-
-    //player.pontos = 0;
 
     initJogo();
 
@@ -32,25 +31,39 @@ int main(){
 
         ClearBackground(BLACK);
 
-        //printf("%d", telaAtual);
-
-        if (telaAtual==0){ // Menu principal
+        if (telaAtual==0){              // Menu principal
             desenhaMenu();
             decideTela(&telaAtual);
         }
 
-        if (telaAtual == 1){ // Pontuação
+        if (telaAtual == 1){            // Pontuação
              desenhaPtos();
 
-             if(IsKeyPressed(KEY_V)){ // Volta pro Menu
+             if(IsKeyPressed(KEY_V)){   // Volta pro Menu
                 telaAtual = 0;
              }
         }
 
-        if (telaAtual == 2){ // Jogo
+        if (telaAtual == 2){            // Jogo
 
             atualizaJogoDesenho();
 
+            if(gameOver == 1){
+                limpaTela();
+                desenhaEndGame();
+
+                posPontos = pegaArquivo();   // pega arquivo de 5 melhores e vê se jogador.pontos é maior que um deles
+
+                // pega o posPontos, pra ver se pegaArquivo retornou algum resultado
+                if(posPontos == 0 || posPontos == 1 || posPontos == 2 || posPontos == 3 || posPontos == 4){
+                    // desenhaPedeNomeJogador
+                }
+
+                if(IsKeyPressed(KEY_V)){
+                    telaAtual = 0;
+                }
+
+            }
 
 
             //KAMILLE:

@@ -9,6 +9,8 @@ predefinidas da biblioteca Raylib */
 // Bibliotecas utilizadas:
 #include "raylib.h"
 #include <stdio.h>
+#include <locale.h>
+#include <string.h>
 
 #include "proJogo.h"
 #include "proMenu.h"
@@ -19,8 +21,7 @@ predefinidas da biblioteca Raylib */
 // Funções para o Menu:
 
 void limpaTela(){ // Deixa a tela no estado original em preto.
-
-    DrawRectangle(100, 50, 1000, 2000, BLACK);
+    DrawRectangle(0, 0, 1000, 2000, BLACK);
 
 }
 
@@ -61,6 +62,7 @@ void desenhaMenuOp (int opcao){ // Desenha o botão em outra cor quando ele é sel
             DrawText("SAIR", 355, 306, 40, WHITE);
     }
 }
+
 
 // Funções para a Pontuação:
 
@@ -140,57 +142,91 @@ int desenhaPtos(){ // Desenha o menu Pontuação
         fclose(ptArq);
 }
 
-// Funções para o jogo: KAMILLE
-/*void desenhaJogo(){
-    limpaTela();
-
-    atualizaBolinha();
-    atualizaRaquete();
-    atualizaBlocos();
-    atualizaVidas();
-}
-
-void desenhaPausa(){
-}*/
-
 
 // Funções para o jogo:
 
-void desenhaJogador(){ // Desenha a raquete do Jogador
+void desenhaBlocos(){
+    int i, j;
+    char blocos;
+
+
+
+    /*blocos =*/ pegaMatrizBlocos();            // tentativa de pegar matriz para desenhar blocos, spoiler: error
+
+    /*for(i=0; i<5; i++){
+        for(j=0; j<10; j++){
+            switch(blocos[i][j]){
+
+                case 'R':   printf(" Red");
+                            //DrawRectangle(x, y, 60, 10, RED);
+                    break;
+                case 'G':   printf(" Green");
+                            //DrawRectangle(x, y, 60, 10, DARKGREEN);
+                    break;
+                case 'B':   printf(" Blue");
+                            //DrawRectangle(x, y, 60, 10, DARKBLUE);
+                    break;
+                case 'Y':   printf(" Yellow");
+                            //DrawRectangle(x, y, 60, 10, YELLOW);
+                    break;
+                case 'X':   printf(" Purple");
+                            //DrawRectangle(x, y, 60, 10, DARKPURPLE);
+                    break;
+                case '-':   printf(" Blank");
+                            //DrawRectangle(x, y, 60, 10, BLACK);
+                    break;
+            }
+        }
+    }*/
+}
+
+void desenhaJogador(){                  // Desenha a raquete do Jogador
 
     DrawRectangle(jogador.posicao.x - jogador.tamanho.x/2, jogador.posicao.y - jogador.tamanho.y/2, jogador.tamanho.x, jogador.tamanho.y, WHITE);
 }
 
-void desenhaBola(){ // Desenha a bola
+void desenhaBola(){                     // Desenha a bola
 
     DrawCircleV(bola.posicao, bola.raio, bola.cor);
 }
 
-void desenhaPontosJogo(){ // Desenha a quantidade de pontos do Jogador
+void desenhaPontosJogo(){               // Desenha a quantidade de pontos do Jogador
 
     DrawText(TextFormat("%i", jogador.pontos), 690, 390, 45, WHITE);
 
 }
 
-void desenhaVidas(){ // Desenha a quantidade de vidas do Jogador
+void desenhaVidas(){                    // Desenha a quantidade de vidas do Jogador
 
     for (int i = 0; i < jogador.vidas; i++) DrawRectangle(20 + 40*i, TELA_ALTURA - 30, 35, 10, WHITE);
-    // TA FUNCIONANDO MAS PODEMOS MUDAR PRA OUTRA COISA MELHOR
-
 }
 
-void desenhaJogo(){ // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
-    desenhaJogador(); // Raquete
-    desenhaBola(); // Bola
-    desenhaVidas(); // Vidas
-    desenhaPontosJogo(); // Pontuação
+void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
+    desenhaBlocos();        // Blocos
+    desenhaJogador();       // Raquete
+    desenhaBola();          // Bola
+    desenhaVidas();         // Vidas
+    desenhaPontosJogo();    // Pontuação
 }
+
+void desenhaEndGame(){
+    setlocale(LC_ALL, " ");
+
+    DrawText("Fim de jogo!", TELA_LARGURA/3, TELA_ALTURA/3, 45, WHITE);
+
+    DrawText("Sua pontuação é ", TELA_LARGURA/4, TELA_ALTURA/2, 45, WHITE);
+    DrawText(jogador.pontos, TELA_LARGURA/4, TELA_ALTURA/2, 45, WHITE);         // não aparece
+
+    DrawRectangleGradientV(15, 15, 45, 45, ORANGE, GOLD); // quadrado
+            DrawRectangleLinesEx(volta1, 3, ORANGE);
+        DrawText("V", 23, 21, 40, BLACK);
+        DrawText("Voltar", 70, 21, 40, WHITE);
+}
+
 
 // Funções para o pause:
 
-void desenhaPause(){
+void desenhaPause(){ ClearBackground(BLACK); }
 
-    ClearBackground(BLACK);
-}
 
 #endif

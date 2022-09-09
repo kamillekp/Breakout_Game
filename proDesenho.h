@@ -147,37 +147,35 @@ int desenhaPtos(){ // Desenha o menu Pontuação
 
 void desenhaBlocos(){
     int i, j;
-    char blocos;
+    int x = 25, y = 20;                                             // posição x inicia em 25 e y em 20
+    char blocos[5][10];
+    int cont = 0;
 
+    pegaMatrizBlocos(blocos);                                       // pega a matriz do arquivo
 
-
-    /*blocos =*/ pegaMatrizBlocos();            // tentativa de pegar matriz para desenhar blocos, spoiler: error
-
-    /*for(i=0; i<5; i++){
+    for(i=0; i<5; i++){
         for(j=0; j<10; j++){
-            switch(blocos[i][j]){
+            switch(blocos[i][j]){                                   // faz um switch pra casa letra da matriz e entra no caractere que corresponde
 
-                case 'R':   printf(" Red");
-                            //DrawRectangle(x, y, 60, 10, RED);
+                case 'R':   DrawRectangle(x, y, 60, 10, RED);
                     break;
-                case 'G':   printf(" Green");
-                            //DrawRectangle(x, y, 60, 10, DARKGREEN);
+                case 'G':   DrawRectangle(x, y, 60, 10, DARKGREEN);
                     break;
-                case 'B':   printf(" Blue");
-                            //DrawRectangle(x, y, 60, 10, DARKBLUE);
+                case 'B':   DrawRectangle(x, y, 60, 10, DARKBLUE);
                     break;
-                case 'Y':   printf(" Yellow");
-                            //DrawRectangle(x, y, 60, 10, YELLOW);
+                case 'Y':   DrawRectangle(x, y, 60, 10, YELLOW);
                     break;
-                case 'X':   printf(" Purple");
-                            //DrawRectangle(x, y, 60, 10, DARKPURPLE);
+                case 'X':   DrawRectangle(x, y, 60, 10, DARKPURPLE);
                     break;
-                case '-':   printf(" Blank");
-                            //DrawRectangle(x, y, 60, 10, BLACK);
+                case '-':   DrawRectangle(x, y, 60, 10, BLACK);
                     break;
             }
+            x = x + 75;                                             // sempre atualiza o x e cada bloco fica a uma distância de 50px um do outro
         }
-    }*/
+            x = 25;                                                 // a posição dos blocos no eixo x sempre começa em 25
+            y = y + 20;                                             /*  sempre que termina de desenhar uma linha, acrescenta 20px, ou seja,
+                                                                        i = 0 --> y = 20   i = 1 --> y = 40       e assim segue */
+    }
 }
 
 void desenhaJogador(){                  // Desenha a raquete do Jogador
@@ -214,8 +212,8 @@ void desenhaEndGame(){
 
     DrawText("Fim de jogo!", TELA_LARGURA/3, TELA_ALTURA/3, 45, WHITE);
 
-    DrawText("Sua pontuação é ", TELA_LARGURA/4, TELA_ALTURA/2, 45, WHITE);
-    DrawText(jogador.pontos, TELA_LARGURA/4, TELA_ALTURA/2, 45, WHITE);         // não aparece
+    DrawText("Sua pontuacaoo eh", TELA_LARGURA/6, TELA_ALTURA/2, 45, WHITE);
+    DrawText(TextFormat("%i", jogador.pontos), TELA_LARGURA/1.3, TELA_ALTURA/2, 45, WHITE);
 
     DrawRectangleGradientV(15, 15, 45, 45, ORANGE, GOLD); // quadrado
             DrawRectangleLinesEx(volta1, 3, ORANGE);

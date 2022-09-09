@@ -36,36 +36,19 @@ void initJogo(void){
 
 }
 
-void pegaMatrizBlocos (){
+void pegaMatrizBlocos (char blocos[5][10]){
     FILE *ptrBlocos;
-    char stringBlocos[150], blocos[5][10], linha[5][100];
     int i = 0, j = 0;
     char t;
 
-    ptrBlocos = fopen("nivel1.txt", "r");                           // abre o arquivo para leitura
-    while(fgets(stringBlocos, 150, ptrBlocos) != NULL && i < 5){    // enquanto houver o que ser lido, continua
-
-        strcpy(linha[i], stringBlocos);                             // copia cada linha que vem do arquivo para linha[i]
-        i++;
+    ptrBlocos = fopen("nivel1.txt", "r");                   // abre o arquivo para leitura
+    for(i=0; i<5; i++){
+        for(j=0; j<10; j++){
+            blocos[i][j] = fgetc(ptrBlocos);                // pega cada caractere do arquivo
+        }
     }
 
-    fclose(ptrBlocos);                                              // ATÉ AQUI TÁ INDO
-
-    // tentativa frustrada de separar cada linha que eu peguei da string para pôr na matriz
-    /*for(i=0; i<5; i++){
-        if(j == 0){
-            t = strtok(linha[i], " ");
-            blocos[i][j] = t;
-            j++;
-
-            while(linha[i] != NULL && j < 10){
-                t = strtok(NULL, " ");
-                                printf(" %c ", t);
-                blocos[i][j] = t;
-                j++;
-            }
-        }
-    }*/
+    fclose(ptrBlocos);
 }
 
 void mexeRaquete(void){                                     // Função da lógica do movimento da raquete

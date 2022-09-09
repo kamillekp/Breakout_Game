@@ -20,7 +20,7 @@
 #define TELA_NOME "BreakoutINF - Beatriz e Kamille"
 #define TELA_ALTURA 450
 #define TELA_LARGURA 800
-#define MAX_VIDAS 3
+#define MAX_VIDAS 1
 
 
 // Definição de variáveis para a proMenu.h

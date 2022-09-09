@@ -56,8 +56,10 @@ int main(){
 
                 // pega o posPontos, pra ver se pegaArquivo retornou algum resultado
                 if(posPontos == 0 || posPontos == 1 || posPontos == 2 || posPontos == 3 || posPontos == 4){
-                    // desenhaPedeNomeJogador
+                    gravaArquivo(posPontos);
                 }
+
+
 
                 if(IsKeyPressed(KEY_V)){
                     telaAtual = 0;

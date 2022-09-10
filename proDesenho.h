@@ -145,17 +145,17 @@ int desenhaPtos(){ // Desenha o menu Pontuação
 
 // Funções para o jogo:
 
-/*
+
 void desenhaBlocos(){
     int i, j;
     int x = 25, y = 20;                                             // posição x inicia em 25 e y em 20
-    char blocos[BLOCOS_LINHA][BLOCOS_COLUNA];
+    char blocos[B_LINHA][B_COLUNA];
     int cont = 0;
 
     pegaMatrizBlocos(blocos);                                       // pega a matriz do arquivo
 
-    for(i=0; i<BLOCOS_LINHA; i++){
-        for(j=0; j<BLOCOS_COLUNA; j++){
+    for(i=0; i<B_LINHA; i++){
+        for(j=0; j<B_COLUNA; j++){
             switch(blocos[i][j]){                                   // faz um switch pra casa letra da matriz e entra no caractere que corresponde
 
                 case 'R':   DrawRectangle(x, y, 60, 10, RED);
@@ -175,42 +175,8 @@ void desenhaBlocos(){
         }
             x = 25;                                                 // a posição dos blocos no eixo x sempre começa em 25
             y = y + 20;                                             /*  sempre que termina de desenhar uma linha, acrescenta 20px, ou seja,
-                                                                        i = 0 --> y = 20   i = 1 --> y = 40       e assim segue
+                                                                        i = 0 --> y = 20   i = 1 --> y = 40       e assim segue*/
     }
-}
-
-*/
-
-void desenhaBlocos(){
-
-    char bloco_matriz[BLOCOS_LINHA][BLOCOS_COLUNA];
-
-    pegaMatrizBlocos(bloco_matriz);
-
-    for (int i = 0; i < BLOCOS_LINHA; i++){
-        for (int j = 0; j < BLOCOS_COLUNA; j++){
-            if (bloco[i][j].ativo){ // Se o bloco tiver ativo
-                switch(bloco_matriz[i][j]){
-                    case 'R':   DrawRectangle(bloco[i][j].posicao.x - tamBloco.x/2, bloco[i][j].posicao.y - tamBloco.y/2, tamBloco.x, tamBloco.y, RED);
-                                break;
-
-                    case 'G':   DrawRectangle(bloco[i][j].posicao.x - tamBloco.x/2, bloco[i][j].posicao.y - tamBloco.y/2, tamBloco.x, tamBloco.y, DARKGREEN);
-                                break;
-
-                    case 'B':   DrawRectangle(bloco[i][j].posicao.x - tamBloco.x/2, bloco[i][j].posicao.y - tamBloco.y/2, tamBloco.x, tamBloco.y, DARKBLUE);
-                                break;
-
-                    case 'Y':   DrawRectangle(bloco[i][j].posicao.x - tamBloco.x/2, bloco[i][j].posicao.y - tamBloco.y/2, tamBloco.x, tamBloco.y, YELLOW);
-                                break;
-
-                    case 'X':   DrawRectangle(bloco[i][j].posicao.x - tamBloco.x/2, bloco[i][j].posicao.y - tamBloco.y/2, tamBloco.x, tamBloco.y, DARKPURPLE);
-                                break;
-                    }
-
-            }else DrawRectangle(bloco[i][j].posicao.x - tamBloco.x/2, bloco[i][j].posicao.y - tamBloco.y/2, tamBloco.x, tamBloco.y, BLACK); // desenha o -
-        }
-    }
-
 }
 
 
@@ -235,14 +201,68 @@ void desenhaVidas(){                    // Desenha a quantidade de vidas do Joga
     for (int i = 0; i < jogador.vidas; i++) DrawRectangle(20 + 40*i, TELA_ALTURA - 30, 35, 10, WHITE);
 }
 
+void desenhaTeste(){
+
+    int i, j;
+    for (i=0; i<B_LINHA; i++){
+        for (j=0; j<B_COLUNA; j++){ // Anda na matriz
+
+            if (bloco[i][j].ativo == true){ // Se o bloco está ativo
+
+                if ((i + j) % 2 == 0){
+                    DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, BLUE);
+                }
+                else DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, RED);
+            }
+        }
+    }
+
+}
+
+void desenhaBlocos2(void){
+
+    char bloco_cores[B_LINHA][B_COLUNA];
+
+    pegaMatrizBlocos(bloco_cores);
+
+    int i, j;
+    for (i=0; i<B_LINHA; i++){
+        for (j=0; j<B_COLUNA; j++){ // Anda na matriz
+
+            if (bloco_cores[i][j] == '-'){
+                bloco[i][j].ativo = false;
+            }
+
+            if (bloco[i][j].ativo == true){ // Se o bloco está ativo
+
+                switch (bloco_cores[i][j]){
+
+                    case 'R':   DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, RED);
+                                break;
+                    case 'G':   DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, DARKGREEN);
+                                break;
+                    case 'B':   DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, DARKBLUE);
+                                break;
+                    case 'Y':   DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, YELLOW);
+                                break;
+                    case 'X':   DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, DARKPURPLE);
+                                break;
+                }
+            }
+        }
+    }
+}
+
 void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
-    desenhaBlocos();        // Blocos
+    //desenhaBlocos();        // Blocos
     desenhaJogador();       // Raquete
     desenhaBola();          // Bola
     desenhaVidas();         // Vidas
     desenhaPontosJogo();    // Pontuação
-    DrawRectangle(bloco[1][1].posicao.x - tamBloco.x/2, bloco[1][2].posicao.y - tamBloco.y/2, tamBloco.x, tamBloco.y, RED);
+    //desenhaTeste();
+    desenhaBlocos2();
 }
+
 
 void desenhaEndGame(){
     setlocale(LC_ALL, " ");

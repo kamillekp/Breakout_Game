@@ -23,9 +23,9 @@
 #define MAX_VIDAS 1
 
 // Definição de variáveis pros blocos:
-#define BLOCOS_LINHA 5
-#define BLOCOS_COLUNA 10
-#define BLOCOS_INICIAL 50
+#define B_LINHA 5
+#define B_COLUNA 10
+#define B_ESPACO 5
 
 
 // Definição de variáveis para a proMenu.h
@@ -60,7 +60,7 @@
 
     Jogador jogador;
 
-    typedef struct Bola {
+    typedef struct Bola{
         Vector2 posicao;
         Vector2 velocidade;
         int raio;
@@ -70,18 +70,18 @@
 
     Bola bola;
 
-    typedef struct Bloco {
+    typedef struct Bloco{
         Vector2 posicao;
+        Vector2 tamanho;
         bool ativo;
+        Color cor;
     } Bloco;
 
-    Bloco bloco [BLOCOS_LINHA][BLOCOS_COLUNA] = {0};
+    Bloco bloco[B_LINHA][B_COLUNA];
 
-    Vector2 tamBloco = {0}; // tentei usar isso dentro da struct mas não tava funcionando
-
-// Definição de variáveis para a proPause.h
+// Definição de variáveis
 
     bool pause = false;
-    bool gameOver= false;
+    bool gameOver = false;
 
 #endif

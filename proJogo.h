@@ -35,13 +35,20 @@ void initJogo(void){
     bola.cor = ORANGE;
 
     // Inicializa blocos
-    tamBloco = (Vector2){GetScreenWidth()/BLOCOS_LINHA, 40};
+    int i, j, espaco, altura=0;
 
-    for (int i = 0; i < BLOCOS_LINHA; i++){
-        for (int j = 0; j < BLOCOS_COLUNA; j++){
-            bloco[i][j].posicao = (Vector2){j*tamBloco.x + tamBloco.x/2, i*tamBloco.y + BLOCOS_INICIAL};
+
+    for (i=0; i<B_LINHA; i++){
+        espaco=0;
+
+        for (j=0; j<B_COLUNA; j++){
+            bloco[i][j].tamanho = (Vector2){65, 20};
+            bloco[i][j].posicao = (Vector2){j*bloco[i][j].tamanho.x + 39 + espaco, i*bloco[i][j].tamanho.y + 35 + altura};
             bloco[i][j].ativo = true;
+
+            espaco = espaco + 8; // espaço entre os blocos
         }
+        altura = altura + 8; // altura entre os blocos
     }
 }
 
@@ -125,7 +132,7 @@ void bateParede(void){                                      // Função para a lóg
     }
 }
 
-void bateJogador(){                                         // Função para a lógica da bola rebater na raquete
+void bateJogador(void){                                         // Função para a lógica da bola rebater na raquete
 
     // CheckCollisionCircleRec --> função que checa se teve colisão entre um circulo e um retangulo
     if (CheckCollisionCircleRec (bola.posicao, bola.raio, (Rectangle){jogador.posicao.x - jogador.tamanho.x/2,
@@ -139,47 +146,89 @@ void bateJogador(){                                         // Função para a lóg
     }
 }
 
-void bateBlocos(){  // tentar mudar isso pra checkcollision depois pq TALVEZ fique mais facil
+void bateBloco(void){
 
-    for (int i = 0; i < BLOCOS_LINHA; i++){
-                for (int j = 0; j < BLOCOS_COLUNA; j++){
-                    if (bloco[i][j].ativo){ // se o bloco estiver ativo
-                        // bateu embaixo
-                        if (((bola.posicao.y - bola.raio) <= (bloco[i][j].posicao.y + tamBloco.y/2)) && // se a borda da bola "tocar" na borda do bloco
-                            ((bola.posicao.y - bola.raio) > (bloco[i][j].posicao.y + tamBloco.y/2 + bola.velocidade.y)) &&
-                            ((fabs(bola.posicao.x - bloco[i][j].posicao.x)) < (tamBloco.x/2 + bola.raio*2/3)) && (bola.velocidade.y < 0))
-                        {
-                            bloco[i][j].ativo = false; // desativa o bloco
-                            bola.velocidade.y *= -1; // inverte a velocidade pra ir de volta
-                        }
-                        // bateu encima
-                        else if (((bola.posicao.y + bola.raio) >= (bloco[i][j].posicao.y - tamBloco.y/2)) &&
-                                ((bola.posicao.y + bola.raio) < (bloco[i][j].posicao.y - tamBloco.y/2 + bola.velocidade.y)) &&
-                                ((fabs(bola.posicao.x - bloco[i][j].posicao.x)) < (tamBloco.x/2 + bola.raio*2/3)) && (bola.velocidade.y > 0))
-                        {
-                            bloco[i][j].ativo = false;
-                            bola.velocidade.y *= -1;
-                        }
-                        // bateu na esquerda
-                        else if (((bola.posicao.x + bola.raio) >= (bloco[i][j].posicao.x - tamBloco.x/2)) &&
-                                ((bola.posicao.x + bola.raio) < (bloco[i][j].posicao.x - tamBloco.x/2 + bola.velocidade.x)) &&
-                                ((fabs(bola.posicao.y - bloco[i][j].posicao.y)) < (tamBloco.y/2 + bola.raio*2/3)) && (bola.velocidade.x > 0))
-                        {
-                            bloco[i][j].ativo = false;
-                            bola.velocidade.x *= -1;
-                        }
-                        // bateu na direita
-                        else if (((bola.posicao.x - bola.raio) <= (bloco[i][j].posicao.x + tamBloco.x/2)) &&
-                                ((bola.posicao.x - bola.raio) > (bloco[i][j].posicao.x + tamBloco.x/2 + bola.velocidade.x)) &&
-                                ((fabs(bola.posicao.y - bloco[i][j].posicao.y)) < (tamBloco.y/2 + bola.raio*2/3)) && (bola.velocidade.x < 0))
-                        {
-                            bloco[i][j].ativo = false;
-                            bola.velocidade.x *= -1;
-                        }
-                    }
+    int i, j;
+    for (i=0; i<B_LINHA; i++){
+        for (j=0; j<B_COLUNA; j++){
+            if (bloco[i][j].ativo == true){ // Se o bloco estiver ativo
+
+                /* Se a bolinha bater por baixo, esse if é basicamente: se a borda da bola tocar na borda de baixo do
+                bloco e se a bola não estiver parada */
+                if(((bola.posicao.y - bola.raio) <= (bloco[i][j].posicao.y + bloco[i][j].tamanho.y/2)) &&
+                  ((bola.posicao.y - bola.raio) > (bloco[i][j].posicao.y + bloco[i][j].tamanho.y/2 + bola.velocidade.y)) &&
+                  ((fabs(bola.posicao.x - bloco[i][j].posicao.x)) < (bloco[i][j].tamanho.x/2 + bola.raio*2/3))
+                  && (bola.velocidade.y < 0)){
+
+                    bloco[i][j].ativo = false;
+                    bola.velocidade.y *= -1;
+                    //switch da cor pra ver se dá powerup ou não
+
+                    jogador.pontos = jogador.pontos + 20;
+                }
+
+                /* Mesma coisa do anterior, só muda que é a borda de cima do bloco */
+                else if (((bola.posicao.y - bola.raio) >= (bloco[i][j].posicao.y + bloco[i][j].tamanho.y/2)) &&
+                  ((bola.posicao.y - bola.raio) < (bloco[i][j].posicao.y + bloco[i][j].tamanho.y/2 + bola.velocidade.y)) &&
+                  ((fabs(bola.posicao.x - bloco[i][j].posicao.x)) < (bloco[i][j].tamanho.x/2 + bola.raio*2/3))
+                  && (bola.velocidade.y < 0)){
+
+                    bloco[i][j].ativo = false;
+                    bola.velocidade.y *= -1;
+                    //switch da cor pra ver se dá powerup ou não
+
+                    jogador.pontos = jogador.pontos + 20;
+                }
+
+                /* Quase a mesma coisa dos anteriores, mas inverte os y por x das duas primeiras linhas, pra fazer:
+                "Se a borda da bola tocar na borda do lado esquerdo do bloco"*/
+                else if (((bola.posicao.x - bola.raio) >= (bloco[i][j].posicao.x + bloco[i][j].tamanho.x/2)) &&
+                  ((bola.posicao.x - bola.raio) < (bloco[i][j].posicao.x + bloco[i][j].tamanho.x/2 + bola.velocidade.x)) &&
+                  ((fabs(bola.posicao.y - bloco[i][j].posicao.y)) < (bloco[i][j].tamanho.y/2 + bola.raio*2/3))
+                  && (bola.velocidade.x < 0)){
+
+                    bloco[i][j].ativo = false;
+                    bola.velocidade.y *= -1;
+                    //switch da cor pra ver se dá powerup ou não
+
+                    jogador.pontos = jogador.pontos + 20;
+                }
+
+                /* Mesma coisa do anterior, só muda que é a borda do lado direito do bloco */
+                else if (((bola.posicao.x - bola.raio) <= (bloco[i][j].posicao.x + bloco[i][j].tamanho.x/2)) &&
+                  ((bola.posicao.x - bola.raio) > (bloco[i][j].posicao.x + bloco[i][j].tamanho.x/2 + bola.velocidade.x)) &&
+                  ((fabs(bola.posicao.y - bloco[i][j].posicao.y)) < (bloco[i][j].tamanho.y/2 + bola.raio*2/3))
+                  && (bola.velocidade.x < 0)){
+
+                    bloco[i][j].ativo = false;
+                    bola.velocidade.y *= -1;
+                    //switch da cor pra ver se dá powerup ou não
+
+                    jogador.pontos = jogador.pontos + 20;
                 }
             }
+        }
+    }
+}
 
+void bateBlocoCol(void){ // Rebate bolinha mas usando o CheckCollisionCircleRec, não ta funcionando muito bem
+
+    int i, j;
+    for (i=0; i<B_LINHA; i++){
+        for (j=0; j<B_COLUNA; j++){
+            if (bloco[i][j].ativo == true){ // Se o bloco estiver ativo
+                if ((CheckCollisionCircleRec (bola.posicao, bola.raio,
+                                            (Rectangle){bloco[i][j].posicao.x - bloco[i][j].tamanho.x/2,
+                                            bloco[i][j].posicao.y - bloco[i][j].tamanho.y/2, bloco[i][j].tamanho.x,
+                                            bloco[i][j].tamanho.y})) && (bola.velocidade.x < 0)){
+
+                bloco[i][j].ativo = false;
+                bola.velocidade.y *= -1;
+                //switch da cor pra ver se dá powerup ou não
+                }
+            }
+        }
+    }
 }
 
 void atualizaJogo(void){                                    // Atualiza a lógica do jogo
@@ -195,7 +244,8 @@ void atualizaJogo(void){                                    // Atualiza a lógica
         mexeBola();
         bateParede();
         bateJogador();
-        bateBlocos();
+        //bateBlocoCol();
+        bateBloco();
     }
 
 }

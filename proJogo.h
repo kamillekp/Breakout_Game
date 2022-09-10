@@ -21,7 +21,7 @@ as funções predefinidas da biblioteca Raylib */
 
 void initJogo(void){
 
-    // Inicializa rquete
+    // Inicializa raquete
     jogador.posicao = (Vector2){TELA_LARGURA/2, TELA_ALTURA*7/8};
     jogador.tamanho = (Vector2){TELA_LARGURA/10, 20};
     jogador.vidas = MAX_VIDAS;
@@ -34,6 +34,15 @@ void initJogo(void){
     bola.ativa = false;
     bola.cor = ORANGE;
 
+    // Inicializa blocos
+    tamBloco = (Vector2){GetScreenWidth()/BLOCOS_LINHA, 40};
+
+    for (int i = 0; i < BLOCOS_LINHA; i++){
+        for (int j = 0; j < BLOCOS_COLUNA; j++){
+            bloco[i][j].posicao = (Vector2){j*tamBloco.x + tamBloco.x/2, i*tamBloco.y + BLOCOS_INICIAL};
+            bloco[i][j].ativo = true;
+        }
+    }
 }
 
 void pegaMatrizBlocos (char blocos[5][10]){
@@ -130,6 +139,49 @@ void bateJogador(){                                         // Função para a lóg
     }
 }
 
+void bateBlocos(){  // tentar mudar isso pra checkcollision depois pq TALVEZ fique mais facil
+
+    for (int i = 0; i < BLOCOS_LINHA; i++){
+                for (int j = 0; j < BLOCOS_COLUNA; j++){
+                    if (bloco[i][j].ativo){ // se o bloco estiver ativo
+                        // bateu embaixo
+                        if (((bola.posicao.y - bola.raio) <= (bloco[i][j].posicao.y + tamBloco.y/2)) && // se a borda da bola "tocar" na borda do bloco
+                            ((bola.posicao.y - bola.raio) > (bloco[i][j].posicao.y + tamBloco.y/2 + bola.velocidade.y)) &&
+                            ((fabs(bola.posicao.x - bloco[i][j].posicao.x)) < (tamBloco.x/2 + bola.raio*2/3)) && (bola.velocidade.y < 0))
+                        {
+                            bloco[i][j].ativo = false; // desativa o bloco
+                            bola.velocidade.y *= -1; // inverte a velocidade pra ir de volta
+                        }
+                        // bateu encima
+                        else if (((bola.posicao.y + bola.raio) >= (bloco[i][j].posicao.y - tamBloco.y/2)) &&
+                                ((bola.posicao.y + bola.raio) < (bloco[i][j].posicao.y - tamBloco.y/2 + bola.velocidade.y)) &&
+                                ((fabs(bola.posicao.x - bloco[i][j].posicao.x)) < (tamBloco.x/2 + bola.raio*2/3)) && (bola.velocidade.y > 0))
+                        {
+                            bloco[i][j].ativo = false;
+                            bola.velocidade.y *= -1;
+                        }
+                        // bateu na esquerda
+                        else if (((bola.posicao.x + bola.raio) >= (bloco[i][j].posicao.x - tamBloco.x/2)) &&
+                                ((bola.posicao.x + bola.raio) < (bloco[i][j].posicao.x - tamBloco.x/2 + bola.velocidade.x)) &&
+                                ((fabs(bola.posicao.y - bloco[i][j].posicao.y)) < (tamBloco.y/2 + bola.raio*2/3)) && (bola.velocidade.x > 0))
+                        {
+                            bloco[i][j].ativo = false;
+                            bola.velocidade.x *= -1;
+                        }
+                        // bateu na direita
+                        else if (((bola.posicao.x - bola.raio) <= (bloco[i][j].posicao.x + tamBloco.x/2)) &&
+                                ((bola.posicao.x - bola.raio) > (bloco[i][j].posicao.x + tamBloco.x/2 + bola.velocidade.x)) &&
+                                ((fabs(bola.posicao.y - bloco[i][j].posicao.y)) < (tamBloco.y/2 + bola.raio*2/3)) && (bola.velocidade.x < 0))
+                        {
+                            bloco[i][j].ativo = false;
+                            bola.velocidade.x *= -1;
+                        }
+                    }
+                }
+            }
+
+}
+
 void atualizaJogo(void){                                    // Atualiza a lógica do jogo
 
     if (IsKeyPressed('P')){
@@ -143,6 +195,7 @@ void atualizaJogo(void){                                    // Atualiza a lógica
         mexeBola();
         bateParede();
         bateJogador();
+        bateBlocos();
     }
 
 }

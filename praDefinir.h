@@ -22,6 +22,11 @@
 #define TELA_LARGURA 800
 #define MAX_VIDAS 1
 
+// Definição de variáveis pros blocos:
+#define BLOCOS_LINHA 5
+#define BLOCOS_COLUNA 10
+#define BLOCOS_INICIAL 50
+
 
 // Definição de variáveis para a proMenu.h
     int op = 0;
@@ -64,6 +69,15 @@
     } Bola;
 
     Bola bola;
+
+    typedef struct Bloco {
+        Vector2 posicao;
+        bool ativo;
+    } Bloco;
+
+    Bloco bloco [BLOCOS_LINHA][BLOCOS_COLUNA] = {0};
+
+    Vector2 tamBloco = {0}; // tentei usar isso dentro da struct mas não tava funcionando
 
 // Definição de variáveis para a proPause.h
 

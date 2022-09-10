@@ -63,6 +63,10 @@ int main(){
 
                 if(IsKeyPressed(KEY_V)){
                     telaAtual = 0;
+                    gameOver = 0; // pra voltar pro menu e poder jogar de novo
+                    //TEM QUE VOLTAR A VIDA PRO MAX E ZERAR A PONTUAÇÃO DO JOGADOR
+
+
                 }
 
             }

@@ -14,18 +14,26 @@
 
 int main(){
 
-    //JOGADOR player;
-    bool returnJogo = false; // retorna se o jogo terminou ou não
     int telaAtual = 0;
     int posPontos;
-    int op;
+    //float timePlayed = 0.0f;
 
     initJogo();
 
     InitWindow(TELA_LARGURA, TELA_ALTURA, TELA_NOME);
     SetTargetFPS(60);
 
+    /*InitAudioDevice();
+    Music music = LoadMusicStream("C:/Users/Admin/Documents/Breakout_Game/musicaTrab.mp3");
+    PlayMusicStream(music);*/
+
     while(!WindowShouldClose()){
+
+        /*UpdateMusicStream(music);
+        timePlayed = GetMusicTimePlayed(music)/GetMusicTimeLength(music);
+        if (timePlayed > 1.0f) timePlayed = 1.0f;*/
+
+        criaJogadores();
 
         BeginDrawing();
 
@@ -55,8 +63,9 @@ int main(){
                 posPontos = pegaArquivo();   // pega arquivo de 5 melhores e vê se jogador.pontos é maior que um deles
 
                 // pega o posPontos, pra ver se pegaArquivo retornou algum resultado
-                if(posPontos == 0 || posPontos == 1 || posPontos == 2 || posPontos == 3 || posPontos == 4){
-                    gravaArquivo(posPontos);
+                if(posPontos != -1){
+                    //pedeNome do jogador
+                    gravaArquivo(posPontos/*, nomeJogador*/);
                 }
 
                 if(IsKeyPressed(KEY_V)){
@@ -65,25 +74,14 @@ int main(){
                     jogador.pontos = 0;
                     jogador.vidas = 3;
                 }
-
             }
-
-
-            //KAMILLE:
-            //desenhaJogo();
-
-            // FUNCAOJOGO(&returnJogo, &player.pontos);
-                    // recebe returnJogo como ponteiro para poder retornar true quando o jogo acabar
-                    // recebe player.pontos como ponteiro para poder setar a pontuação dele no final do jogo
-
-            /*if(returnJogo == true){
-                pegaArquivo(&player);
-            }*/
         }
 
         EndDrawing();
-
     }
+
+    /*UnloadMusicStream(music);
+    CloseAudioDevice();*/
 
     return 0;
 }

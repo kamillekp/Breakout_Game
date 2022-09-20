@@ -55,7 +55,6 @@ void initJogo(void){
 void pegaMatrizBlocos (char blocos[5][10]){
     FILE *ptrBlocos;
     int i = 0, j = 0;
-    char t;
 
     ptrBlocos = fopen("nivel1.txt", "r");                   // abre o arquivo para leitura
     for(i=0; i<5; i++){

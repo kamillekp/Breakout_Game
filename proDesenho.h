@@ -145,6 +145,7 @@ int desenhaPtos(){ // Desenha o menu Pontuação
 
 // Funções para o jogo:
 
+/*
 void desenhaBlocos(){
     int i, j;
     int x = 25, y = 20;                                             // posição x inicia em 25 e y em 20
@@ -173,9 +174,11 @@ void desenhaBlocos(){
         }
             x = 25;                                                 // a posição dos blocos no eixo x sempre começa em 25
             y = y + 20;                                             /*  sempre que termina de desenhar uma linha, acrescenta 20px, ou seja,
-                                                                        i = 0 --> y = 20   i = 1 --> y = 40       e assim segue */
+                                                                        i = 0 --> y = 20   i = 1 --> y = 40       e assim segue
     }
 }
+
+*/
 
 void desenhaJogador(){                  // Desenha a raquete do Jogador
 
@@ -198,6 +201,7 @@ void desenhaVidas(){                    // Desenha a quantidade de vidas do Joga
     for (int i = 0; i < jogador.vidas; i++) DrawRectangle(20 + 40*i, TELA_ALTURA - 30, 35, 10, WHITE);
 }
 
+/*
 void desenhaTeste(){
 
     int i, j;
@@ -215,7 +219,9 @@ void desenhaTeste(){
     }
 
 }
+*/
 
+/*
 void desenhaBlocos2(void){
 
     char bloco_cores[B_LINHA][B_COLUNA];
@@ -249,20 +255,27 @@ void desenhaBlocos2(void){
         }
     }
 }
+*/
+
+void desenhaBlocos3(void){
+
+    for (int i=0; i<B_LINHA; i++){
+        for (int j=0; j<B_COLUNA; j++){ // Anda na matriz
+            if (bloco[i][j].ativo == true){
+                DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, bloco[i][j].cor);
+            }
+        }
+    }
+}
+
 
 void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
-<<<<<<< HEAD
 
-    //desenhaBlocos();        // Blocos
-=======
-    //desenhaBlocos();      // Blocos
->>>>>>> a6e5d16dfaa5aa01a4f1dd949b5a9ff25dfdedf0
     desenhaJogador();       // Raquete
     desenhaBola();          // Bola
     desenhaVidas();         // Vidas
     desenhaPontosJogo();    // Pontuação
-    //desenhaTeste();
-    desenhaBlocos2();
+    desenhaBlocos3();
 
     if (pause){
         desenhaPause();

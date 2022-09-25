@@ -34,7 +34,9 @@ void initJogo(void){
     bola.ativa = false;
     bola.cor = ORANGE;
 
-    // Inicializa blocos
+    initBloco();
+
+    /*// Inicializa blocos
     int i, j, espaco, altura=0;
 
 
@@ -45,6 +47,46 @@ void initJogo(void){
             bloco[i][j].tamanho = (Vector2){65, 20};
             bloco[i][j].posicao = (Vector2){j*bloco[i][j].tamanho.x + 39 + espaco, i*bloco[i][j].tamanho.y + 35 + altura};
             bloco[i][j].ativo = true;
+
+            espaco = espaco + 8; // espaço entre os blocos
+        }
+        altura = altura + 8; // altura entre os blocos
+    }*/
+}
+
+void initBloco(void){
+
+    char bloco_cores[B_LINHA][B_COLUNA];
+
+    pegaMatrizBlocos(bloco_cores);
+
+    int i, j, espaco, altura=0;
+
+    for (i=0; i<B_LINHA; i++){
+        espaco=0;
+
+        for (j=0; j<B_COLUNA; j++){
+            bloco[i][j].tamanho = (Vector2){65, 20};
+            bloco[i][j].posicao = (Vector2){j*bloco[i][j].tamanho.x + 39 + espaco, i*bloco[i][j].tamanho.y + 35 + altura};
+            switch (bloco_cores[i][j]){
+                case 'Y': bloco[i][j].cor = YELLOW;
+                          bloco[i][j].ativo = true;
+                          break;
+                case 'R': bloco[i][j].cor = RED;
+                          bloco[i][j].ativo = true;
+                          break;
+                case 'B': bloco[i][j].cor = DARKBLUE;
+                          bloco[i][j].ativo = true;
+                          break;
+                case 'X': bloco[i][j].cor = DARKPURPLE;
+                          bloco[i][j].ativo = true;
+                          break;
+                case 'G': bloco[i][j].cor = DARKGREEN;
+                          bloco[i][j].ativo = true;
+                          break;
+                case '-': bloco[i][j].ativo = false;
+                          break;
+            }
 
             espaco = espaco + 8; // espaço entre os blocos
         }
@@ -223,12 +265,40 @@ void bateBlocoCol(void){ // Rebate bolinha mas usando o CheckCollisionCircleRec,
 
                 bloco[i][j].ativo = false;
                 bola.velocidade.y *= -1;
-                //switch da cor pra ver se dá powerup ou não
                 }
             }
         }
     }
 }
+
+void bateBloco2(void){
+
+    for (int i=0; i<B_LINHA; i++){
+        for (int j=0; j<B_COLUNA; j++){
+            if (bloco[i][j].ativo == true){
+                    if (bola.posicao.x >= bloco[i][j].posicao.x && bola.posicao.x <= bloco[i][j].posicao.x + bloco[i][j].tamanho.x){
+                        if (bola.posicao.y - bola.raio <= bloco[i][j].posicao.y + bloco[i][j].tamanho.y && bola.posicao.y + bola.raio >= bloco[i][j].tamanho.y && /*bola.velocidade.x < 0*/){
+
+                            bloco[i][j].ativo = false;
+                            bola.velocidade.y *= -1;
+                            jogador.pontos = jogador.pontos + 20;
+                        }
+
+                    }
+                    if (bola.posicao.y >= bloco[i][j].posicao.y && bola.posicao.y <= bloco[i][j].posicao.y + bloco[i][j].tamanho.y){
+                        if (bola.posicao.x - bola.raio <= bloco[i][j].posicao.x + bloco[i][j].tamanho.x && bola.posicao.x + bola.raio >= bloco[i][j].tamanho.x && /*bola.velocidade.y < 0*/){
+
+                            bloco[i][j].ativo = false;
+                            bola.velocidade.y *= -1;
+                            jogador.pontos = jogador.pontos + 20;
+                        }
+                    }
+            }
+        }
+    }
+}
+
+
 
 void atualizaJogo(void){                                    // Atualiza a lógica do jogo
 
@@ -244,7 +314,8 @@ void atualizaJogo(void){                                    // Atualiza a lógica
         bateParede();
         bateJogador();
         //bateBlocoCol();
-        bateBloco();
+        //bateBloco();
+        bateBloco2();
     }
 
 }

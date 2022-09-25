@@ -48,6 +48,13 @@
 
     Rectangle volta1 = {15, 15, 45, 45};
 
+    // Retangulos do menu Pause:
+    Rectangle rec1 = {240, 100, 300, 240};
+
+    Rectangle con1 = {270, 130, 45, 45};
+    Rectangle con2 = {270, 195, 45, 45};
+    Rectangle con3 = {270, 260, 45, 45};
+
 
 // Definições de structs para a proJogo.h
 

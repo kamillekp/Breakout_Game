@@ -254,6 +254,7 @@ void desenhaBlocos2(void){
 }
 
 void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
+
     //desenhaBlocos();        // Blocos
     desenhaJogador();       // Raquete
     desenhaBola();          // Bola
@@ -261,6 +262,11 @@ void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de tod
     desenhaPontosJogo();    // Pontuação
     //desenhaTeste();
     desenhaBlocos2();
+
+    if (pause){
+        desenhaPause();
+    }
+
 }
 
 
@@ -281,7 +287,24 @@ void desenhaEndGame(){
 
 // Funções para o pause:
 
-void desenhaPause(){ ClearBackground(BLACK); }
+void desenhaPause(){
+
+    DrawRectangle(240, 100, 300, 240, BLACK);
+    DrawRectangleLinesEx(rec1, 3, ORANGE);
+
+    DrawText("PAUSADO", 270, 130, 50, WHITE);
+
+    DrawRectangleGradientV(270, 195, 45, 45, ORANGE, GOLD); //QUADRADO
+    DrawRectangleLinesEx(con2, 3, ORANGE);
+    DrawText("P", 279, 199, 40, BLACK);
+    DrawText("CONTINUAR", 330, 205, 30, WHITE);
+
+    /*DrawRectangleGradientV(270, 260, 45, 45, ORANGE, GOLD); //QUADRADO
+    DrawRectangleLinesEx(con3, 3, ORANGE);
+    DrawText("S", 281, 264, 40, BLACK);
+    DrawText("SAIR", 330, 270, 30, WHITE);*/
+
+}
 
 
 #endif

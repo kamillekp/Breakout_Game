@@ -66,4 +66,5 @@ int decideTela(int *telaAtual){ // Decide a tela que vai ser mostrada
 
 }
 
+
 #endif

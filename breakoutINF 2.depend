@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1662839335 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\main.c
+1664069135 source:c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\main.c
 	"proDesenho.h"
 	"proJogo.h"
 	"proMenu.h"
@@ -23,7 +23,7 @@
 	"proJogo.h"
 	"proMenu.h"
 
-1662838876 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\prodesenho.h
+1664069709 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\prodesenho.h
 	"raylib.h"
 	<stdio.h>
 	<locale.h>
@@ -34,7 +34,7 @@
 	"proHighscore.h"
 	"proPause.h"
 
-1662839335 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\projogo.h
+1664069135 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\projogo.h
 	"raylib.h"
 	<stdio.h>
 	<limits.h>
@@ -45,7 +45,7 @@
 	"proHighscore.h"
 	"proPause.h"
 
-1662839341 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\promenu.h
+1664066901 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\promenu.h
 	"raylib.h"
 	<stdio.h>
 	"proDesenho.h"
@@ -55,7 +55,7 @@
 	"proPause.h"
 	"proPause.h"
 
-1662839335 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\pradefinir.h
+1664068507 c:\users\pessoal\desktop\trabalho breakout\breakoutinf 2\breakoutinf 2\pradefinir.h
 	"raylib.h"
 	<stdio.h>
 	"proDesenho.h"

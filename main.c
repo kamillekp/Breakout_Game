@@ -60,10 +60,9 @@ int main(){
                 }
 
                 if(IsKeyPressed(KEY_V)){
+                    initJogo();
                     telaAtual = 0;
                     gameOver = 0; // pra voltar pro menu e poder jogar de novo
-                    jogador.pontos = 0;
-                    jogador.vidas = 3;
                 }
 
             }

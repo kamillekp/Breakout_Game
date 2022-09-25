@@ -19,35 +19,89 @@
 #include "praDefinir.h"
 #include "proPause.h"
 
-// PEGA ARQUIVO E PASSA PONTOS PARA INTEIRO
-int pegaArquivo(){
+typedef struct {
+    char nome[30];
+    int pontos;
+} BESTPLAYERS;
+
+
+void criaJogadores(){
+    BESTPLAYERS bp[5];
     FILE *ptArq;
-    int pontuacaoInt [5];
-    char str[150];
-    int num;
-    int i = 0;
+    int i;
 
-    //abrindo o arquivo somente para leitura
-    ptArq = fopen("highscore.bin", "r");
+    // Jogador 1
+    strcpy(bp[0].nome, "Rodrigo");
+    bp[0].pontos = 300;
 
-        while(fgets(str, 150, ptArq)){              // pegando casa linha do arquivo
-            if(i%2 != 0){
-                num = atoi(str);                     // transformando em int
-                pontuacaoInt[i] = num;
+    // Jogador 2
+    strcpy(bp[1].nome, "Micheli");
+    bp[1].pontos = 268;
+
+    // Jogador 3
+    strcpy(bp[2].nome, "Augusto");
+    bp[2].pontos = 232;
+
+    // Jogador 4
+    strcpy(bp[3].nome, "Joana");
+    bp[3].pontos = 143;
+
+    // Jogador 5
+    strcpy(bp[4].nome, "Alan");
+    bp[4].pontos = 97;
+
+
+    ptArq = fopen("highscore.bin", "wb");
+
+    if(!ptArq){
+        printf("\nErro ao abrir arquivo.");
+    }
+    else{
+        for(i=0; i<5; i++){
+            if(fwrite (&bp[i], sizeof(BESTPLAYERS), 1, ptArq) != 1){
+                printf("\nErro na escrita.");
             }
-            i++;
         }
 
         fclose(ptArq);
+    }
+}
+
+
+// PEGA ARQUIVO E PASSA PONTOS PARA INTEIRO
+int pegaArquivo(void){
+
+    BESTPLAYERS bp[5];
+    int pontuacaoInt[5];
+    FILE *ptArq;
+    int i;
+
+    //abrindo o arquivo somente para leitura
+    ptArq = fopen("highscore.bin", "rb");
+
+    if(!ptArq){
+        printf("\nErro ao abrir o arquivo.");
+    }
+    else{
+        while(!feof(ptArq)){
+            if(fread (&bp, sizeof(bp), 5, ptArq) == 5);
+        }
+
+        fclose(ptArq);
+    }
+
+    for(i=0; i<5; i++){
+        pontuacaoInt[i] = bp[i].pontos;
+    }
 
     return defineMaior(pontuacaoInt);
 }
-
 
 // PRECISA ACHAR UM JEITO DE PEGAR PONTOS DO JOGADOR
 int defineMaior (int vet[]) {
     int posPontos = -1;
     int pontos = 35;
+
 
     if(/*jogador.*/pontos > vet[0]){
         posPontos = 0;
@@ -72,53 +126,84 @@ int defineMaior (int vet[]) {
     return posPontos;
 }
 
-
 void gravaArquivo(int lugar/*, JOGADOR *j*/){
+    char nome[30];
+    int pontos = 250;
 
+    strcpy(nome, "Fábio");
+
+    BESTPLAYERS bp[5];
+    int pontuacaoInt[5];
+    char strAuxiliar[10][15];
     FILE *ptArq;
-    char str[10][100];
-    char strAuxiliar[10][100];
-    char juncaoStr [300];
-    int i = 0;
+    int i;
 
-    // LENDO
-    ptArq = fopen("highscore.bin", "r");
+    //abrindo o arquivo somente para leitura
+    ptArq = fopen("highscore.bin", "rb");
 
-    while(fgets(str, 100, ptArq)){
-        strcpy(strAuxiliar[i], str);
-        i++;
+    if(!ptArq){
+        printf("\nErro ao abrir o arquivo.");
+    }
+    else{
+        while(!feof(ptArq)){
+            if(fread (&bp, sizeof(bp), 5, ptArq) == 5);
+        }
+
+        fclose(ptArq);
     }
 
-    fclose(ptArq);
-
-
     // ALTERANDO ORDEM
-   /* switch(lugar){
-        case 0: strcpy(strAuxiliar[0], *j.nome);
-                strcpy(strAuxiliar[1], *j.pontos);
+    switch(lugar){
+        case 0: for(i=4; i<0; i--){
+                    strcpy(bp[i].nome, bp[i-1].nome);
+                    bp[i].pontos = bp[i-1].pontos;
+                }
+
+                strcpy(bp[0].nome, nome);
+                bp[0].pontos = pontos;
+
             break;
-        case 1: strcpy(strAuxiliar[2], *j.nome);
-                strcpy(strAuxiliar[3], *j.pontos);
+        case 1: for(i=4; i<1; i--){
+                    strcpy(bp[i].nome, bp[i-1].nome);
+                    bp[i].pontos = bp[i-1].pontos;
+                }
+
+                strcpy(bp[1].nome, nome);
+                bp[1].pontos = pontos;
             break;
-        case 2: strcpy(strAuxiliar[4], *j.nome);
-                strcpy(strAuxiliar[5], *j.pontos);
+        case 2: for(i=4; i<2; i--){
+                    strcpy(bp[i].nome, bp[i-1].nome);
+                    bp[i].pontos = bp[i-1].pontos;
+                }
+
+                strcpy(bp[2].nome, nome);
+                bp[2].pontos = pontos;
             break;
-        case 3: strcpy(strAuxiliar[6], *j.nome);
-                strcpy(strAuxiliar[7], *j.pontos);
+        case 3: for(i=4; i<3; i--){
+                    strcpy(bp[i].nome, bp[i-1].nome);
+                    bp[i].pontos = bp[i-1].pontos;
+                }
+
+                strcpy(bp[3].nome, nome);
+                bp[3].pontos = pontos;
             break;
-        case 4: strcpy(strAuxiliar[8], *j.nome);
-                strcpy(strAuxiliar[9], *j.pontos);
+        case 4: strcpy(bp[4].nome, nome);
+                bp[4].pontos = pontos;
             break;
-        default: printf("NÃO ENTROU!");
-    }*/
+    }
+
+    ptArq = fopen("highscore.bin", "wb");
+
+    if(!ptArq){
+        printf("\nErro ao abrir o arquivo.");
+    }
+    else{
+        if(fwrite(&bp, sizeof(bp), 5, ptArq) != 5){
+            printf("\nErro ao gravar arquivo.");
+        }
+    }
 
 
-    // GRAVANDO
-    strcpy(juncaoStr, strcat(strAuxiliar[0], strcat(strAuxiliar[1], strcat(strAuxiliar[2], strcat(strAuxiliar[3], strcat(strAuxiliar[4], strcat(strAuxiliar[5], strcat(strAuxiliar[6], strcat(strAuxiliar[7], strcat(strAuxiliar[8], "35"/*strAuxiliar[9]*/))))))))));
-
-    ptArq = fopen("highscore.bin", "w");
-    fputs(juncaoStr, ptArq);
-    fclose(ptArq);
 }
 
 #endif

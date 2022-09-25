@@ -22,7 +22,6 @@ predefinidas da biblioteca Raylib */
 
 void limpaTela(){ // Deixa a tela no estado original em preto.
     DrawRectangle(0, 0, 1000, 2000, BLACK);
-
 }
 
 void desenhaMenu(){ // Desenha o Menu com o título, três botões, e créditos.
@@ -143,20 +142,19 @@ int desenhaPtos(){ // Desenha o menu Pontuação
 }
 
 
-// Funções para o jogo:
 
+// Funções para o jogo:
 
 void desenhaBlocos(){
     int i, j;
     int x = 25, y = 20;                                             // posição x inicia em 25 e y em 20
     char blocos[B_LINHA][B_COLUNA];
-    int cont = 0;
 
     pegaMatrizBlocos(blocos);                                       // pega a matriz do arquivo
 
     for(i=0; i<B_LINHA; i++){
         for(j=0; j<B_COLUNA; j++){
-            switch(blocos[i][j]){                                   // faz um switch pra casa letra da matriz e entra no caractere que corresponde
+            switch(blocos[i][j]){                                   // faz um switch pra cada letra da matriz e entra no caractere que corresponde
 
                 case 'R':   DrawRectangle(x, y, 60, 10, RED);
                     break;
@@ -175,10 +173,9 @@ void desenhaBlocos(){
         }
             x = 25;                                                 // a posição dos blocos no eixo x sempre começa em 25
             y = y + 20;                                             /*  sempre que termina de desenhar uma linha, acrescenta 20px, ou seja,
-                                                                        i = 0 --> y = 20   i = 1 --> y = 40       e assim segue*/
+                                                                        i = 0 --> y = 20   i = 1 --> y = 40       e assim segue */
     }
 }
-
 
 void desenhaJogador(){                  // Desenha a raquete do Jogador
 
@@ -254,8 +251,12 @@ void desenhaBlocos2(void){
 }
 
 void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
+<<<<<<< HEAD
 
     //desenhaBlocos();        // Blocos
+=======
+    //desenhaBlocos();      // Blocos
+>>>>>>> a6e5d16dfaa5aa01a4f1dd949b5a9ff25dfdedf0
     desenhaJogador();       // Raquete
     desenhaBola();          // Bola
     desenhaVidas();         // Vidas

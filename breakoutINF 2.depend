@@ -162,3 +162,79 @@
 	"praDefinir.h"
 	"proHighscore.h"
 
+1664211911 source:c:\users\admin\downloads\breakout_game\main.c
+	"proDesenho.h"
+	"proJogo.h"
+	"proMenu.h"
+	"praDefinir.h"
+	"proHighscore.h"
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+
+1664212088 c:\users\admin\downloads\breakout_game\prodesenho.h
+	"raylib.h"
+	<stdio.h>
+	<locale.h>
+	<string.h>
+	"proJogo.h"
+	"proMenu.h"
+	"praDefinir.h"
+	"proHighscore.h"
+	"proPause.h"
+
+1664210976 c:\users\admin\downloads\breakout_game\projogo.h
+	"raylib.h"
+	<stdio.h>
+	<limits.h>
+	<stdlib.h>
+	"proDesenho.h"
+	"proMenu.h"
+	"praDefinir.h"
+	"proHighscore.h"
+	"proPause.h"
+
+1664210337 c:\users\admin\downloads\breakout_game\promenu.h
+	"raylib.h"
+	<stdio.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"praDefinir.h"
+	"proHighscore.h"
+	"proPause.h"
+	"proPause.h"
+
+1664210337 c:\users\admin\downloads\breakout_game\pradefinir.h
+	"raylib.h"
+	<stdio.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"proMenu.h"
+	"proHighscore.h"
+	"proPause.h"
+
+1664219351 c:\users\admin\downloads\breakout_game\prohighscore.h
+	"raylib.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<math.h>
+	<ctype.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"proMenu.h"
+	"praDefinir.h"
+	"proPause.h"
+
+1664210337 c:\users\admin\downloads\breakout_game\propause.h
+	"raylib.h"
+	<stdio.h>
+	"proDesenho.h"
+	"proJogo.h"
+	"praDefinir.h"
+	"proHighscore.h"
+

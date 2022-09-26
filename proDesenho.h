@@ -68,10 +68,20 @@ void desenhaMenuOp (int opcao){ // Desenha o botão em outra cor quando ele é sel
 int desenhaPtos(){ // Desenha o menu Pontuação
 
     FILE *ptArq;
-    char str[10][100];
+    BESTPLAYERS bp[5];
 
     //abrindo o arquivo_frase somente para leitura
-    ptArq = fopen("highscore.bin", "r");
+    ptArq = fopen("highscore.bin", "rb");
+
+    if(!ptArq){
+        printf("\nErro ao abrir o arquivo.");
+    }
+    else{
+        if(fread(&bp, sizeof(BESTPLAYERS), 5, ptArq) != 5){
+            printf("\nErro ao ler arquivo.");
+        }
+        fclose(ptArq);
+    }
 
     limpaTela();
     DrawText("TOP SCORES", 240, 60, 50, WHITE); // TITULO DO JOGO
@@ -87,44 +97,32 @@ int desenhaPtos(){ // Desenha o menu Pontuação
             DrawRectangleLinesEx(pos1, 3, ORANGE);
             DrawText("1", 118, 135, 40, BLACK); //POS
 
-        fgets(str[0], 100, ptArq);
-        DrawText(str[0], 200, 135, 40, WHITE); // NOME
-
-        fgets(str[1], 100, ptArq);
-        DrawText(str[1], 600, 135, 40, WHITE); // PONTOS
+        DrawText(bp[0].nome, 200, 135, 40, WHITE); // NOME
+        DrawText(bp[0].pontos, 600, 135, 40, WHITE); // PONTOS
 
     //POS 2
         DrawRectangleGradientV(100, 190, 45, 45, ORANGE, GOLD);
             DrawRectangleLinesEx(pos2, 3, ORANGE);
             DrawText("2", 113, 195, 40, BLACK);
 
-        fgets(str[2], 100, ptArq);
-        DrawText(str[2], 200, 195, 40, WHITE); // NOME
-
-        fgets(str[3], 100, ptArq);
-        DrawText(str[3], 600, 195, 40, WHITE); // PONTOS
+        DrawText(bp[1].nome, 200, 195, 40, WHITE); // NOME
+        DrawText(bp[1].pontos, 600, 195, 40, WHITE); // PONTOS
 
     //POS 3
         DrawRectangleGradientV(100, 250, 45, 45, ORANGE, GOLD);
             DrawRectangleLinesEx(pos3, 3, ORANGE);
             DrawText("3", 113, 255, 40, BLACK);
 
-        fgets(str[4], 100, ptArq);
-        DrawText(str[4], 200, 255, 40, WHITE); // NOME
-
-        fgets(str[5], 100, ptArq);
-        DrawText(str[5], 600, 255, 40, WHITE); // PONTOS
+        DrawText(bp[2].nome, 200, 255, 40, WHITE); // NOME
+        DrawText(bp[2].pontos, 600, 255, 40, WHITE); // PONTOS
 
     //POS 4
         DrawRectangleGradientV(100, 310, 45, 45, ORANGE, GOLD);
             DrawRectangleLinesEx(pos4, 3, ORANGE);
             DrawText("4", 113, 315, 40, BLACK);
 
-        fgets(str[6], 100, ptArq);
-        DrawText(str[6], 200, 315, 40, WHITE); // NOME
-
-        fgets(str[7], 100, ptArq);
-        DrawText(str[7], 600, 315, 40, WHITE); // PONTOS
+        DrawText(bp[3].nome, 200, 315, 40, WHITE); // NOME
+        DrawText(bp[3].pontos, 600, 315, 40, WHITE); // PONTOS
 
 
     //POS 5
@@ -132,11 +130,8 @@ int desenhaPtos(){ // Desenha o menu Pontuação
             DrawRectangleLinesEx(pos5, 3, ORANGE);
         DrawText("5", 113, 375, 40, BLACK);
 
-        fgets(str[8], 100, ptArq);
-        DrawText(str[8], 200, 375, 40, WHITE); // NOME
-
-        fgets(str[9], 100, ptArq);
-        DrawText(str[9], 600, 375, 40, WHITE); // PONTOS
+        DrawText(bp[4].nome, 200, 375, 40, WHITE); // NOME
+        DrawText(bp[4].pontos, 600, 375, 40, WHITE); // PONTOS
 
         fclose(ptArq);
 }
@@ -173,8 +168,8 @@ void desenhaBlocos(){
             x = x + 75;                                             // sempre atualiza o x e cada bloco fica a uma distância de 50px um do outro
         }
             x = 25;                                                 // a posição dos blocos no eixo x sempre começa em 25
-            y = y + 20;                                             /*  sempre que termina de desenhar uma linha, acrescenta 20px, ou seja,
-                                                                        i = 0 --> y = 20   i = 1 --> y = 40       e assim segue
+            y = y + 20;                                             // sempre que termina de desenhar uma linha, acrescenta 20px, ou seja,
+                                                                    // i = 0 --> y = 20   i = 1 --> y = 40       e assim segue
     }
 }
 

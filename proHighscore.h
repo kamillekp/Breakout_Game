@@ -21,35 +21,33 @@
 
 typedef struct {
     char nome[30];
-    int pontos;
+    char pontos[5];
 } BESTPLAYERS;
 
 
 void criaJogadores(){
     BESTPLAYERS bp[5];
     FILE *ptArq;
-    int i;
 
     // Jogador 1
     strcpy(bp[0].nome, "Rodrigo");
-    bp[0].pontos = 300;
+    strcpy(bp[0].pontos, "300");
 
     // Jogador 2
     strcpy(bp[1].nome, "Micheli");
-    bp[1].pontos = 268;
+    strcpy(bp[1].pontos, "268");
 
     // Jogador 3
     strcpy(bp[2].nome, "Augusto");
-    bp[2].pontos = 232;
+    strcpy(bp[2].pontos, "232");
 
     // Jogador 4
     strcpy(bp[3].nome, "Joana");
-    bp[3].pontos = 143;
+    strcpy(bp[3].pontos, "143");
 
     // Jogador 5
     strcpy(bp[4].nome, "Alan");
-    bp[4].pontos = 97;
-
+    strcpy(bp[4].pontos, "127");
 
     ptArq = fopen("highscore.bin", "wb");
 
@@ -57,12 +55,11 @@ void criaJogadores(){
         printf("\nErro ao abrir arquivo.");
     }
     else{
-        for(i=0; i<5; i++){
-            if(fwrite (&bp[i], sizeof(BESTPLAYERS), 1, ptArq) != 1){
-                printf("\nErro na escrita.");
+        for (int i=0; i<5; i++){
+            if(fwrite (&bp[i], sizeof(BESTPLAYERS), 1 , ptArq) != 1){
+                printf("\nErro ao gravar arquivo.");
             }
         }
-
         fclose(ptArq);
     }
 }
@@ -71,27 +68,26 @@ void criaJogadores(){
 // PEGA ARQUIVO E PASSA PONTOS PARA INTEIRO
 int pegaArquivo(void){
 
+    FILE *ptArq;
     BESTPLAYERS bp[5];
     int pontuacaoInt[5];
-    FILE *ptArq;
     int i;
 
-    //abrindo o arquivo somente para leitura
+    //abrindo o arquivo_frase somente para leitura
     ptArq = fopen("highscore.bin", "rb");
 
     if(!ptArq){
         printf("\nErro ao abrir o arquivo.");
     }
     else{
-        while(!feof(ptArq)){
-            if(fread (&bp, sizeof(bp), 5, ptArq) == 5);
+        if(fread(&bp, sizeof(BESTPLAYERS), 5, ptArq) != 5){
+            printf("\nErro ao ler arquivo. PA");
         }
-
         fclose(ptArq);
     }
 
     for(i=0; i<5; i++){
-        pontuacaoInt[i] = bp[i].pontos;
+        pontuacaoInt[i] = atoi(bp[i].pontos);
     }
 
     return defineMaior(pontuacaoInt);
@@ -100,26 +96,25 @@ int pegaArquivo(void){
 // PRECISA ACHAR UM JEITO DE PEGAR PONTOS DO JOGADOR
 int defineMaior (int vet[]) {
     int posPontos = -1;
-    int pontos = 35;
-
+    int pontos = 215;
 
     if(/*jogador.*/pontos > vet[0]){
         posPontos = 0;
     }
 
-    if(/*jogador.*/pontos > vet[1]){
+    else if(/*jogador.*/pontos > vet[1]){
         posPontos = 1;
     }
 
-    if(/*jogador.*/pontos > vet[2]){
+    else if(/*jogador.*/pontos > vet[2]){
         posPontos = 2;
     }
 
-    if(/*jogador.*/pontos > vet[3]){
+    else if(/*jogador.*/pontos > vet[3]){
         posPontos = 3;
     }
 
-    if(/*jogador.*/pontos > vet[4]){
+    else if(/*jogador.*/pontos > vet[4]){
         posPontos = 4;
     }
 
@@ -128,13 +123,12 @@ int defineMaior (int vet[]) {
 
 void gravaArquivo(int lugar/*, JOGADOR *j*/){
     char nome[30];
-    int pontos = 250;
+    int pontos[5];
 
     strcpy(nome, "Fábio");
+    strcpy(pontos, "215");
 
     BESTPLAYERS bp[5];
-    int pontuacaoInt[5];
-    char strAuxiliar[10][15];
     FILE *ptArq;
     int i;
 
@@ -146,9 +140,10 @@ void gravaArquivo(int lugar/*, JOGADOR *j*/){
     }
     else{
         while(!feof(ptArq)){
-            if(fread (&bp, sizeof(bp), 5, ptArq) == 5);
+            if(fread (&bp, sizeof(BESTPLAYERS), 5, ptArq) != 5){
+                 printf("\nErro ao ler arquivo. GA");
+            }
         }
-
         fclose(ptArq);
     }
 
@@ -156,39 +151,48 @@ void gravaArquivo(int lugar/*, JOGADOR *j*/){
     switch(lugar){
         case 0: for(i=4; i<0; i--){
                     strcpy(bp[i].nome, bp[i-1].nome);
-                    bp[i].pontos = bp[i-1].pontos;
+                    strcpy(bp[i].pontos, bp[i-1].pontos);
                 }
 
-                strcpy(bp[0].nome, nome);
-                bp[0].pontos = pontos;
+                printf("\nEntrou 0 switch");
 
+                strcpy(bp[0].nome, nome);
+                strcpy(bp[0].pontos, pontos);
             break;
         case 1: for(i=4; i<1; i--){
                     strcpy(bp[i].nome, bp[i-1].nome);
-                    bp[i].pontos = bp[i-1].pontos;
+                    strcpy(bp[i].pontos, bp[i-1].pontos);
                 }
 
+                printf("\nEntrou 1 switch");
+
                 strcpy(bp[1].nome, nome);
-                bp[1].pontos = pontos;
+                strcpy(bp[1].pontos, pontos);
             break;
         case 2: for(i=4; i<2; i--){
                     strcpy(bp[i].nome, bp[i-1].nome);
-                    bp[i].pontos = bp[i-1].pontos;
+                    strcpy(bp[i].pontos, bp[i-1].pontos);
                 }
 
+                printf("\nEntrou 2 switch");
+
                 strcpy(bp[2].nome, nome);
-                bp[2].pontos = pontos;
+                strcpy(bp[2].pontos, pontos);
             break;
         case 3: for(i=4; i<3; i--){
                     strcpy(bp[i].nome, bp[i-1].nome);
-                    bp[i].pontos = bp[i-1].pontos;
+                    strcpy(bp[i].pontos, bp[i-1].pontos);
                 }
 
+                printf("\nEntrou 3 switch");
+
                 strcpy(bp[3].nome, nome);
-                bp[3].pontos = pontos;
+                strcpy(bp[3].pontos, pontos);
             break;
         case 4: strcpy(bp[4].nome, nome);
-                bp[4].pontos = pontos;
+                strcpy(bp[4].pontos, pontos);
+
+                printf("\nEntrou 4 switch");
             break;
     }
 
@@ -198,12 +202,12 @@ void gravaArquivo(int lugar/*, JOGADOR *j*/){
         printf("\nErro ao abrir o arquivo.");
     }
     else{
-        if(fwrite(&bp, sizeof(bp), 5, ptArq) != 5){
+        if(fwrite(&bp, sizeof(BESTPLAYERS), 5, ptArq) != 5){
             printf("\nErro ao gravar arquivo.");
         }
     }
 
-
+    fclose(ptArq);
 }
 
 #endif

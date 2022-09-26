@@ -276,23 +276,23 @@ void bateBloco2(void){
     for (int i=0; i<B_LINHA; i++){
         for (int j=0; j<B_COLUNA; j++){
             if (bloco[i][j].ativo == true){
-                    if (bola.posicao.x >= bloco[i][j].posicao.x && bola.posicao.x <= bloco[i][j].posicao.x + bloco[i][j].tamanho.x){
-                        if (bola.posicao.y - bola.raio <= bloco[i][j].posicao.y + bloco[i][j].tamanho.y && bola.posicao.y + bola.raio >= bloco[i][j].tamanho.y && /*bola.velocidade.x < 0*/){
+                if (bola.posicao.x >= bloco[i][j].posicao.x && bola.posicao.x <= bloco[i][j].posicao.x + bloco[i][j].tamanho.x){
+                    if (bola.posicao.y - bola.raio <= bloco[i][j].posicao.y + bloco[i][j].tamanho.y && bola.posicao.y + bola.raio >= bloco[i][j].tamanho.y /*&& bola.velocidade.x < 0*/){
 
-                            bloco[i][j].ativo = false;
-                            bola.velocidade.y *= -1;
-                            jogador.pontos = jogador.pontos + 20;
-                        }
-
+                        bloco[i][j].ativo = false;
+                        bola.velocidade.y *= -1;
+                        jogador.pontos = jogador.pontos + 20;
                     }
-                    if (bola.posicao.y >= bloco[i][j].posicao.y && bola.posicao.y <= bloco[i][j].posicao.y + bloco[i][j].tamanho.y){
-                        if (bola.posicao.x - bola.raio <= bloco[i][j].posicao.x + bloco[i][j].tamanho.x && bola.posicao.x + bola.raio >= bloco[i][j].tamanho.x && /*bola.velocidade.y < 0*/){
 
-                            bloco[i][j].ativo = false;
-                            bola.velocidade.y *= -1;
-                            jogador.pontos = jogador.pontos + 20;
-                        }
+                }
+                if (bola.posicao.y >= bloco[i][j].posicao.y && bola.posicao.y <= bloco[i][j].posicao.y + bloco[i][j].tamanho.y){
+                    if (bola.posicao.x - bola.raio <= bloco[i][j].posicao.x + bloco[i][j].tamanho.x && bola.posicao.x + bola.raio >= bloco[i][j].tamanho.x /*&& bola.velocidade.y < 0*/){
+
+                        bloco[i][j].ativo = false;
+                        bola.velocidade.y *= -1;
+                        jogador.pontos = jogador.pontos + 20;
                     }
+                }
             }
         }
     }

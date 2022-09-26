@@ -27,13 +27,13 @@ int main(){
     Music music = LoadMusicStream("C:/Users/Admin/Documents/Breakout_Game/musicaTrab.mp3");
     PlayMusicStream(music);*/
 
+    criaJogadores();
+
     while(!WindowShouldClose()){
 
         /*UpdateMusicStream(music);
         timePlayed = GetMusicTimePlayed(music)/GetMusicTimeLength(music);
         if (timePlayed > 1.0f) timePlayed = 1.0f;*/
-
-        criaJogadores();
 
         BeginDrawing();
 

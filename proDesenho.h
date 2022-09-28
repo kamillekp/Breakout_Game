@@ -65,6 +65,7 @@ void desenhaMenuOp (int opcao){ // Desenha o botão em outra cor quando ele é sel
 
 // Funções para a Pontuação:
 
+
 int desenhaPtos(){ // Desenha o menu Pontuação
 
     FILE *ptArq;
@@ -138,6 +139,80 @@ int desenhaPtos(){ // Desenha o menu Pontuação
 
 
 
+/*
+NÃO SEI QUE MERDA EU FIZ AQUI --> BEATRIZ era pra ta funcionando vo me matar
+void desenhaPtos(){
+
+    FILE *arq;
+    MELHOR jogadores[5];
+
+    arq = fopen("highscore.bin", "rb");
+
+    if(!arq){
+        printf("\nErro ao abrir o arquivo.");
+    }
+    else{
+        if(fread(&jogadores, sizeof(MELHOR), 5, arq) != 5){
+            printf("\nErro ao ler arquivo.");
+        }
+        fclose(arq);
+    }
+
+    limpaTela();
+    DrawText("TOP SCORES", 240, 60, 50, WHITE); // TITULO DO JOGO
+
+    //VOLTA
+    DrawRectangleGradientV(15, 15, 45, 45, ORANGE, GOLD); //QUADRADO
+        DrawRectangleLinesEx(volta1, 3, ORANGE);
+    DrawText("V", 23, 21, 40, BLACK);
+    DrawText("Voltar", 70, 21, 40, WHITE);
+
+    //POS 1
+    DrawRectangleGradientV(100, 130, 45, 45, ORANGE, GOLD); //QUADRADO
+        DrawRectangleLinesEx(pos1, 3, ORANGE);
+        DrawText("1", 118, 135, 40, BLACK); //POS
+
+    DrawText(jogadores[0].nome, 200, 135, 40, WHITE); // NOME
+    DrawText((TextFormat("%i", jogadores[0].pontos)), 600, 135, 40, WHITE); // PONTOS
+
+    //POS 2
+    DrawRectangleGradientV(100, 190, 45, 45, ORANGE, GOLD);
+        DrawRectangleLinesEx(pos2, 3, ORANGE);
+        DrawText("2", 113, 195, 40, BLACK);
+
+    DrawText(jogadores[1].nome, 200, 195, 40, WHITE); // NOME
+    DrawText((TextFormat("%i", jogadores[1].pontos)), 600, 195, 40, WHITE); // PONTOS
+
+    //POS 3
+    DrawRectangleGradientV(100, 250, 45, 45, ORANGE, GOLD);
+        DrawRectangleLinesEx(pos3, 3, ORANGE);
+        DrawText("3", 113, 255, 40, BLACK);
+
+    DrawText(jogadores[2].nome, 200, 255, 40, WHITE); // NOME
+    DrawText((TextFormat("%i", jogadores[2].pontos)), 600, 255, 40, WHITE); // PONTOS
+
+    //POS 4
+    DrawRectangleGradientV(100, 310, 45, 45, ORANGE, GOLD);
+        DrawRectangleLinesEx(pos4, 3, ORANGE);
+    DrawText("4", 113, 315, 40, BLACK);
+
+    DrawText(jogadores[3].nome, 200, 315, 40, WHITE); // NOME
+    DrawText((TextFormat("%i", jogadores[3].pontos)), 600, 315, 40, WHITE); // PONTOS
+
+
+    //POS 5
+    DrawRectangleGradientV(100, 370, 45, 45, ORANGE, GOLD);
+        DrawRectangleLinesEx(pos5, 3, ORANGE);
+        DrawText("5", 113, 375, 40, BLACK);
+
+    DrawText(jogadores[4].nome, 200, 375, 40, WHITE); // NOME
+    DrawText((TextFormat("%i", jogadores[4].pontos)), 600, 375, 40, WHITE); // PONTOS
+
+    fclose(arq);
+}
+
+*/
+
 // Funções para o jogo:
 
 /*
@@ -194,6 +269,45 @@ void desenhaPontosJogo(){               // Desenha a quantidade de pontos do Jog
 void desenhaVidas(){                    // Desenha a quantidade de vidas do Jogador
 
     for (int i = 0; i < jogador.vidas; i++) DrawRectangle(20 + 40*i, TELA_ALTURA - 30, 35, 10, WHITE);
+}
+
+int desenhaNome(char nome[30]){
+
+    int tela;
+    int tecla;
+    int letras=0;
+    tecla=GetCharPressed();
+
+
+    while(!IsKeyPressed(KEY_ENTER)){
+
+        BeginDrawing();
+        ClearBackground(BLACK);
+
+        DrawText("Qual o seu nome?", 190, 60, 50, WHITE);
+        DrawRectangleLinesEx(nom1, 6, ORANGE);
+
+        tecla=GetCharPressed();
+
+        while(tecla>0 && letras<10){
+
+            nome[letras] = tecla;
+            nome[letras+1] = '\0';
+            tecla = 0;
+            letras++;
+        }
+
+        tecla=GetCharPressed();
+
+        DrawText(nome, 220, 210, 70, WHITE);
+        EndDrawing();
+
+    }
+
+    tela = 0;
+
+    return tela;
+
 }
 
 /*
@@ -274,6 +388,7 @@ void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de tod
 
     if (pause){
         desenhaPause();
+        //desenhaProx();
     }
 
 }
@@ -288,9 +403,14 @@ void desenhaEndGame(){
     DrawText(TextFormat("%i", jogador.pontos), TELA_LARGURA/1.3, TELA_ALTURA/2, 45, WHITE);
 
     DrawRectangleGradientV(15, 15, 45, 45, ORANGE, GOLD); // quadrado
-            DrawRectangleLinesEx(volta1, 3, ORANGE);
-        DrawText("V", 23, 21, 40, BLACK);
-        DrawText("Voltar", 70, 21, 40, WHITE);
+        DrawRectangleLinesEx(volta1, 3, ORANGE);
+    DrawText("V", 23, 21, 40, BLACK);
+    DrawText("Voltar", 70, 21, 40, WHITE);
+
+    DrawRectangleGradientV(530, 390, 45, 45, ORANGE, GOLD); // quadrado
+        DrawRectangleLinesEx(prox, 3, ORANGE);
+    DrawText(">", 545, 385, 60, BLACK);
+    DrawText("Continuar", 590, 400, 40, WHITE);
 }
 
 
@@ -312,6 +432,19 @@ void desenhaPause(){
     DrawRectangleLinesEx(con3, 3, ORANGE);
     DrawText("S", 281, 264, 40, BLACK);
     DrawText("SAIR", 330, 270, 30, WHITE);*/
+
+}
+
+void desenhaProx(){
+
+    limpaTela();
+
+    DrawText("Voce passou de nivel!", 130, 170, 50, WHITE);
+
+    DrawRectangleGradientV(530, 390, 45, 45, ORANGE, GOLD); // quadrado
+        DrawRectangleLinesEx(prox, 3, ORANGE);
+    DrawText(">", 545, 385, 60, BLACK);
+    DrawText("Continuar", 590, 400, 40, WHITE);
 
 }
 

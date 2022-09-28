@@ -16,6 +16,8 @@ int main(){
 
     int telaAtual = 0;
     int posPontos;
+    char nome[30];
+    int nivel=0;
     //float timePlayed = 0.0f;
 
     initJogo();
@@ -53,28 +55,41 @@ int main(){
         }
 
         if (telaAtual == 2){            // Jogo
-
             atualizaJogoDesenho();
+            proxNivel = acabouBloco();
+        }
 
-            if(gameOver == 1){
-                limpaTela();
-                desenhaEndGame();
-
-                posPontos = pegaArquivo();   // pega arquivo de 5 melhores e vê se jogador.pontos é maior que um deles
-
-                // pega o posPontos, pra ver se pegaArquivo retornou algum resultado
-                if(posPontos != -1){
-                    //pedeNome do jogador
-                    gravaArquivo(posPontos/*, nomeJogador*/);
-                }
-
-                if(IsKeyPressed(KEY_V)){
-                    initJogo();
-                    telaAtual = 0;
-                    gameOver = 0; // pra voltar pro menu e poder jogar de novo
-                }
+        if (proxNivel == true){
+            nivel++;
+            desenhaProx();
+            initBloco(nivel);
+            if (IsKeyPressed(KEY_RIGHT)){ // NÃO SEI PQ ESSA DESGRAÇA NAO TA FUNCIONANDO MAS ERA PRA TÁ!!!!
+                telaAtual = 2;
             }
         }
+
+        if(gameOver == 1){
+            limpaTela();
+            desenhaEndGame();
+
+            posPontos = pegaArquivo();   // pega arquivo de 5 melhores e vê se jogador.pontos é maior que um deles
+
+            // pega o posPontos, pra ver se pegaArquivo retornou algum resultado
+            if(posPontos != -1 && IsKeyPressed(KEY_RIGHT)){
+
+                telaAtual = desenhaNome(nome);
+                gravaArquivo(posPontos/*, nomeJogador*/);
+                gameOver = 0;
+
+            }
+
+            if(IsKeyPressed(KEY_V)){
+                initJogo();
+                telaAtual = 0;
+                gameOver = 0; // pra voltar pro menu e poder jogar de novo
+            }
+        }
+    //}
 
         EndDrawing();
     }

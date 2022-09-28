@@ -20,12 +20,18 @@
 #define TELA_NOME "BreakoutINF - Beatriz e Kamille"
 #define TELA_ALTURA 450
 #define TELA_LARGURA 800
-#define MAX_VIDAS 1
+#define MAX_VIDAS 10
 
 // Definição de variáveis pros blocos:
 #define B_LINHA 5
 #define B_COLUNA 10
 #define B_ESPACO 5
+
+// Definição de variáveis para main
+
+    bool pause = false;
+    bool gameOver = false;
+    bool proxNivel = false;
 
 
 // Definição de variáveis para a proMenu.h
@@ -55,6 +61,11 @@
     Rectangle con2 = {270, 195, 45, 45};
     Rectangle con3 = {270, 260, 45, 45};
 
+    // Retangulos para o menu Nome:
+    Rectangle nom1 = {190, 190, 440, 100};
+
+    // Retangulos para Continuar:
+    Rectangle prox = {530, 390, 45, 45};
 
 // Definições de structs para a proJogo.h
 
@@ -86,9 +97,6 @@
 
     Bloco bloco[B_LINHA][B_COLUNA];
 
-// Definição de variáveis
-
-    bool pause = false;
-    bool gameOver = false;
+// Definições de structs para a proHighscore.h
 
 #endif

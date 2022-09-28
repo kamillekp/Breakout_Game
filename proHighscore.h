@@ -1,22 +1,20 @@
+// Definição:
 
 #ifndef proHighscore_h
 #define proHighscore_h
 
-//BIBLIOTECAS:
+/* Essa biblioteca vai ser usada para definir todas as funções necessárias para a criação da lógica do highscore, utilizando
+as funções predefinidas da biblioteca Raylib */
 
+// Bibliotecas utilizadas:
 #include "raylib.h"
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <math.h>
-#include <ctype.h>
 
 #include "proDesenho.h"
 #include "proJogo.h"
-#include "proMenu.h"
 #include "praDefinir.h"
+#include "proMenu.h"
+#include "proPause.h"
 #include "proPause.h"
 
 typedef struct {
@@ -209,5 +207,89 @@ void gravaArquivo(int lugar/*, JOGADOR *j*/){
 
     fclose(ptArq);
 }
+
+/*
+
+typedef struct {
+    char nome[30];
+    char pontos[5];
+} BESTPLAYERS;
+
+// BEATRIZ
+
+    typedef struct Melhor{
+        char nome[30];
+        int pontos;
+    }MELHOR;
+
+    MELHOR melhores[5];
+
+void ficticiaLista (MELHOR melhores[]){ // Cria uma lista fictícia de jogadores
+
+    char nome1[30]="Beatriz";
+    char nome2[30]="Igor";
+    char nome3[30]="Kamille";
+    char nome4[30]="Alguém";
+    char nome5[30]="Ninguém";
+
+    strcpy(melhores[0].nome,nome1);
+    strcpy(melhores[0].nome,nome2);
+    strcpy(melhores[0].nome,nome3);
+    strcpy(melhores[0].nome,nome4);
+    strcpy(melhores[0].nome,nome5);
+
+    for (int i=0; i<5; i++){
+        melhores[i].pontos = i*150;
+    }
+}
+
+void ordenaLista(MELHOR melhores[]){
+
+    int ranking = 5;
+
+    for(int i=0; i<(ranking-1); i++){
+        for(int j=0; j<(ranking-1-i); j++){
+            if (melhores[j+1].pontos > melhores[j].pontos){
+                trocaLista(&melhores[j+1], &melhores[j]);
+            }
+        }
+    }
+}
+
+void trocaLista (MELHOR jog1, MELHOR jog2){ // Coloca o Jogador1 no lugar do Jogador2 e vice versa.
+
+    MELHOR temp = jog2;
+    jog2=jog1;
+    jog1=temp;
+
+}
+
+void insereLista (MELHOR jog, int pts, char nome[30]){ // Insere um jogador na lista :: recebe um MELHOR, jogador.pontos e jogador.nome
+
+    FILE *arq;
+    MELHOR inserido;
+    MELHOR jogadores[5];
+
+    strcpy(inserido.nome, nome);
+    inserido.pontos = pts;
+
+    arq = fopen("highscore.bin", "rb");
+    fread(&jogadores, sizeof(MELHOR), 5, arq); // Lê os jogadores do top 5
+    fclose(arq);
+
+    jogadores[4] = inserido; // Troca o último jogador da lista pelo jogador a ser inserido
+    fazLista(jogadores, arq);
+
+}
+
+void fazLista(MELHOR jogadores[5], FILE *arq){
+
+    ordenaLista(jogadores);
+    arq = fopen("highscore.bin", "wb");
+    fwrite(jogadores, sizeof(MELHOR), 5, arq);
+    fclose(arq);
+
+}
+*/
 
 #endif

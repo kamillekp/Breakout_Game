@@ -34,31 +34,14 @@ void initJogo(void){
     bola.ativa = false;
     bola.cor = ORANGE;
 
-    initBloco();
-
-    /*// Inicializa blocos
-    int i, j, espaco, altura=0;
-
-
-    for (i=0; i<B_LINHA; i++){
-        espaco=0;
-
-        for (j=0; j<B_COLUNA; j++){
-            bloco[i][j].tamanho = (Vector2){65, 20};
-            bloco[i][j].posicao = (Vector2){j*bloco[i][j].tamanho.x + 39 + espaco, i*bloco[i][j].tamanho.y + 35 + altura};
-            bloco[i][j].ativo = true;
-
-            espaco = espaco + 8; // espaço entre os blocos
-        }
-        altura = altura + 8; // altura entre os blocos
-    }*/
+    initBloco(0);
 }
 
-void initBloco(void){
+void initBloco(int nivel){
 
     char bloco_cores[B_LINHA][B_COLUNA];
 
-    pegaMatrizBlocos(bloco_cores);
+    pegaMatrizBlocos(bloco_cores, nivel);
 
     int i, j, espaco, altura=0;
 
@@ -94,11 +77,22 @@ void initBloco(void){
     }
 }
 
-void pegaMatrizBlocos (char blocos[5][10]){
+void pegaMatrizBlocos (char blocos[5][10], int nivel){
     FILE *ptrBlocos;
     int i = 0, j = 0;
 
-    ptrBlocos = fopen("nivel1.txt", "r");                   // abre o arquivo para leitura
+    char nomeArq[30];
+
+    switch(nivel){
+        case 0: strcpy(nomeArq,"nivel1.txt");
+                break;
+        case 1: strcpy(nomeArq,"nivel2.txt");
+                break;
+        case 2: strcpy(nomeArq,"nivel3.txt");
+                break;
+    }
+
+    ptrBlocos = fopen(nomeArq, "r");                   // abre o arquivo para leitura
     for(i=0; i<5; i++){
         for(j=0; j<10; j++){
             blocos[i][j] = fgetc(ptrBlocos);                // pega cada caractere do arquivo
@@ -187,7 +181,7 @@ void bateJogador(void){                                         // Função para a
     }
 }
 
-void bateBloco(void){
+void bateBloco3(void){
 
     int i, j;
     for (i=0; i<B_LINHA; i++){
@@ -298,9 +292,47 @@ void bateBloco2(void){
     }
 }
 
+void bateBloco(/*Bloco bloco[][B_COLUNA]*/){
+
+    for (int i=0; i<B_LINHA; i++){
+        for (int j=0; j<B_COLUNA; j++){
+            if (bloco[i][j].ativo == true){ // Se o bloco estiver ativo
+                if ((CheckCollisionCircleRec (bola.posicao, bola.raio,
+                                            (Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
+                                            bloco[i][j].tamanho.y})) /*&& (bola.velocidade.x < 0)*/){
+
+                bloco[i][j].ativo = false;
 
 
-void atualizaJogo(void){                                    // Atualiza a lógica do jogo
+                bola.velocidade.y *= -1;
+                jogador.pontos = jogador.pontos + 20;
+                }
+            }
+        }
+    }
+}
+
+
+bool acabouBloco (void){
+
+    bool proxNivel;
+
+    for (int i=0; i<B_LINHA; i++){
+        for (int j=0; j<B_COLUNA; j++){
+            if (bloco[i][j].ativo == true){
+
+                proxNivel = false;
+                return proxNivel;
+            }
+        }
+   }
+
+    proxNivel = true;
+    return proxNivel;
+}
+
+
+void atualizaJogo(){                                    // Atualiza a lógica do jogo
 
     if (IsKeyPressed('P')){
         pause = !pause;
@@ -314,13 +346,14 @@ void atualizaJogo(void){                                    // Atualiza a lógica
         bateParede();
         bateJogador();
         //bateBlocoCol();
-        //bateBloco();
-        bateBloco2();
+        //bateBloco3();
+        //bateBloco2();
+        bateBloco(/*bloco*/);
     }
 
 }
 
-void atualizaJogoDesenho(void){                             // Desenha o jogo com a lógica atualizada
+void atualizaJogoDesenho(){                             // Desenha o jogo com a lógica atualizada
 
     limpaTela();
     atualizaJogo();

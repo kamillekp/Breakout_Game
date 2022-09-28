@@ -18,6 +18,7 @@ int main(){
     int posPontos;
     char nome[30];
     int nivel=0;
+    int flagC=0;
     //float timePlayed = 0.0f;
 
     initJogo();
@@ -60,11 +61,39 @@ int main(){
         }
 
         if (proxNivel == true){
-            nivel++;
-            desenhaProx();
-            initBloco(nivel);
-            if (IsKeyPressed(KEY_RIGHT)){ // NÃO SEI PQ ESSA DESGRAÇA NAO TA FUNCIONANDO MAS ERA PRA TÁ!!!!
+
+            if (nivel == 3){
+
+                while(IsKeyUp(KEY_C) && flagC==0){
+
+                    BeginDrawing();
+
+                    desenhaFim();
+
+                    EndDrawing();
+
+                    if (IsKeyPressed(KEY_C)){
+                        flagC = 1;
+                    }
+                }
+                proxNivel = false;
+                gameOver = 1;
+            }
+            else{
+                nivel++;
+                initBloco(nivel);
+                initBola();
+                jogador.posicao = (Vector2){TELA_LARGURA/2, TELA_ALTURA*7/8};
+
+                while(IsKeyUp(KEY_C) && nivel<3){
+                    BeginDrawing();
+
+                    desenhaProx();
+
+                    EndDrawing();
+                }
                 telaAtual = 2;
+                proxNivel = false;
             }
         }
 
@@ -75,7 +104,7 @@ int main(){
             posPontos = pegaArquivo();   // pega arquivo de 5 melhores e vê se jogador.pontos é maior que um deles
 
             // pega o posPontos, pra ver se pegaArquivo retornou algum resultado
-            if(posPontos != -1 && IsKeyPressed(KEY_RIGHT)){
+            if(posPontos != -1 && IsKeyPressed(KEY_C)){
 
                 telaAtual = desenhaNome(nome);
                 gravaArquivo(posPontos/*, nomeJogador*/);

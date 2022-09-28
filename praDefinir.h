@@ -93,6 +93,7 @@
         Vector2 tamanho;
         bool ativo;
         Color cor;
+        int especial;
     } Bloco;
 
     Bloco bloco[B_LINHA][B_COLUNA];

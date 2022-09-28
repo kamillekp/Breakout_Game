@@ -28,11 +28,7 @@ void initJogo(void){
     jogador.pontos = 0;
 
     // Inicializa bola
-    bola.posicao = (Vector2) {TELA_LARGURA/2, TELA_ALTURA*2/3};
-    bola.velocidade = (Vector2){0, 0};
-    bola.raio = 7;
-    bola.ativa = false;
-    bola.cor = ORANGE;
+    initBola();
 
     initBloco(0);
 }
@@ -52,19 +48,31 @@ void initBloco(int nivel){
             bloco[i][j].tamanho = (Vector2){65, 20};
             bloco[i][j].posicao = (Vector2){j*bloco[i][j].tamanho.x + 39 + espaco, i*bloco[i][j].tamanho.y + 35 + altura};
             switch (bloco_cores[i][j]){
-                case 'Y': bloco[i][j].cor = YELLOW;
+                case 'B': bloco[i][j].cor = BLUE;
+                          bloco[i][j].ativo = true;
+                          break;
+                case 'G': bloco[i][j].cor = LIME;
                           bloco[i][j].ativo = true;
                           break;
                 case 'R': bloco[i][j].cor = RED;
                           bloco[i][j].ativo = true;
                           break;
-                case 'B': bloco[i][j].cor = DARKBLUE;
+                case 'P': bloco[i][j].cor = MAGENTA;
                           bloco[i][j].ativo = true;
                           break;
-                case 'X': bloco[i][j].cor = DARKPURPLE;
+                case 'Y': bloco[i][j].cor = YELLOW;
                           bloco[i][j].ativo = true;
                           break;
-                case 'G': bloco[i][j].cor = DARKGREEN;
+                case 'V': bloco[i][j].cor = GREEN;
+                          bloco[i][j].especial = 1;
+                          bloco[i][j].ativo = true;
+                          break;
+                case 'A': bloco[i][j].cor = SKYBLUE;
+                          bloco[i][j].especial = 2;
+                          bloco[i][j].ativo = true;
+                          break;
+                case 'M': bloco[i][j].cor = WHITE;
+                          bloco[i][j].especial = 3;
                           bloco[i][j].ativo = true;
                           break;
                 case '-': bloco[i][j].ativo = false;
@@ -77,6 +85,15 @@ void initBloco(int nivel){
     }
 }
 
+void initBola(void){
+
+    bola.posicao = (Vector2) {TELA_LARGURA/2, TELA_ALTURA*2/3};
+    bola.velocidade = (Vector2){0, 0};
+    bola.raio = 7;
+    bola.ativa = false;
+    bola.cor = ORANGE;
+
+}
 void pegaMatrizBlocos (char blocos[5][10], int nivel){
     FILE *ptrBlocos;
     int i = 0, j = 0;
@@ -119,14 +136,14 @@ void mexeRaquete(void){                                     // Função da lógica 
 }
 
 void lancaBola(void){                                       // Função para a lógica do lançamento da bola
-    int random = (- 2 + (rand() % (2 + 2 + 1)));
+    //int random = (- 2 + (rand() % (2 + 2 + 1)));
 
     if (!bola.ativa){                                       // Se a bola não está ativa (começo do jogo)
 
         if (IsKeyPressed(KEY_SPACE)){                       // Se apertar no espaço, a bola fica ativa
 
             bola.ativa = true;
-            bola.velocidade = (Vector2){random, -7};
+            bola.velocidade = (Vector2){0, -7};
         }
      }
 }
@@ -158,6 +175,7 @@ void bateParede(void){                                      // Função para a lóg
 
         bola.velocidade = (Vector2){0, 0};
         bola.ativa = false;
+        bola.raio = 7;
 
         jogador.vidas--;
 
@@ -303,9 +321,22 @@ void bateBloco(/*Bloco bloco[][B_COLUNA]*/){
 
                 bloco[i][j].ativo = false;
 
+                switch (bloco[i][j].especial){
+                    case 0: bola.velocidade.y *= -1;
+                            jogador.pontos = jogador.pontos + 20;
+                            break;
+                    case 1: bola.velocidade.y *= -1.5;
+                            jogador.pontos = jogador.pontos + 20;
+                            break;
+                    case 2: bola.velocidade.y *= -1;
+                            jogador.pontos = jogador.pontos + 20;
+                            bola.raio *= 2;
+                            break;
+                    case 3: bola.velocidade.y *= -1;
+                            jogador.pontos = jogador.pontos + 40;
+                            break;
+                }
 
-                bola.velocidade.y *= -1;
-                jogador.pontos = jogador.pontos + 20;
                 }
             }
         }

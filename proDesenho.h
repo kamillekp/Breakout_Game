@@ -372,10 +372,26 @@ void desenhaBlocos3(void){
         for (int j=0; j<B_COLUNA; j++){ // Anda na matriz
             if (bloco[i][j].ativo == true){
                 DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, bloco[i][j].cor);
+                /*if (bloco[i][j].especial != 0){
+                    DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
+                                        bloco[i][j].tamanho.y}, 3, GOLD);
+                }*/
+                switch (bloco[i][j].especial){
+                    case 1: DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
+                                bloco[i][j].tamanho.y}, 3, DARKGREEN);
+                            break;
+                    case 2: DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
+                                bloco[i][j].tamanho.y}, 3, DARKBLUE);
+                            break;
+                    case 3: DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
+                                bloco[i][j].tamanho.y}, 3, GOLD);
+                            break;
+                }
             }
         }
     }
 }
+
 
 
 void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
@@ -409,7 +425,8 @@ void desenhaEndGame(){
 
     DrawRectangleGradientV(530, 390, 45, 45, ORANGE, GOLD); // quadrado
         DrawRectangleLinesEx(prox, 3, ORANGE);
-    DrawText(">", 545, 385, 60, BLACK);
+    //DrawText(">", 545, 385, 60, BLACK);
+    DrawText("C", 539, 392, 45, BLACK);
     DrawText("Continuar", 590, 400, 40, WHITE);
 }
 
@@ -443,7 +460,20 @@ void desenhaProx(){
 
     DrawRectangleGradientV(530, 390, 45, 45, ORANGE, GOLD); // quadrado
         DrawRectangleLinesEx(prox, 3, ORANGE);
-    DrawText(">", 545, 385, 60, BLACK);
+    DrawText("C", 539, 392, 45, BLACK);
+    DrawText("Continuar", 590, 400, 40, WHITE);
+
+}
+
+void desenhaFim(){
+
+    limpaTela();
+
+    DrawText("Voce zerou o jogo!", 130, 170, 50, WHITE);
+
+    DrawRectangleGradientV(530, 390, 45, 45, ORANGE, GOLD); // quadrado
+        DrawRectangleLinesEx(prox, 3, ORANGE);
+    DrawText("C", 539, 392, 45, BLACK);
     DrawText("Continuar", 590, 400, 40, WHITE);
 
 }

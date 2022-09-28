@@ -37,6 +37,8 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="nivel1.txt" />
+		<Unit filename="nivel2.txt" />
+		<Unit filename="nivel3.txt" />
 		<Unit filename="praDefinir.h" />
 		<Unit filename="proDesenho.h" />
 		<Unit filename="proHighscore.h" />

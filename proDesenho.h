@@ -372,10 +372,6 @@ void desenhaBlocos3(void){
         for (int j=0; j<B_COLUNA; j++){ // Anda na matriz
             if (bloco[i][j].ativo == true){
                 DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, bloco[i][j].cor);
-                /*if (bloco[i][j].especial != 0){
-                    DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
-                                        bloco[i][j].tamanho.y}, 3, GOLD);
-                }*/
                 switch (bloco[i][j].especial){
                     case 1: DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
                                 bloco[i][j].tamanho.y}, 3, DARKGREEN);

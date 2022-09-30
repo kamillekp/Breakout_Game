@@ -57,7 +57,7 @@ void initBloco(int nivel){
                 case 'R': bloco[i][j].cor = RED;
                           bloco[i][j].ativo = true;
                           break;
-                case 'P': bloco[i][j].cor = MAGENTA;
+                case 'X': bloco[i][j].cor = MAGENTA;
                           bloco[i][j].ativo = true;
                           break;
                 case 'Y': bloco[i][j].cor = YELLOW;
@@ -75,7 +75,8 @@ void initBloco(int nivel){
                           bloco[i][j].especial = 3;
                           bloco[i][j].ativo = true;
                           break;
-                case '-': bloco[i][j].ativo = false;
+                case '-': bloco[i][j].cor = BLANK;
+                          bloco[i][j].ativo = false;
                           break;
             }
 

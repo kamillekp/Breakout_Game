@@ -15,11 +15,23 @@
 int main(){
 
     int telaAtual = 0;
-    int posPontos;
-    char nome[30];
+    //int posPontos;
     int nivel=0;
     int flagC=0;
+
     //float timePlayed = 0.0f;
+
+    MELHOR ultimo;
+    FILE *arq;
+    MELHOR melhores[5];
+
+    char nome[30];
+
+    // QUANDO PRECISAR VOLTAR A LISTA PRO INICIO DESCOMENTA AS FUNÇÕES
+    // Coloca a lista ficticia no vetor
+    //ficticiaLista(melhores);
+    // Coloca no arquivo e ordena ela
+    //fazLista(melhores, arq);
 
     initJogo();
 
@@ -30,7 +42,7 @@ int main(){
     Music music = LoadMusicStream("C:/Users/Admin/Documents/Breakout_Game/musicaTrab.mp3");
     PlayMusicStream(music);*/
 
-    criaJogadores();
+    //criaJogadores();
 
     while(!WindowShouldClose()){
 
@@ -48,7 +60,7 @@ int main(){
         }
 
         if (telaAtual == 1){            // Pontuação
-             desenhaPtos();
+             desenhaPtos(arq);
 
              if(IsKeyPressed(KEY_V)){   // Volta pro Menu
                 telaAtual = 0;
@@ -101,14 +113,28 @@ int main(){
             limpaTela();
             desenhaEndGame();
 
+            /*
+
             posPontos = pegaArquivo();   // pega arquivo de 5 melhores e vê se jogador.pontos é maior que um deles
 
             // pega o posPontos, pra ver se pegaArquivo retornou algum resultado
             if(posPontos != -1 && IsKeyPressed(KEY_C)){
 
                 telaAtual = desenhaNome(nome);
-                gravaArquivo(posPontos/*, nomeJogador*/);
+                gravaArquivo(posPontos/*, nomeJogador*///);
+              //gameOver = 0;
+
+            //}
+
+
+            ultimo = ultimoLista();
+
+            if (jogador.pontos>ultimo.pontos){
+                telaAtual = desenhaNome(nome);
+                insereLista(jogador.pontos, nome);
+                initJogo();
                 gameOver = 0;
+                bzero(nome, 30);
 
             }
 

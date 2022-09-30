@@ -17,6 +17,8 @@ as funções predefinidas da biblioteca Raylib */
 #include "proPause.h"
 #include "proPause.h"
 
+/*
+
 typedef struct {
     char nome[30];
     char pontos[5];
@@ -96,30 +98,30 @@ int defineMaior (int vet[]) {
     int posPontos = -1;
     int pontos = 215;
 
-    if(/*jogador.*/pontos > vet[0]){
+    if(/*jogador.pontos > vet[0]){
         posPontos = 0;
     }
 
-    else if(/*jogador.*/pontos > vet[1]){
+    else if(/*jogador.pontos > vet[1]){
         posPontos = 1;
     }
 
-    else if(/*jogador.*/pontos > vet[2]){
+    else if(/*jogador.pontos > vet[2]){
         posPontos = 2;
     }
 
-    else if(/*jogador.*/pontos > vet[3]){
+    else if(/*jogador.pontos > vet[3]){
         posPontos = 3;
     }
 
-    else if(/*jogador.*/pontos > vet[4]){
+    else if(/*jogador.pontos > vet[4]){
         posPontos = 4;
     }
 
     return posPontos;
 }
 
-void gravaArquivo(int lugar/*, JOGADOR *j*/){
+void gravaArquivo(int lugar/*, JOGADOR *j){
     char nome[30];
     int pontos[5];
 
@@ -208,14 +210,7 @@ void gravaArquivo(int lugar/*, JOGADOR *j*/){
     fclose(ptArq);
 }
 
-/*
-
-typedef struct {
-    char nome[30];
-    char pontos[5];
-} BESTPLAYERS;
-
-// BEATRIZ
+*/
 
     typedef struct Melhor{
         char nome[30];
@@ -229,67 +224,96 @@ void ficticiaLista (MELHOR melhores[]){ // Cria uma lista fictícia de jogadores
     char nome1[30]="Beatriz";
     char nome2[30]="Igor";
     char nome3[30]="Kamille";
-    char nome4[30]="Alguém";
-    char nome5[30]="Ninguém";
+    char nome4[30]="Joao";
+    char nome5[30]="Marcelo";
 
     strcpy(melhores[0].nome,nome1);
-    strcpy(melhores[0].nome,nome2);
-    strcpy(melhores[0].nome,nome3);
-    strcpy(melhores[0].nome,nome4);
-    strcpy(melhores[0].nome,nome5);
+    strcpy(melhores[1].nome,nome2);
+    strcpy(melhores[2].nome,nome3);
+    strcpy(melhores[3].nome,nome4);
+    strcpy(melhores[4].nome,nome5);
 
     for (int i=0; i<5; i++){
         melhores[i].pontos = i*150;
     }
 }
 
+void fazLista (MELHOR melhores[], FILE *arq){
+
+    ordenaLista(melhores);
+
+    arq = fopen("top.bin", "wb");
+
+    if (fwrite(melhores, sizeof(MELHOR), 5, arq) != 5)
+        printf("Erro na escrita!\n");
+
+    fclose(arq);
+
+    for(int i=0; i<5; i++){
+        printf("%s     %d\n", melhores[i].nome, melhores[i].pontos);
+    }
+
+}
+
 void ordenaLista(MELHOR melhores[]){
 
-    int ranking = 5;
+	MELHOR temp;
 
-    for(int i=0; i<(ranking-1); i++){
-        for(int j=0; j<(ranking-1-i); j++){
-            if (melhores[j+1].pontos > melhores[j].pontos){
-                trocaLista(&melhores[j+1], &melhores[j]);
+    for (int i=0; i<5; i++){
+        for (int j=0; j<5; j++){
+            if (melhores[j].pontos < melhores[i].pontos){
+                temp = melhores[i];
+                melhores[i] = melhores[j];
+                melhores[j] = temp;
             }
         }
     }
 }
 
-void trocaLista (MELHOR jog1, MELHOR jog2){ // Coloca o Jogador1 no lugar do Jogador2 e vice versa.
-
-    MELHOR temp = jog2;
-    jog2=jog1;
-    jog1=temp;
-
-}
-
-void insereLista (MELHOR jog, int pts, char nome[30]){ // Insere um jogador na lista :: recebe um MELHOR, jogador.pontos e jogador.nome
+MELHOR ultimoLista(){
 
     FILE *arq;
-    MELHOR inserido;
-    MELHOR jogadores[5];
+    MELHOR ultimo;
+    MELHOR melhores[5];
 
-    strcpy(inserido.nome, nome);
-    inserido.pontos = pts;
+    arq = fopen("top.bin", "rb");
 
-    arq = fopen("highscore.bin", "rb");
-    fread(&jogadores, sizeof(MELHOR), 5, arq); // Lê os jogadores do top 5
+    for (int i=0; i<5; i++){
+        if (fread(&melhores[i], sizeof(MELHOR), 1, arq) != 1){
+            printf("Erro na leitura!\n");
+        }
+    }
+
     fclose(arq);
 
-    jogadores[4] = inserido; // Troca o último jogador da lista pelo jogador a ser inserido
-    fazLista(jogadores, arq);
+    ultimo = melhores[4];
 
+    return ultimo;
 }
 
-void fazLista(MELHOR jogadores[5], FILE *arq){
+void insereLista(int pts, char nome[]){
 
-    ordenaLista(jogadores);
-    arq = fopen("highscore.bin", "wb");
-    fwrite(jogadores, sizeof(MELHOR), 5, arq);
+    FILE *arq;
+    MELHOR jogador;
+    MELHOR melhores[5];
+
+    strcpy(jogador.nome, nome);
+    jogador.pontos = pts;
+
+    arq = fopen("top.bin", "rb");
+
+    for (int i=0; i<5; i++){
+        if (fread(&melhores[i], sizeof(MELHOR), 1, arq) != 1){
+            printf("Erro na leitura!\n");
+        }
+    }
+
     fclose(arq);
 
+    melhores[4] = jogador;
+
+    fazLista(melhores, arq);
+
 }
-*/
 
 #endif

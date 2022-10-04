@@ -33,21 +33,82 @@ void initJogo(void){
     initBloco(0);
 }
 
+char pegaMatrizBlocos (FILE *ARQUIVO){
+
+    //FILE *ptrBlocos;
+    int i = 0, j = 0;
+
+    char nomeArq[30];
+    char cor;
+
+    /*
+
+    switch(nivel){
+        case 0: strcpy(nomeArq,"nivel1.txt");
+                break;
+        case 1: strcpy(nomeArq,"nivel2.txt");
+                break;
+        case 2: strcpy(nomeArq,"nivel3.txt");
+                break;
+    }
+
+    ptrBlocos = fopen(nomeArq, "r");                   // abre o arquivo para leitura
+
+    */
+
+    do{
+        cor = fgetc(ARQUIVO);
+        printf("%c\n", cor);
+
+    }while(cor == ' ' || cor == '\n');
+
+    /*
+    for(i=0; i<5; i++){
+        for(j=0; j<10; j++){
+            blocos[i][j] = fgetc(ptrBlocos);                // pega cada caractere do arquivo
+            printf("%c", blocos[i][j]);
+        }
+    }
+
+    */
+
+    //fclose(ptrBlocos);
+
+    return cor;
+}
+
+
 void initBloco(int nivel){
 
-    char bloco_cores[B_LINHA][B_COLUNA];
+    //char bloco_cores[B_LINHA][B_COLUNA];
 
-    pegaMatrizBlocos(bloco_cores, nivel);
+    //pegaMatrizBlocos(bloco_cores, nivel);
+
+    FILE *arq;
+
+    switch(nivel){
+        case 0: arq = fopen("nivel1.txt", "r");
+                break;
+        case 1: arq = fopen("nivel2.txt", "r");
+                break;
+        case 2: arq = fopen("nivel3.txt", "r");
+                break;
+    }
 
     int i, j, espaco, altura=0;
+    char cor;
 
     for (i=0; i<B_LINHA; i++){
         espaco=0;
 
         for (j=0; j<B_COLUNA; j++){
+
+            cor = pegaMatrizBlocos(arq);
+
             bloco[i][j].tamanho = (Vector2){65, 20};
             bloco[i][j].posicao = (Vector2){j*bloco[i][j].tamanho.x + 39 + espaco, i*bloco[i][j].tamanho.y + 35 + altura};
-            switch (bloco_cores[i][j]){
+
+            switch (cor){
                 case 'B': bloco[i][j].cor = BLUE;
                           bloco[i][j].ativo = true;
                           break;
@@ -84,7 +145,11 @@ void initBloco(int nivel){
         }
         altura = altura + 8; // altura entre os blocos
     }
+
+    fclose(arq);
+
 }
+
 
 void initBola(void){
 
@@ -96,30 +161,6 @@ void initBola(void){
 
 }
 
-void pegaMatrizBlocos (char blocos[5][10], int nivel){
-    FILE *ptrBlocos;
-    int i = 0, j = 0;
-
-    char nomeArq[30];
-
-    switch(nivel){
-        case 0: strcpy(nomeArq,"nivel1.txt");
-                break;
-        case 1: strcpy(nomeArq,"nivel2.txt");
-                break;
-        case 2: strcpy(nomeArq,"nivel3.txt");
-                break;
-    }
-
-    ptrBlocos = fopen(nomeArq, "r");                   // abre o arquivo para leitura
-    for(i=0; i<5; i++){
-        for(j=0; j<10; j++){
-            blocos[i][j] = fgetc(ptrBlocos);                // pega cada caractere do arquivo
-        }
-    }
-
-    fclose(ptrBlocos);
-}
 
 void mexeRaquete(void){                                     // Função da lógica do movimento da raquete
 

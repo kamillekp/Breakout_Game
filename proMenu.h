@@ -17,8 +17,8 @@ as funções predefinidas da biblioteca Raylib */
 #include "proPause.h"
 #include "proPause.h"
 
-// Funções para o Menu principal:
 
+// Funções para o Menu principal:
 void upDownMenu (int op){ // Muda a opção de acordo com as teclas pressionadas
 
     if (IsKeyPressed(KEY_UP)){
@@ -40,14 +40,13 @@ void upDownMenu (int op){ // Muda a opção de acordo com as teclas pressionadas
                 break;
             case 2: *ptr_op = 0;
                 break;
-
         }
     }
 
     desenhaMenuOp(op);
 }
 
-int decideTela(int *telaAtual){ // Decide a tela que vai ser mostrada
+int decideTela(int *telaAtual){         // Decide a tela que vai ser mostrada
 
     if (IsKeyUp(KEY_ENTER)){
         upDownMenu(op);
@@ -64,6 +63,5 @@ int decideTela(int *telaAtual){ // Decide a tela que vai ser mostrada
         }
     }
 }
-
 
 #endif

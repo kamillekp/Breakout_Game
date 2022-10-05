@@ -35,26 +35,7 @@ void initJogo(void){
 
 char pegaMatrizBlocos (FILE *ARQUIVO){
 
-    //FILE *ptrBlocos;
-    int i = 0, j = 0;
-
-    char nomeArq[30];
     char cor;
-
-    /*
-
-    switch(nivel){
-        case 0: strcpy(nomeArq,"nivel1.txt");
-                break;
-        case 1: strcpy(nomeArq,"nivel2.txt");
-                break;
-        case 2: strcpy(nomeArq,"nivel3.txt");
-                break;
-    }
-
-    ptrBlocos = fopen(nomeArq, "r");                   // abre o arquivo para leitura
-
-    */
 
     do{
         cor = fgetc(ARQUIVO);
@@ -62,27 +43,10 @@ char pegaMatrizBlocos (FILE *ARQUIVO){
 
     }while(cor == ' ' || cor == '\n');
 
-    /*
-    for(i=0; i<5; i++){
-        for(j=0; j<10; j++){
-            blocos[i][j] = fgetc(ptrBlocos);                // pega cada caractere do arquivo
-            printf("%c", blocos[i][j]);
-        }
-    }
-
-    */
-
-    //fclose(ptrBlocos);
-
     return cor;
 }
 
-
 void initBloco(int nivel){
-
-    //char bloco_cores[B_LINHA][B_COLUNA];
-
-    //pegaMatrizBlocos(bloco_cores, nivel);
 
     FILE *arq;
 
@@ -150,7 +114,6 @@ void initBloco(int nivel){
 
 }
 
-
 void initBola(void){
 
     bola.posicao = (Vector2) {TELA_LARGURA/2, TELA_ALTURA*2/3};
@@ -160,7 +123,6 @@ void initBola(void){
     bola.cor = ORANGE;
 
 }
-
 
 void mexeRaquete(void){                                     // Função da lógica do movimento da raquete
 
@@ -179,7 +141,6 @@ void mexeRaquete(void){                                     // Função da lógica 
 }
 
 void lancaBola(void){                                       // Função para a lógica do lançamento da bola
-    //int random = (- 2 + (rand() % (2 + 2 + 1)));
 
     if (!bola.ativa){                                       // Se a bola não está ativa (começo do jogo)
 
@@ -246,29 +207,28 @@ void bateBloco(/*Bloco bloco[][B_COLUNA]*/){
 
     for (int i=0; i<B_LINHA; i++){
         for (int j=0; j<B_COLUNA; j++){
-            if (bloco[i][j].ativo == true){ // Se o bloco estiver ativo
+            if (bloco[i][j].ativo == true){         // Se o bloco estiver ativo
                 if ((CheckCollisionCircleRec (bola.posicao, bola.raio,
                                             (Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
-                                            bloco[i][j].tamanho.y})) /*&& (bola.velocidade.x < 0)*/){
+                                            bloco[i][j].tamanho.y}))){
 
-                bloco[i][j].ativo = false;
+                    bloco[i][j].ativo = false;
 
-                switch (bloco[i][j].especial){
-                    case 0: bola.velocidade.y *= -1;
-                            jogador.pontos = jogador.pontos + 20;
+                    switch (bloco[i][j].especial){
+                        case 0: bola.velocidade.y *= -1;
+                                jogador.pontos = jogador.pontos + 20;
                             break;
-                    case 1: bola.velocidade.y *= -1.5;
-                            jogador.pontos = jogador.pontos + 20;
+                        case 1: bola.velocidade.y *= -1.5;
+                                jogador.pontos = jogador.pontos + 20;
                             break;
-                    case 2: bola.velocidade.y *= -1;
-                            jogador.pontos = jogador.pontos + 20;
-                            bola.raio *= 2;
+                        case 2: bola.velocidade.y *= -1;
+                                jogador.pontos = jogador.pontos + 20;
+                                bola.raio *= 2;
                             break;
-                    case 3: bola.velocidade.y *= -1;
-                            jogador.pontos = jogador.pontos + 40;
+                        case 3: bola.velocidade.y *= -1;
+                                jogador.pontos = jogador.pontos + 40;
                             break;
-                }
-
+                    }
                 }
             }
         }
@@ -293,7 +253,7 @@ bool acabouBloco (void){
     return proxNivel;
 }
 
-void atualizaJogo(){                                    // Atualiza a lógica do jogo
+void atualizaJogo(){                             // Atualiza a lógica do jogo
 
     if (IsKeyPressed('P')){
         pause = !pause;
@@ -311,7 +271,7 @@ void atualizaJogo(){                                    // Atualiza a lógica do 
 
 }
 
-void atualizaJogoDesenho(){                             // Desenha o jogo com a lógica atualizada
+void atualizaJogoDesenho(){                     // Desenha o jogo com a lógica atualizada
 
     limpaTela();
     atualizaJogo();

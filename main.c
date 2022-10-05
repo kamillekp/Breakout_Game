@@ -15,11 +15,8 @@
 int main(){
 
     int telaAtual = 0;
-    //int posPontos;
     int nivel=0;
     int flagC=0;
-
-    //float timePlayed = 0.0f;
 
     MELHOR ultimo;
     FILE *arq;
@@ -38,17 +35,8 @@ int main(){
     InitWindow(TELA_LARGURA, TELA_ALTURA, TELA_NOME);
     SetTargetFPS(60);
 
-    /*InitAudioDevice();
-    Music music = LoadMusicStream("C:/Users/Admin/Documents/Breakout_Game/musicaTrab.mp3");
-    PlayMusicStream(music);*/
-
-    //criaJogadores();
 
     while(!WindowShouldClose()){
-
-        /*UpdateMusicStream(music);
-        timePlayed = GetMusicTimePlayed(music)/GetMusicTimeLength(music);
-        if (timePlayed > 1.0f) timePlayed = 1.0f;*/
 
         BeginDrawing();
 
@@ -72,7 +60,7 @@ int main(){
             proxNivel = acabouBloco();
         }
 
-        if (proxNivel == true){
+        if (proxNivel == true){         // Reinicia pulando para o próximo nível
 
             if (nivel == 3){
 
@@ -113,44 +101,27 @@ int main(){
             limpaTela();
             desenhaEndGame();
 
-            /*
-
-            posPontos = pegaArquivo();   // pega arquivo de 5 melhores e vê se jogador.pontos é maior que um deles
-
-            // pega o posPontos, pra ver se pegaArquivo retornou algum resultado
-            if(posPontos != -1 && IsKeyPressed(KEY_C)){
-
-                telaAtual = desenhaNome(nome);
-                gravaArquivo(posPontos/*, nomeJogador*///);
-              //gameOver = 0;
-
-            //}
-
-
             ultimo = ultimoLista();
 
             if (jogador.pontos>ultimo.pontos){
+
                 telaAtual = desenhaNome(nome);
                 insereLista(jogador.pontos, nome);
                 initJogo();
                 gameOver = 0;
                 bzero(nome, 30);
-
             }
 
             if(IsKeyPressed(KEY_V)){
                 initJogo();
                 telaAtual = 0;
-                gameOver = 0; // pra voltar pro menu e poder jogar de novo
+                gameOver = 0;            // pra voltar pro menu e poder jogar de novo
             }
         }
     //}
 
         EndDrawing();
     }
-
-    /*UnloadMusicStream(music);
-    CloseAudioDevice();*/
 
     return 0;
 }

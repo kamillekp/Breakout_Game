@@ -18,15 +18,15 @@ predefinidas da biblioteca Raylib */
 #include "proHighscore.h"
 #include "proPause.h"
 
-// Funções para o Menu:
 
-void limpaTela(){ // Deixa a tela no estado original em preto.
+// Funções para o Menu:
+void limpaTela(){               // Deixa a tela no estado original em preto.
     DrawRectangle(0, 0, 1000, 2000, BLACK);
 }
 
-void desenhaMenu(){ // Desenha o Menu com o título, três botões, e créditos.
+void desenhaMenu(){             // Desenha o Menu com o título, três botões, e créditos.
 
-    DrawText("BreakoutINF", 240, 60, 50, WHITE); // Título do jogo.
+    DrawText("BreakoutINF", 240, 60, 50, WHITE);             // Título do jogo.
 
     DrawRectangleGradientV(240, 150, 325, 50, ORANGE, GOLD); // Botão 'JOGAR'
     DrawRectangleLinesEx(botao1, 3, ORANGE);
@@ -64,83 +64,6 @@ void desenhaMenuOp (int opcao){ // Desenha o botão em outra cor quando ele é sel
 
 
 // Funções para a Pontuação:
-
-/*
-
-int desenhaPtos(){ // Desenha o menu Pontuação
-
-    FILE *ptArq;
-    BESTPLAYERS bp[5];
-
-    //abrindo o arquivo_frase somente para leitura
-    ptArq = fopen("highscore.bin", "rb");
-
-    if(!ptArq){
-        printf("\nErro ao abrir o arquivo.");
-    }
-    else{
-        if(fread(&bp, sizeof(BESTPLAYERS), 5, ptArq) != 5){
-            printf("\nErro ao ler arquivo.");
-        }
-        fclose(ptArq);
-    }
-
-    limpaTela();
-    DrawText("TOP SCORES", 240, 60, 50, WHITE); // TITULO DO JOGO
-
-    //VOLTA
-        DrawRectangleGradientV(15, 15, 45, 45, ORANGE, GOLD); //QUADRADO
-            DrawRectangleLinesEx(volta1, 3, ORANGE);
-        DrawText("V", 23, 21, 40, BLACK);
-        DrawText("Voltar", 70, 21, 40, WHITE);
-
-    //POS 1
-        DrawRectangleGradientV(100, 130, 45, 45, ORANGE, GOLD); //QUADRADO
-            DrawRectangleLinesEx(pos1, 3, ORANGE);
-            DrawText("1", 118, 135, 40, BLACK); //POS
-
-        DrawText(bp[0].nome, 200, 135, 40, WHITE); // NOME
-        DrawText(bp[0].pontos, 600, 135, 40, WHITE); // PONTOS
-
-    //POS 2
-        DrawRectangleGradientV(100, 190, 45, 45, ORANGE, GOLD);
-            DrawRectangleLinesEx(pos2, 3, ORANGE);
-            DrawText("2", 113, 195, 40, BLACK);
-
-        DrawText(bp[1].nome, 200, 195, 40, WHITE); // NOME
-        DrawText(bp[1].pontos, 600, 195, 40, WHITE); // PONTOS
-
-    //POS 3
-        DrawRectangleGradientV(100, 250, 45, 45, ORANGE, GOLD);
-            DrawRectangleLinesEx(pos3, 3, ORANGE);
-            DrawText("3", 113, 255, 40, BLACK);
-
-        DrawText(bp[2].nome, 200, 255, 40, WHITE); // NOME
-        DrawText(bp[2].pontos, 600, 255, 40, WHITE); // PONTOS
-
-    //POS 4
-        DrawRectangleGradientV(100, 310, 45, 45, ORANGE, GOLD);
-            DrawRectangleLinesEx(pos4, 3, ORANGE);
-            DrawText("4", 113, 315, 40, BLACK);
-
-        DrawText(bp[3].nome, 200, 315, 40, WHITE); // NOME
-        DrawText(bp[3].pontos, 600, 315, 40, WHITE); // PONTOS
-
-
-    //POS 5
-        DrawRectangleGradientV(100, 370, 45, 45, ORANGE, GOLD);
-            DrawRectangleLinesEx(pos5, 3, ORANGE);
-        DrawText("5", 113, 375, 40, BLACK);
-
-        DrawText(bp[4].nome, 200, 375, 40, WHITE); // NOME
-        DrawText(bp[4].pontos, 600, 375, 40, WHITE); // PONTOS
-
-        fclose(ptArq);
-}
-
-*/
-
-
 void desenhaPtos(FILE *arq){
 
     MELHOR jogadores[5];
@@ -208,13 +131,12 @@ void desenhaPtos(FILE *arq){
 }
 
 // Funções para o jogo:
-
 void desenhaJogador(){                  // Desenha a raquete do Jogador
 
     DrawRectangle(jogador.posicao.x - jogador.tamanho.x/2, jogador.posicao.y - jogador.tamanho.y/2, jogador.tamanho.x, jogador.tamanho.y, WHITE);
 }
 
-void desenhaBola(){                     // Desenha a bola
+void desenhaBola(){
 
     DrawCircleV(bola.posicao, bola.raio, bola.cor);
 }
@@ -236,7 +158,6 @@ int desenhaNome(char nome[30]){
     int tecla;
     int letras=0;
     tecla=GetCharPressed();
-
 
     while(!IsKeyPressed(KEY_ENTER)){
 
@@ -260,31 +181,32 @@ int desenhaNome(char nome[30]){
 
         DrawText(nome, 220, 210, 70, WHITE);
         EndDrawing();
-
     }
 
     tela = 0;
 
     return tela;
-
 }
 
 void desenhaBlocos(void){
 
+    // Anda na matriz
     for (int i=0; i<B_LINHA; i++){
-        for (int j=0; j<B_COLUNA; j++){ // Anda na matriz
+        for (int j=0; j<B_COLUNA; j++){
+
             if (bloco[i][j].ativo == true){
                 DrawRectangleV(bloco[i][j].posicao, bloco[i][j].tamanho, bloco[i][j].cor);
+
                 switch (bloco[i][j].especial){
                     case 1: DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
-                                bloco[i][j].tamanho.y}, 3, DARKGREEN);
-                            break;
+                            bloco[i][j].tamanho.y}, 3, DARKGREEN);
+                        break;
                     case 2: DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
-                                bloco[i][j].tamanho.y}, 3, DARKBLUE);
-                            break;
+                            bloco[i][j].tamanho.y}, 3, DARKBLUE);
+                        break;
                     case 3: DrawRectangleLinesEx((Rectangle){bloco[i][j].posicao.x, bloco[i][j].posicao.y, bloco[i][j].tamanho.x,
-                                bloco[i][j].tamanho.y}, 3, GOLD);
-                            break;
+                            bloco[i][j].tamanho.y}, 3, GOLD);
+                        break;
                 }
             }
         }
@@ -304,6 +226,7 @@ void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de tod
     }
 
 }
+
 
 // Funções para outros menus:
 
@@ -338,12 +261,6 @@ void desenhaPause(){
     DrawRectangleLinesEx(con2, 3, ORANGE);
     DrawText("P", 279, 199, 40, BLACK);
     DrawText("CONTINUAR", 330, 205, 30, WHITE);
-
-    /*DrawRectangleGradientV(270, 260, 45, 45, ORANGE, GOLD); //QUADRADO
-    DrawRectangleLinesEx(con3, 3, ORANGE);
-    DrawText("S", 281, 264, 40, BLACK);
-    DrawText("SAIR", 330, 270, 30, WHITE);*/
-
 }
 
 void desenhaProx(){

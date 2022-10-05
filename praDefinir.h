@@ -9,14 +9,7 @@
 #include "raylib.h"
 #include <stdio.h>
 
-#include "proDesenho.h"
-#include "proJogo.h"
-#include "proMenu.h"
-#include "proHighscore.h"
-#include "proPause.h"
-
 // Definição de variáveis da tela inicial:
-
 #define TELA_NOME "BreakoutINF - Beatriz e Kamille"
 #define TELA_ALTURA 450
 #define TELA_LARGURA 800
@@ -28,7 +21,6 @@
 #define B_ESPACO 5
 
 // Definição de variáveis para main
-
     bool pause = false;
     bool gameOver = false;
     bool proxNivel = false;
@@ -67,8 +59,7 @@
     // Retangulos para Continuar:
     Rectangle prox = {530, 390, 45, 45};
 
-// Definições de structs para a proJogo.h
-
+    // Definições de structs para a proJogo.h
     typedef struct Jogador{
         Vector2 posicao;
         Vector2 tamanho;
@@ -97,7 +88,5 @@
     } Bloco;
 
     Bloco bloco[B_LINHA][B_COLUNA];
-
-// Definições de structs para a proHighscore.h
 
 #endif

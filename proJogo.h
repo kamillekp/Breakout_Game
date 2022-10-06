@@ -30,7 +30,7 @@ void initJogo(void){
     // Inicializa bola
     initBola();
 
-    initBloco(0);
+    initBloco(0); // inicia com nivel 1
 }
 
 char pegaMatrizBlocos (FILE *ARQUIVO){
@@ -39,9 +39,8 @@ char pegaMatrizBlocos (FILE *ARQUIVO){
 
     do{
         cor = fgetc(ARQUIVO);
-        printf("%c\n", cor);
 
-    }while(cor == ' ' || cor == '\n');
+    }while(cor == ' ' || cor == '\n'); // Se for espaço ou \n vai dnv
 
     return cor;
 }
@@ -183,7 +182,7 @@ void bateParede(void){                                      // Função para a lóg
 
         jogador.vidas--;
 
-        if(jogador.vidas == 0 /*|| blocos == 0*/) {
+        if(jogador.vidas == 0) {
             gameOver = true;
         }
     }
@@ -191,14 +190,17 @@ void bateParede(void){                                      // Função para a lóg
 
 void bateJogador(void){                                         // Função para a lógica da bola rebater na raquete
 
+    // NÃO DA PRA COLOCAR SÓ POS.X, POS.Y NO RECTANGLE PQ SE NÃO PEGA NO FIM DO RETANGULO
     // CheckCollisionCircleRec --> função que checa se teve colisão entre um circulo e um retangulo
-    if (CheckCollisionCircleRec (bola.posicao, bola.raio, (Rectangle){jogador.posicao.x - jogador.tamanho.x/2,
-                                                           jogador.posicao.y - jogador.tamanho.y/2, jogador.tamanho.x,
-                                                           jogador.tamanho.y})){
+    if (CheckCollisionCircleRec (bola.posicao, bola.raio, (Rectangle){jogador.posicao.x - 40,
+                                                                      jogador.posicao.y - 10,
+                                                                      jogador.tamanho.x, jogador.tamanho.y})){
+
 
         if (bola.velocidade.y > 0){
             bola.velocidade.y *= -1;
-            bola.velocidade.x = (bola.posicao.x - jogador.posicao.x)/(jogador.tamanho.x/2)*5;
+            bola.velocidade.x = (bola.posicao.x - jogador.posicao.x)/4;
+
         }
     }
 }

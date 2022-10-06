@@ -13,7 +13,7 @@
 #define TELA_NOME "BreakoutINF - Beatriz e Kamille"
 #define TELA_ALTURA 450
 #define TELA_LARGURA 800
-#define MAX_VIDAS 10
+#define MAX_VIDAS 3
 
 // Definição de variáveis pros blocos:
 #define B_LINHA 5

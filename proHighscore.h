@@ -10,6 +10,13 @@ as funções predefinidas da biblioteca Raylib */
 #include "raylib.h"
 #include <stdio.h>
 
+#include "proDesenho.h"
+#include "proJogo.h"
+#include "praDefinir.h"
+#include "proMenu.h"
+#include "proPause.h"
+#include "proPause.h"
+
     typedef struct Melhor{
         char nome[30];
         int pontos;
@@ -47,9 +54,6 @@ void fazLista (MELHOR melhores[], FILE *arq){
 
     fclose(arq);
 
-    for(int i=0; i<5; i++){
-        printf("%s     %d\n", melhores[i].nome, melhores[i].pontos);
-    }
 }
 
 void ordenaLista(MELHOR melhores[]){

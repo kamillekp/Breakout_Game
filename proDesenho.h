@@ -18,13 +18,28 @@ predefinidas da biblioteca Raylib */
 #include "proHighscore.h"
 #include "proPause.h"
 
+void limpaTela(void);
+void desenhaMenu(void);
+void desenhaMenuOp (int opcao);
+void desenhaPtos(FILE *arq);
+void desenhaJogador(void);
+void desenhaBola(void);
+void desenhaPontosJogo(void);
+void desenhaVidas(void);
+int desenhaNome(char nome[30]);
+void desenhaBlocos(void);
+void desenhaJogo(void);
+void desenhaEndGame(void);
+void desenhaPause(void);
+void desenhaProx(void);
+void desenhaFim(void);
 
 // Funções para o Menu:
-void limpaTela(){               // Deixa a tela no estado original em preto.
+void limpaTela(void){               // Deixa a tela no estado original em preto.
     DrawRectangle(0, 0, 1000, 2000, BLACK);
 }
 
-void desenhaMenu(){             // Desenha o Menu com o título, três botões, e créditos.
+void desenhaMenu(void){             // Desenha o Menu com o título, três botões, e créditos.
 
     DrawText("BreakoutINF", 240, 60, 50, WHITE);             // Título do jogo.
 
@@ -131,23 +146,23 @@ void desenhaPtos(FILE *arq){
 }
 
 // Funções para o jogo:
-void desenhaJogador(){                  // Desenha a raquete do Jogador
+void desenhaJogador(void){                  // Desenha a raquete do Jogador
 
     DrawRectangle(jogador.posicao.x - jogador.tamanho.x/2, jogador.posicao.y - jogador.tamanho.y/2, jogador.tamanho.x, jogador.tamanho.y, WHITE);
 }
 
-void desenhaBola(){
+void desenhaBola(void){
 
     DrawCircleV(bola.posicao, bola.raio, bola.cor);
 }
 
-void desenhaPontosJogo(){               // Desenha a quantidade de pontos do Jogador
+void desenhaPontosJogo(void){               // Desenha a quantidade de pontos do Jogador
 
     DrawText(TextFormat("%i", jogador.pontos), 690, 390, 45, WHITE);
 
 }
 
-void desenhaVidas(){                    // Desenha a quantidade de vidas do Jogador
+void desenhaVidas(void){                    // Desenha a quantidade de vidas do Jogador
 
     for (int i = 0; i < jogador.vidas; i++) DrawRectangle(20 + 40*i, TELA_ALTURA - 30, 35, 10, WHITE);
 }
@@ -177,7 +192,13 @@ int desenhaNome(char nome[30]){
             letras++;
         }
 
-        tecla=GetCharPressed();
+        if (IsKeyPressed(KEY_BACKSPACE)){
+            letras--;
+            if (letras < 0){
+                letras = 0;
+            }
+            nome[letras] = '\0';
+        }
 
         DrawText(nome, 220, 210, 70, WHITE);
         EndDrawing();
@@ -213,7 +234,7 @@ void desenhaBlocos(void){
     }
 }
 
-void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
+void desenhaJogo(void){                     // Desenha o Jogo inteiro (junção de todas as funções de desenho do Jogo)
 
     desenhaJogador();       // Raquete
     desenhaBola();          // Bola
@@ -230,7 +251,7 @@ void desenhaJogo(){                     // Desenha o Jogo inteiro (junção de tod
 
 // Funções para outros menus:
 
-void desenhaEndGame(){
+void desenhaEndGame(void){
     setlocale(LC_ALL, " ");
 
     DrawText("Fim de jogo!", TELA_LARGURA/3, TELA_ALTURA/3, 45, WHITE);
@@ -250,7 +271,7 @@ void desenhaEndGame(){
     DrawText("Continuar", 590, 400, 40, WHITE);
 }
 
-void desenhaPause(){
+void desenhaPause(void){
 
     DrawRectangle(240, 100, 300, 240, BLACK);
     DrawRectangleLinesEx(rec1, 3, ORANGE);
@@ -263,7 +284,7 @@ void desenhaPause(){
     DrawText("CONTINUAR", 330, 205, 30, WHITE);
 }
 
-void desenhaProx(){
+void desenhaProx(void){
 
     limpaTela();
 
@@ -276,7 +297,7 @@ void desenhaProx(){
 
 }
 
-void desenhaFim(){
+void desenhaFim(void){
 
     limpaTela();
 

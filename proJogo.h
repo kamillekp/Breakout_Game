@@ -19,6 +19,23 @@ as funções predefinidas da biblioteca Raylib */
 #include "proHighscore.h"
 #include "proPause.h"
 
+void initJogo(void);
+char pegaMatrizBlocos (FILE *ARQUIVO);
+void initBloco(int nivel);
+void initBola(void);
+void mexeRaquete(void);
+void lancaBola(void);
+void mexeBola(void);
+void bateParede(void);
+void bateJogador(void);
+void bateBloco(void);
+bool acabouBloco (void);
+void atualizaJogo(void);
+void atualizaJogoDesenho(void);
+
+void desenhaJogo(void);
+void limpaTela(void);
+
 void initJogo(void){
 
     // Inicializa raquete
@@ -205,7 +222,7 @@ void bateJogador(void){                                         // Função para a
     }
 }
 
-void bateBloco(/*Bloco bloco[][B_COLUNA]*/){
+void bateBloco(void){
 
     for (int i=0; i<B_LINHA; i++){
         for (int j=0; j<B_COLUNA; j++){
@@ -255,7 +272,7 @@ bool acabouBloco (void){
     return proxNivel;
 }
 
-void atualizaJogo(){                             // Atualiza a lógica do jogo
+void atualizaJogo(void){                             // Atualiza a lógica do jogo
 
     if (IsKeyPressed('P')){
         pause = !pause;
@@ -273,7 +290,7 @@ void atualizaJogo(){                             // Atualiza a lógica do jogo
 
 }
 
-void atualizaJogoDesenho(){                     // Desenha o jogo com a lógica atualizada
+void atualizaJogoDesenho(void){                     // Desenha o jogo com a lógica atualizada
 
     limpaTela();
     atualizaJogo();

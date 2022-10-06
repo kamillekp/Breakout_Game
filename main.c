@@ -22,8 +22,11 @@ int main(){
     FILE *arq;
     MELHOR melhores[5];
 
+    arq = fopen("top.bin", "rb");
+    fclose(arq);
+
     char nome[30];
-    bzero(nome, 30);
+    nome[0] = '\0';
 
     // QUANDO PRECISAR VOLTAR A LISTA PRO INICIO DESCOMENTA AS FUNÇÕES
     // Coloca a lista ficticia no vetor
@@ -109,7 +112,7 @@ int main(){
                 insereLista(jogador.pontos, nome);
                 initJogo();
                 gameOver = 0;
-                bzero(nome, 30);
+                nome[0] = '\0';
 
             }
 

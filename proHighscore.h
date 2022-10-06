@@ -24,6 +24,13 @@ as funções predefinidas da biblioteca Raylib */
 
     MELHOR melhores[5];
 
+void ficticiaLista (MELHOR melhores[]);
+void fazLista (MELHOR melhores[], FILE *arq);
+void ordenaLista(MELHOR melhores[]);
+MELHOR ultimoLista();
+void insereLista(int pts, char nome[]);
+
+
 void ficticiaLista (MELHOR melhores[]){ // Cria uma lista fictícia de jogadores
 
     char nome1[30]="Beatriz";

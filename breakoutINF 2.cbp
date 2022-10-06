@@ -44,7 +44,6 @@
 		<Unit filename="proHighscore.h" />
 		<Unit filename="proJogo.h" />
 		<Unit filename="proMenu.h" />
-		<Unit filename="proPause.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
